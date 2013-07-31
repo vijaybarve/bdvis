@@ -7,4 +7,12 @@ Author: Vijay Barve
 Maintainer: Vijay Barve <vijay.barve@gmail.com>
 Description: More about what it does (maybe more than one line)
 License: What license is it under?
-Imports: maps, plotrix, sqldf
+Imports:
+    maps,
+    plotrix,
+    sqldf
+Collate:
+    'getcellid.R'
+    'mapgrid.R'
+    'summary.R'
+    'tempolar.R'
