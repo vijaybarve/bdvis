@@ -1,0 +1,10 @@
+Package: bdvis
+Type: Package
+Title: Biodiversity Data Visualizations
+Version: 0.1
+Date: 2013-06-05
+Author: Vijay Barve
+Maintainer: Vijay Barve <vijay.barve@gmail.com>
+Description: More about what it does (maybe more than one line)
+License: What license is it under?
+Imports: maps, plotrix, sqldf
