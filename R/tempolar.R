@@ -2,10 +2,12 @@
 #' @import sqldf
 #' @import plotrix
 #' @param indf input data frame containing biodiversity data set
-#' @param timescale Temporal scale of the graph d - daily, w - weekly m - monthly
-#' @param title Title for the graph
-#' @param color color of the graph plot
-#' @param plottype plot types of r - lines, p - polygon and s - symbols
+#' @param timescale Temporal scale of the graph d - daily, w - weekly 
+#'      m - monthly. Default is d.
+#' @param title Title for the graph. Default is "Temporal coverage".
+#' @param color color of the graph plot. Dafault is "red".
+#' @param plottype plot types of r - lines, p - polygon and s - symbols. 
+#'      Dafault is p.
 #' @examples \dontrun{
 #' tempolar(inat)
 #' }
@@ -30,7 +32,7 @@ tempolar <- function(indf=NA, timescale=NA, title=NA, color=NA, plottype=NA){
   if (!is.na(plottype)) {
     plottype2 <- plottype
   } else {
-    plottype2 <- "r"
+    plottype2 <- "p"
   }
   if (!is.na(timescale)) {
     timescale2 <- timescale
@@ -57,21 +59,34 @@ tempolar <- function(indf=NA, timescale=NA, title=NA, color=NA, plottype=NA){
   
   if(timescale2=="d"){
     if(is.na(daytab[1,1])){daytab=daytab[2:dim(daytab)[1],]}
-    polar.plot(daytab$dct,(daytab$dayofYear/366)*360,line.col=color2,start=90, 
-               clockwise=TRUE,main=title2,boxed.radial=FALSE,
-               show.grid.labels=3,rp.type=plottype2)
+    radial.plot(daytab$dct,
+                ((((daytab$dayofYear-1)*360)/366)*(3.14/180)),
+                line.col=color2, labels=month.abb,
+                clockwise=T, start=1.62,
+                radial.lim = c(0,max(daytab$dct)),
+                main=title2,boxed.radial=FALSE,
+                show.grid.labels=3,rp.type=plottype2)
   }
   if(timescale2=="w"){
     if(is.na(weektab[1,1])){weektab=weektab[2:dim(weektab)[1],]}
-    polar.plot(weektab$wct,(weektab$weekofYear/53)*360,line.col=color2,start=90, 
-               clockwise=TRUE,main=title2,boxed.radial=FALSE,
-               show.grid.labels=3,rp.type=plottype2,lwd=4)
+    if(dim(weektab)[1]==54){
+      weektab[1,2]=weektab[1,2]+weektab[54,2]
+      weektab=weektab[1:53,]
+    }
+    radial.plot(weektab$wct,
+                ((((weektab$weekofYear-1)*360)/53)*(3.14/180)),
+                line.col=color2,start=1.62, labels=month.abb,
+                radial.lim = c(0,max(weektab$wct)),
+                clockwise=TRUE,main=title2,boxed.radial=FALSE,
+                show.grid.labels=3,rp.type=plottype2,lwd=4)
   }
   if(timescale2=="m"){
     if(is.na(monthtab[1,1])){monthtab=monthtab[2:dim(monthtab)[1],]}
-    polar.plot(monthtab$mct,(monthtab$monthofYear/12)*360,line.col=color2,start=90, 
-               clockwise=TRUE,main=title2,boxed.radial=FALSE,
-               show.grid.labels=3,rp.type=plottype2,lwd=4)
-    
+    radial.plot(monthtab$mct,
+                ((((monthtab$monthofYea-1)*360)/12)*(3.14/180)),
+                line.col=color2,start=1.62, labels=month.abb,
+                radial.lim = c(0,max(monthtab$mct)),
+                clockwise=TRUE,main=title2,boxed.radial=FALSE,
+                show.grid.labels=3,rp.type=plottype2,lwd=4)  
   }
 }

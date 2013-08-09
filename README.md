@@ -23,9 +23,9 @@ Note:
 Windows users have to first install [Rtools](http://cran.r-project.org/bin/windows/Rtools/).
 
 ### Packages `bdvis` depends on
-+ maps
-+ sqldf
-+ plotrix
++ [maps](http://cran.r-project.org/web/packages/maps/index.html)
++ [sqldf](http://cran.r-project.org/web/packages/sqldf/index.html)
++ [plotrix](http://cran.r-project.org/web/packages/plotrix/index.html)
 
 
 ### Functions currently available

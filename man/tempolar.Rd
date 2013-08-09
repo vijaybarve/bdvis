@@ -10,14 +10,15 @@
   set}
 
   \item{timescale}{Temporal scale of the graph d - daily, w
-  - weekly m - monthly}
+  - weekly m - monthly. Default is d.}
 
-  \item{title}{Title for the graph}
+  \item{title}{Title for the graph. Default is "Temporal
+  coverage".}
 
-  \item{color}{color of the graph plot}
+  \item{color}{color of the graph plot. Dafault is "red".}
 
   \item{plottype}{plot types of r - lines, p - polygon and
-  s - symbols}
+  s - symbols.  Dafault is p.}
 }
 \description{
   tempolar - Polar plot of temporal data
