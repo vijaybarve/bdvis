@@ -1,8 +1,8 @@
 Package: bdvis
 Type: Package
 Title: Biodiversity Data Visualizations
-Version: 0.0.2
-Date: 2013-06-05
+Version: 0.0.3
+Date: 2013-08-12
 Author: Vijay Barve
 Maintainer: Vijay Barve <vijay.barve@gmail.com>
 Description: More about what it does (maybe more than one line)
@@ -16,3 +16,4 @@ Collate:
     'mapgrid.R'
     'summary.R'
     'tempolar.R'
+    'fixstr.R'

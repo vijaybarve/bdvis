@@ -1,3 +1,4 @@
+export(fixstr)
 export(getcellid)
 export(mapgrid)
 export(summary)
