@@ -3,13 +3,14 @@
 #' @import maps
 #' @param indf input data frame containing biodiversity data set
 #' @param ptype type of map on the grid valid values are presence, records, species
+#' @param bbox Bounding box for the map in format c(xmin,xmax,ymin,ymax)
 #' @examples \dontrun{
 #' mapgrid(inat,ptype="records")
 #' }
 #' @export
-mapgrid <- function(indf=NA, ptype){
+mapgrid <- function(indf=NA, ptype="records",bbox=NA){
   names(indf)=gsub("\\.","_",names(indf))
-  print(ptype)
+  
   # Type presence needs to be coded yet
   if (ptype=="species"){
     sps=sqldf("select Scientific_name, cell_id from indf group by cell_id, Scientific_name")
@@ -24,11 +25,12 @@ mapgrid <- function(indf=NA, ptype){
   }  
   
   cts = cts[2:dim(cts)[1],]
-  Lat= -90 + (cts$Cell_id %/% 360)
-  Long= -180 + (cts$Cell_id %% 360)
+  Lat= -90 + (cts$Cell_id %/% 360) + 1
+  Long= -180 + (cts$Cell_id %% 360) + 1
   cts=cbind(cts,Lat,Long)
   names(cts)=c("Cell_id", "ct", "Lat", "Long"  )
   
+  #Code borrowed from Chit Chat R
   z = log10(cts$ct)
   
   plotclr <- c(
@@ -38,8 +40,11 @@ mapgrid <- function(indf=NA, ptype){
   color_scl[color_scl == 0] = 1
   
   #plot(indf$Longitude, indf$Latitude, type = "n")
-  map()
-  #map(xlim=c(60,100),ylim=c(5,35))
+  if (!is.na(bbox)) {
+    map(xlim=c(bbox[1],bbox[2]),ylim=c(bbox[3],bbox[4]))
+  } else {
+    map()
+  }
   for (i in 1:dim(cts)[1]) {
     points(cts$Long[i],cts$Lat[i],col= plotclr[color_scl[i]],pch=15,cex=1.5)
   }

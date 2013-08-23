@@ -4,7 +4,7 @@
  data fireld names}
 \usage{
   fixstr(indf, Latitude = NA, Longitude = NA,
-    DateCollected = NA, SciName = NA)
+    DateCollected = NA, datefmt = NA, SciName = NA)
 }
 \arguments{
   \item{indf}{input data frame containing biodiversity data
@@ -18,6 +18,9 @@
 
   \item{DateCollected}{name of Date Collected field in
   original data frame}
+
+  \item{datefmt}{format string for the original date field
+  \link[base]{strptime}}
 
   \item{SciName}{name of Scientific Name field in original
   data frame}

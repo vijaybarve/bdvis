@@ -4,13 +4,14 @@
 #'@param Latitude name of Latitude field in original data frame
 #'@param Longitude name of Longitude field in original data frame
 #'@param DateCollected name of Date Collected field in original data frame
+#'@param datefmt format string for the original date field \link[base]{strptime}
 #'@param SciName name of Scientific Name field in original data frame
 #'@export
 #'@examples \dontrun{
 #'
 #'}
 fixstr <- function (indf, Latitude =NA, Longitude=NA, DateCollected=NA,
-                    SciName=NA){
+                    datefmt=NA,SciName=NA){
   chgname <- function (orig,new){
     if(is.element(orig,names(indf))){
       names(indf)[which(names(indf)==orig)]=new
@@ -27,6 +28,10 @@ fixstr <- function (indf, Latitude =NA, Longitude=NA, DateCollected=NA,
   } 
   if (!is.na(DateCollected)) {
     indf=chgname(DateCollected,"Date_collected")
+  } 
+  if (!is.na(datefmt)) {
+    #indf=(cbind(indf,as.Date(indf$Date_collected,datefmt)))
+    indf$Date_collected=as.Date(indf$Date_collected,datefmt)
   } 
   if (!is.na(SciName)) {
     indf=chgname(SciName,"Scientific_name")
