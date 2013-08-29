@@ -1,8 +1,8 @@
 Package: bdvis
 Type: Package
 Title: Biodiversity Data Visualizations
-Version: 0.0.4
-Date: 2013-08-23
+Version: 0.0.5
+Date: 2013-08-28
 Author: Vijay Barve
 Maintainer: Vijay Barve <vijay.barve@gmail.com>
 Description: More about what it does (maybe more than one line)
@@ -10,10 +10,15 @@ License: CC0
 Imports:
     maps,
     plotrix,
-    sqldf
+    sqldf,
+    plyr,
+    taxize,
+    treemap
 Collate:
     'getcellid.R'
     'mapgrid.R'
     'summary.R'
     'tempolar.R'
     'fixstr.R'
+    'gettaxo.R'
+    'taxotree.R'

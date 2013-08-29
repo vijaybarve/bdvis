@@ -13,6 +13,8 @@
 }
 \examples{
 \dontrun{
+require(rinat)
+inat<-get_obs_project("reptileindia")
 summary(inat)
 }
 }

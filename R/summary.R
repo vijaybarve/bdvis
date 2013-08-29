@@ -3,6 +3,8 @@
 #'@param indf input data frame containing biodiversity data set
 #'@export
 #'@examples \dontrun{
+#'require(rinat)
+#'inat<-get_obs_project("reptileindia") 
 #'summary(inat)
 #'}
 summary <- function(indf){
@@ -19,5 +21,4 @@ summary <- function(indf){
   cat(paste(" No of Families : ",length(unique(indf$Family)),"\n"))
   cat(paste(" No of Genus : ",length(unique(indf$Genus)),"\n"))
   cat(paste(" No of Species : ",length(unique(indf$Scientific_name)),"\n"))
-  
 }
