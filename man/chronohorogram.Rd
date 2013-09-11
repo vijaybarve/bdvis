@@ -1,0 +1,26 @@
+\name{chronohorogram}
+\alias{chronohorogram}
+\title{chronohorogram - Draws a chronohorogram of records}
+\usage{
+  chronohorogram(indf = NA, title = NA, startyear = 0,
+    endyear = 0)
+}
+\arguments{
+  \item{indf}{input data frame containing biodiversity data
+  set}
+
+  \item{title}{title of the plot}
+
+  \item{startyear}{Starting year for the plot}
+
+  \item{endyear}{End year for the graph}
+}
+\description{
+  chronohorogram - Draws a chronohorogram of records
+}
+\examples{
+\dontrun{
+chronohorogram(inat)
+}
+}
+
