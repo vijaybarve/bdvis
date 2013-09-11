@@ -23,28 +23,55 @@ Note:
 Windows users have to first install [Rtools](http://cran.r-project.org/bin/windows/Rtools/).
 
 ### Packages `bdvis` depends on
-+ [maps](http://cran.r-project.org/web/packages/maps/index.html)
-+ [sqldf](http://cran.r-project.org/web/packages/sqldf/index.html)
-+ [plotrix](http://cran.r-project.org/web/packages/plotrix/index.html)
++ maps
++ sqldf
++ plotrix
++ treemap
++ plyr
++ taxize
 
 
 ### Functions currently available
 
+Preapre some data using package ````riNat````
+
+```r
+#install_github("rinat", "vijaybarve")
+require(rinat)
+# Data downlaod might take some time
+inat=get_obs_project("indianmoths") 
+inat=fixstr(inat,DateCollected="Observed.on",SciName="Scientific.name")
+inat=getcellid(inat)
+
+```
+
 #### summary
 
-```coffee
+```r
 bdvis::summary(inat)
 ```
 
 #### mapgrid
 
-```coffee
-mapgrid(inat,ptype="species")
+```r
+mapgrid(inat,ptype="records",bbox=c(60,100,5,40))
 ```
 
 #### tempolar
-```coffee
+```r
 tempolar(inat, color="green", title="iNaturalist daily", plottype="r", timescale="d")
 tempolar(inat, color="blue", title="iNaturalist weekly", plottype="p", timescale="w")
 tempolar(inat, color="red", title="iNaturalist monthly", plottype="r", timescale="m")
+```
+#### taxotree
+
+```r
+inat=gettaxo(inat)
+taxotree(inat)
+```
+
+#### chronohorogram
+
+```r
+chronohorogram(inat)
 ```
