@@ -1,6 +1,6 @@
 \name{bdcomplete}
 \alias{bdcomplete}
-\title{bdcomplete - Computes completeness values for each cell currently returns Chao2}
+\title{bdcomplete - Computes completeness values for cells (currently returns Chao2 index)}
 \usage{
   bdcomplete(indf, recs = 50)
 }
@@ -11,8 +11,8 @@
   \item{recs}{Minimum number of records per grid cell}
 }
 \description{
-  bdcomplete - Computes completeness values for each cell
-  currently returns Chao2
+  bdcomplete - Computes completeness values for cells
+  (currently returns Chao2 index)
 }
 \examples{
 \dontrun{

@@ -1,3 +1,4 @@
+export(bdcomplete)
 export(chronohorogram)
 export(fixstr)
 export(getcellid)

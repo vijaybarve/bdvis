@@ -1,8 +1,8 @@
 Package: bdvis
 Type: Package
 Title: Biodiversity Data Visualizations
-Version: 0.0.6
-Date: 2013-09-11
+Version: 0.0.7
+Date: 2013-09-12
 Author: Vijay Barve
 Maintainer: Vijay Barve <vijay.barve@gmail.com>
 Description: More about what it does (maybe more than one line)
@@ -23,4 +23,4 @@ Collate:
     'gettaxo.R'
     'taxotree.R'
     'chronohorogram.R'
-
+    'bdcomplete.R'
