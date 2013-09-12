@@ -1,0 +1,29 @@
+#'bdcomplete - Computes completeness values for each cell currently returns Chao2
+#'@import sqldf
+#'@param indf input data frame containing biodiversity data set
+#'@param recs Minimum number of records per grid cell 
+#'@export
+#'@examples \dontrun{
+#'bdcomplete(inat)
+#'}
+bdcomplete <- function(indf,recs=50){
+  dat1=sqldf("select Scientific_name, Date_collected, Cell_id from indf group by Scientific_name, Date_collected, Cell_id")
+  dat2=sqldf("select cell_id,count(*) as cell_ct from dat1 group by cell_id")
+  dat3=sqldf(paste("select * from dat2 where cell_ct > ",recs))
+  retmat=NULL
+  for (i in 1:dim(dat3)[1]){
+    Cell_id=dat3$Cell_id[i]
+    cset = dat1[which(dat1$Cell_id==dat3$Cell_id[i]),]
+    csum = sqldf("select Scientific_name, count(*) as sct from cset group by Scientific_name")
+    Q1=as.numeric(sqldf("select count(*) from csum where sct = 1 "))
+    Q2=sqldf("select count(*) from csum where sct = 2 ")
+    m=sqldf("select count(*) from ( select * from cset group by Date_collected )")
+    Sobs = as.numeric(sqldf("select count(*) from ( select * from cset group by Scientific_name)"))
+    Sest = as.numeric(Sobs + (((m-1)/m) * ((Q1 *(Q1 -1))/(2 * (Q2+1)))))
+    c = Sobs / Sest
+    retmat=rbind(retmat,c(Cell_id,Sobs,Sest,c))
+  }
+  retmat=as.data.frame(retmat)
+  names(retmat)=c("Cell_id","Sobs","Sest","c")
+  return(retmat)
+}
