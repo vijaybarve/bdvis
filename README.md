@@ -23,12 +23,15 @@ Note:
 Windows users have to first install [Rtools](http://cran.r-project.org/bin/windows/Rtools/).
 
 ### Packages `bdvis` depends on
-+ maps
-+ sqldf
-+ plotrix
-+ treemap
-+ plyr
-+ taxize
++ [maps] (http://cran.r-project.org/web/packages/maps/index.html)
++ [sqldf] (http://cran.r-project.org/web/packages/sqldf/index.html)
++ [plotrix] (http://cran.r-project.org/web/packages/plotrix/index.html)
++ [treemap] (http://cran.r-project.org/web/packages/treemap/index.html)
++ [plyr] (http://cran.r-project.org/web/packages/plyr/index.html)
++ [taxize] (http://cran.r-project.org/web/packages/taxize/index.html)
+
+For examples
++ [rinat] (https://github.com/ropensci/rinat)
 
 
 ### Functions currently available
@@ -42,7 +45,6 @@ require(rinat)
 inat=get_obs_project("indianmoths") 
 inat=fixstr(inat,DateCollected="Observed.on",SciName="Scientific.name")
 inat=getcellid(inat)
-
 ```
 
 #### summary
@@ -74,4 +76,10 @@ taxotree(inat)
 
 ```r
 chronohorogram(inat)
+```
+
+#### bdcomplete
+
+```r
+bdcomplete(inat)
 ```

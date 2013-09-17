@@ -1,11 +1,20 @@
-#'bdcomplete - Computes completeness values for cells (currently returns Chao2 index)
+#'bdcomplete - Computes completeness values for each cell currently returns Chao2
+#'
 #'@import sqldf
 #'@param indf input data frame containing biodiversity data set
 #'@param recs Minimum number of records per grid cell 
-#'@export
+#'  (Default is 50, if the number is too low, might give error)
+#'@return data.frame with the columns
+#' \itemize{
+#'  \item{"Cell_id"}{id of the cell}
+#'  \item{"Sobs"}{Number of Observed species}
+#'  \item{"Sest"}{Estimated number of species}
+#'  \item{"c"}{Completeness ratio the cell}
+#' }
 #'@examples \dontrun{
 #'bdcomplete(inat)
 #'}
+#'@export
 bdcomplete <- function(indf,recs=50){
   dat1=sqldf("select Scientific_name, Date_collected, Cell_id from indf group by Scientific_name, Date_collected, Cell_id")
   dat2=sqldf("select cell_id,count(*) as cell_ct from dat1 group by cell_id")
