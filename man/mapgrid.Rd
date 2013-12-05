@@ -2,7 +2,8 @@
 \alias{mapgrid}
 \title{mapgrid - Maps the data points on the map in grid format}
 \usage{
-  mapgrid(indf = NA, ptype = "records", bbox = NA)
+  mapgrid(indf = NA, ptype = "records", bbox = NA,
+    mapdatabase = "world", region = ".", customize = NULL)
 }
 \arguments{
   \item{indf}{input data frame containing biodiversity data
@@ -13,6 +14,13 @@
 
   \item{bbox}{Bounding box for the map in format
   c(xmin,xmax,ymin,ymax)}
+
+  \item{mapdatabase}{database to be used default world}
+
+  \item{region}{specify region(s) to map i.e. countries
+  default . for whole world}
+
+  \item{customize}{customization string}
 }
 \description{
   mapgrid - Maps the data points on the map in grid format

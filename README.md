@@ -29,6 +29,8 @@ Windows users have to first install [Rtools](http://cran.r-project.org/bin/windo
 + [treemap] (http://cran.r-project.org/web/packages/treemap/index.html)
 + [plyr] (http://cran.r-project.org/web/packages/plyr/index.html)
 + [taxize] (http://cran.r-project.org/web/packages/taxize/index.html)
++ [ggplot2] (http://cran.r-project.org/web/packages/ggplot2/index.html)
++ [grid] (http://cran.r-project.org/web/packages/grid/)
 
 For examples
 + [rinat] (https://github.com/ropensci/rinat)
@@ -56,7 +58,8 @@ bdvis::summary(inat)
 #### mapgrid
 
 ```r
-mapgrid(inat,ptype="records",bbox=c(60,100,5,40))
+mapgrid(inat,ptype="species")
+mapgrid(inat,ptype="records",bbox=c(60,100,5,40),region="India")
 ```
 
 #### tempolar
