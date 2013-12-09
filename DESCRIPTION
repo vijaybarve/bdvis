@@ -1,10 +1,10 @@
 Package: bdvis
 Type: Package
 Title: Biodiversity Data Visualizations
-Version: 0.0.9
+Version: 0.0.10
 Date: 2013-12-04
 Author: Vijay Barve
-Maintainer: Vijay Barve <vijay.barve@gmail.com>
+Maintainer: Vijay Barve <vijay.8barve@gmail.com>
 Description: Biodiversity data visualizations using R would be helpful to understand completeness of biodiversity inventory, extent of geographical, taxonomic and temporal coverage, gaps and biases in data.
 License: CC0
 Imports:
