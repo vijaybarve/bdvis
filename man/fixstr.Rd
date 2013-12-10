@@ -31,7 +31,7 @@
 }
 \examples{
 \dontrun{
-
+inat = fixstr(inat, DateCollected = "Date.collected", datefmt = "\%Y-\%m-\%d \%H:\%M:\%S")
 }
 }
 

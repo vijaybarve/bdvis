@@ -1,21 +1,21 @@
-\name{summary}
-\alias{summary}
-\title{summary - description}
+\name{bdsummary}
+\alias{bdsummary}
+\title{bdsummary - description}
 \usage{
-  summary(indf)
+  bdsummary(indf)
 }
 \arguments{
   \item{indf}{input data frame containing biodiversity data
   set}
 }
 \description{
-  summary - description
+  bdsummary - description
 }
 \examples{
 \dontrun{
 require(rinat)
 inat<-get_obs_project("reptileindia")
-summary(inat)
+bdsummary(inat)
 }
 }
 

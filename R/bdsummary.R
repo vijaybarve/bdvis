@@ -1,13 +1,13 @@
-#'summary - description
+#'bdsummary - description
 #'@import sqldf
 #'@param indf input data frame containing biodiversity data set
 #'@export
 #'@examples \dontrun{
 #'require(rinat)
 #'inat<-get_obs_project("reptileindia") 
-#'summary(inat)
+#'bdsummary(inat)
 #'}
-summary <- function(indf){
+bdsummary <- function(indf){
   names(indf)=gsub("\\.","_",names(indf))
   cat(paste("\n Total no of records =",dim(indf)[1],"\n"))
   if("Date_collected" %in% colnames(indf)){

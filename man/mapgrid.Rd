@@ -3,24 +3,27 @@
 \title{mapgrid - Maps the data points on the map in grid format}
 \usage{
   mapgrid(indf = NA, ptype = "records", bbox = NA,
-    mapdatabase = "world", region = ".", customize = NULL)
+    title = "", mapdatabase = "world", region = ".",
+    customize = NULL)
 }
 \arguments{
-  \item{indf}{input data frame containing biodiversity data
-  set}
+  \item{indf}{- input data frame containing biodiversity
+  data set}
 
-  \item{ptype}{type of map on the grid valid values are
+  \item{ptype}{- type of map on the grid valid values are
   presence, records, species}
 
-  \item{bbox}{Bounding box for the map in format
+  \item{title}{- title for the map}
+
+  \item{bbox}{- Bounding box for the map in format
   c(xmin,xmax,ymin,ymax)}
 
-  \item{mapdatabase}{database to be used default world}
+  \item{mapdatabase}{- database to be used default world}
 
-  \item{region}{specify region(s) to map i.e. countries
+  \item{region}{- specify region(s) to map i.e. countries
   default . for whole world}
 
-  \item{customize}{customization string}
+  \item{customize}{- customization string}
 }
 \description{
   mapgrid - Maps the data points on the map in grid format

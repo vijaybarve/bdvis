@@ -8,7 +8,7 @@
 #'@param SciName name of Scientific Name field in original data frame
 #'@export
 #'@examples \dontrun{
-#'
+#'inat = fixstr(inat, DateCollected = "Date.collected", datefmt = "%Y-%m-%d %H:%M:%S")
 #'}
 fixstr <- function (indf, Latitude =NA, Longitude=NA, DateCollected=NA,
                     datefmt=NA,SciName=NA){
@@ -30,12 +30,10 @@ fixstr <- function (indf, Latitude =NA, Longitude=NA, DateCollected=NA,
     indf=chgname(DateCollected,"Date_collected")
   } 
   if (!is.na(datefmt)) {
-    #indf=(cbind(indf,as.Date(indf$Date_collected,datefmt)))
     indf$Date_collected=as.Date(indf$Date_collected,datefmt)
   } 
   if (!is.na(SciName)) {
     indf=chgname(SciName,"Scientific_name")
   } 
-  
   return(indf)
 }

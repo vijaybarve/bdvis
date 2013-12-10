@@ -3,17 +3,18 @@
 #' @import maps
 #' @import ggplot2
 #' @import grid
-#' @param indf input data frame containing biodiversity data set
-#' @param ptype type of map on the grid valid values are presence, records, species
-#' @param bbox Bounding box for the map in format c(xmin,xmax,ymin,ymax)
-#' @param mapdatabase database to be used default world
-#' @param region specify region(s) to map i.e. countries default . for whole world
-#' @param customize customization string
+#' @param indf - input data frame containing biodiversity data set
+#' @param ptype - type of map on the grid valid values are presence, records, species
+#' @param title - title for the map
+#' @param bbox - Bounding box for the map in format c(xmin,xmax,ymin,ymax)
+#' @param mapdatabase - database to be used default world
+#' @param region - specify region(s) to map i.e. countries default . for whole world
+#' @param customize - customization string
 #' @examples \dontrun{
 #' mapgrid(inat,ptype="records")
 #' }
 #' @export
-mapgrid <- function(indf=NA, ptype="records",bbox=NA,
+mapgrid <- function(indf=NA, ptype="records",bbox=NA, title = "",
                     mapdatabase = "world", region = ".", 
                     customize = NULL)
 {
@@ -51,6 +52,7 @@ mapgrid <- function(indf=NA, ptype="records",bbox=NA,
   mapp <- map_data(map=mapdatabase, region=region)
   message(paste("Rendering map...plotting ", nrow(cts), " tiles", sep=""))
   ggplot(mapp, aes(long, lat)) + # make the plot
+    ggtitle(title) +
     geom_raster(data=middf, aes(long, lat, fill=log10(count), width=1, height=1)) +  
     coord_fixed(ratio = 1) +
     scale_fill_gradient2(low = "white", mid="blue", high = "red", name=ptype, breaks = mybreaks, labels = myleg) +
