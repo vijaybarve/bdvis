@@ -5,10 +5,10 @@
   bdcomplete(indf, recs = 50)
 }
 \arguments{
-  \item{indf}{input data frame containing biodiversity data
-  set}
+  \item{indf}{- Input data frame containing biodiversity
+  data set}
 
-  \item{recs}{Minimum number of records per grid cell
+  \item{recs}{- Minimum number of records per grid cell
   (Default is 50, if the number is too low, might give
   error)}
 }

@@ -6,14 +6,14 @@
     endyear = 0)
 }
 \arguments{
-  \item{indf}{input data frame containing biodiversity data
-  set}
+  \item{indf}{- Input data frame containing biodiversity
+  data set}
 
-  \item{title}{title of the plot}
+  \item{title}{- Title of the plot}
 
-  \item{startyear}{Starting year for the plot}
+  \item{startyear}{- Starting year for the plot}
 
-  \item{endyear}{End year for the graph}
+  \item{endyear}{- End year for the graph}
 }
 \description{
   chronohorogram - Draws a chronohorogram of records

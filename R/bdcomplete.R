@@ -1,8 +1,8 @@
 #'bdcomplete - Computes completeness values for each cell currently returns Chao2
 #'
 #'@import sqldf
-#'@param indf input data frame containing biodiversity data set
-#'@param recs Minimum number of records per grid cell 
+#'@param indf - Input data frame containing biodiversity data set
+#'@param recs - Minimum number of records per grid cell 
 #'  (Default is 50, if the number is too low, might give error)
 #'@return data.frame with the columns
 #' \itemize{
@@ -19,6 +19,9 @@ bdcomplete <- function(indf,recs=50){
   dat1=sqldf("select Scientific_name, Date_collected, Cell_id from indf group by Scientific_name, Date_collected, Cell_id")
   dat2=sqldf("select cell_id,count(*) as cell_ct from dat1 group by cell_id")
   dat3=sqldf(paste("select * from dat2 where cell_ct > ",recs))
+  dat1=na.omit(dat1)
+  dat2=na.omit(dat2)
+  dat3=na.omit(dat3)
   retmat=NULL
   for (i in 1:dim(dat3)[1]){
     Cell_id=dat3$Cell_id[i]
