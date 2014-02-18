@@ -5,7 +5,7 @@
 #'@param indf input data frame containing biodiversity data set
 #'@return indf with added / updated columns
 #'\itemize{
-#'  \item{"kingdome"}{Kingdome of the Scientific name}
+#'  \item{"kingdom"}{Kingdom of the Scientific name}
 #'  \item{"phylum"}{Phylum of the Scientific name}
 #'  \item{"order"}{Order of the Scientific name}
 #'  \item{"family"}{Family of the Scientific name}
@@ -30,14 +30,14 @@ gettaxo <- function(indf){
       dat <- classification(get_uid(indf$Scientific_name[i]))
       if(!is.na(dat)){
         dat1<-NULL
-        dat1 <- ldply(dat, function(x) x[x$Rank %in% c("kingdome","phylum","class","order","family","genus","species"), "ScientificName"])
-        dat2 <- ldply(dat, function(x) x[x$Rank %in% c("kingdome","phylum","class","order","family","genus","species"), "Rank"])
+        dat1 <- ldply(dat, function(x) x[x$rank %in% c("kingdom","phylum","class","order","family","genus","species"), "name"])
+        dat2 <- ldply(dat, function(x) x[x$rank %in% c("kingdom","phylum","class","order","family","genus","species"), "rank"])
       }
     }
     if(!is.null(dat1)) {
       names(dat1) <- dat2
       if(!is.null(dat1)) print(dat1)
-      if(!is.null(dat1$phylum)) indf$Kingdome[i] <- dat1$kingdome
+      if(!is.null(dat1$kingdom)) indf$Kingdom[i] <- dat1$kingdom
       if(!is.null(dat1$phylum)) indf$Phylum[i] <- dat1$phylum
       if(!is.null(dat1$class)) indf$Class[i] <- dat1$class
       if(!is.null(dat1$order)) indf$Order[i] <- dat1$order

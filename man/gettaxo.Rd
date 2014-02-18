@@ -10,7 +10,7 @@
 }
 \value{
   indf with added / updated columns \itemize{
-  \item{"kingdome"}{Kingdome of the Scientific name}
+  \item{"kingdom"}{Kingdom of the Scientific name}
   \item{"phylum"}{Phylum of the Scientific name}
   \item{"order"}{Order of the Scientific name}
   \item{"family"}{Family of the Scientific name}
