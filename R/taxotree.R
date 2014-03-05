@@ -1,10 +1,10 @@
-#'taxotree - Draws a treemap based on Taxonomical hirarchi of records
+#'taxotree - Draws a treemap based on Taxonomic hierarchy of records
 #'@import sqldf
 #'@import treemap
 #'@param indf input data frame containing biodiversity data set
 #'@export
 #'@examples \dontrun{
-#'treemap(inat)
+#'taxotree(inat)
 #'}
 taxotree <- function(indf){
   tab1=sqldf("select Family,Genus,count(*) as Recs from indf group by Family,Genus ")

@@ -1,6 +1,6 @@
 \name{taxotree}
 \alias{taxotree}
-\title{taxotree - Draws a treemap based on Taxonomical hirarchi of records}
+\title{taxotree - Draws a treemap based on Taxonomic hierarchy of records}
 \usage{
   taxotree(indf)
 }
@@ -9,12 +9,12 @@
   set}
 }
 \description{
-  taxotree - Draws a treemap based on Taxonomical hirarchi
+  taxotree - Draws a treemap based on Taxonomic hierarchy
   of records
 }
 \examples{
 \dontrun{
-treemap(inat)
+taxotree(inat)
 }
 }
 
