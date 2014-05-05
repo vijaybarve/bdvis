@@ -37,7 +37,7 @@ mapgrid <- function(indf=NA, ptype="records",bbox=NA, title = "",
     cts1=sqldf("select * from cts where cell_id in (select * from clist)")
     cts = cts1[2:dim(cts1)[1],]
   }
-  
+  lat=long=group=NULL
   Lat= -90 + (cts$Cell_id %/% 360) + 1
   Long= -180 + (cts$Cell_id %% 360) + 1
   cts=cbind(cts,Lat,Long)

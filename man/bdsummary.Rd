@@ -14,7 +14,7 @@
 \examples{
 \dontrun{
 require(rinat)
-inat<-get_obs_project("reptileindia")
+inat<-get_inat_obs_project("reptileindia")
 bdsummary(inat)
 }
 }
