@@ -6,6 +6,7 @@
 #'@param startyear - Starting year for the plot
 #'@param endyear - End year for the graph
 #'@param colors - Colors to build color ramp 
+#'@references Arino, A. H., & Otegui, J. (2008). Sampling biodiversity sampling. In Proceedings of TDWG (pp. 77-78). Retrieved from http://www.tdwg.org/fileadmin/2008conference/documents/Proceedings2008.pdf#page=77
 #'@export
 #'@examples \dontrun{
 #'chronohorogram(inat)

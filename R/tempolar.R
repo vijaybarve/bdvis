@@ -8,6 +8,7 @@
 #' @param color color of the graph plot. Dafault is "red".
 #' @param plottype plot types of r - lines, p - polygon and s - symbols. 
 #'      Dafault is p.
+#'@references Otegui, J., Arino, A. H., Encinas, M. A., & Pando, F. (2013). Assessing the Primary Data Hosted by the Spanish Node of the Global Biodiversity Information Facility (GBIF). PLoS ONE, 8(1), e55144. doi:10.1371/journal.pone.0055144
 #' @examples \dontrun{
 #' tempolar(inat)
 #' }
