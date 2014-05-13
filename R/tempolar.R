@@ -84,7 +84,7 @@ tempolar <- function(indf=NA, timescale=NA, title=NA, color=NA, plottype=NA){
   if(timescale2=="m"){
     if(is.na(monthtab[1,1])){monthtab=monthtab[2:dim(monthtab)[1],]}
     radial.plot(monthtab$mct,
-                ((((monthtab$monthofYea-1)*360)/12)*(3.14/180)),
+                ((((monthtab$monthofYear-1)*360)/12)*(3.14/180)),
                 line.col=color2,start=1.62, labels=month.abb,
                 radial.lim = c(0,max(monthtab$mct)),
                 clockwise=TRUE,main=title2,boxed.radial=FALSE,
