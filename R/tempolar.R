@@ -8,12 +8,13 @@
 #' @param color color of the graph plot. Dafault is "red".
 #' @param plottype plot types of r - lines, p - polygon and s - symbols. 
 #'      Dafault is p.
+#' @param avg If TRUE plots a graph of average records rather than actual numbers
 #'@references Otegui, J., Arino, A. H., Encinas, M. A., & Pando, F. (2013). Assessing the Primary Data Hosted by the Spanish Node of the Global Biodiversity Information Facility (GBIF). PLoS ONE, 8(1), e55144. doi:10.1371/journal.pone.0055144
 #' @examples \dontrun{
 #' tempolar(inat)
 #' }
 #' @export
-tempolar <- function(indf=NA, timescale=NA, title=NA, color=NA, plottype=NA){
+tempolar <- function(indf=NA, timescale=NA, title=NA, color=NA, plottype=NA,avg=FALSE){
   areColors <- function(x) {
     sapply(x, function(X) {
       tryCatch(is.matrix(col2rgb(X)), 
@@ -46,48 +47,87 @@ tempolar <- function(indf=NA, timescale=NA, title=NA, color=NA, plottype=NA){
     dayofYear = as.numeric(strftime(as.Date(indf$Date_collected,na.rm=T), format = "%j"))
     weekofYear = as.numeric(strftime(as.Date(indf$Date_collected,na.rm=T), format = "%U"))
     monthofYear = as.numeric(strftime(as.Date(indf$Date_collected,na.rm=T), format = "%m"))
+    Year = as.numeric(strftime(as.Date(indf$Date_collected,na.rm=T), format = "%Y"))
     
   } else {
-    dayofYear = as.numeric(strftime(as.Date(indf$observed_on,na.rm=T), format = "%j"))
-    weekofYear = as.numeric(strftime(as.Date(indf$observed_on,na.rm=T), format = "%U"))
-    monthofYear = as.numeric(strftime(as.Date(indf$observed_on,na.rm=T), format = "%m"))
-    
+    stop("Date_collected not found in data. Please use fixstr() to fix the problem")
   }
-  indf = cbind(indf,dayofYear,weekofYear,monthofYear)
-  daytab=sqldf("select dayofYear, count(*) as dct from indf group by dayofYear")
-  weektab=sqldf("select weekofYear, count(*) as wct from indf group by weekofYear")
-  monthtab=sqldf("select monthofYear, count(*) as mct from indf group by monthofYear")
-  
+  indf = cbind(indf,dayofYear,weekofYear,monthofYear,Year)
   if(timescale2=="d"){
-    if(is.na(daytab[1,1])){daytab=daytab[2:dim(daytab)[1],]}
-    radial.plot(daytab$dct,
-                ((((daytab$dayofYear-1)*360)/366)*(3.14/180)),
-                line.col=color2, labels=month.abb,
-                clockwise=T, start=1.62,
-                radial.lim = c(0,max(daytab$dct)),
-                main=title2,boxed.radial=FALSE,
-                show.grid.labels=3,rp.type=plottype2)
+    daytab=sqldf("select dayofYear, count(*) as dct from indf group by dayofYear")
+    if(avg==F){
+      if(is.na(daytab[1,1])){daytab=daytab[2:dim(daytab)[1],]}
+      radial.plot(daytab$dct,
+                  ((((daytab$dayofYear-1)*360)/366)*(3.14/180)),
+                  line.col=color2, labels=month.abb,
+                  clockwise=T, start=1.62,
+                  radial.lim = c(0,max(daytab$dct)),
+                  main=title2,boxed.radial=FALSE,
+                  show.grid.labels=3,rp.type=plottype2)
+    } else {
+      alldays=sqldf("select dayofYear, Year, count(*) as ct from indf group by dayofYear,monthofYear,Year")
+      daymean=sqldf("select dayofyear,avg(ct) as avgct,stdev(ct) as sdct from alldays group by dayofyear")
+      
+      if(is.na(daymean[1,1])){daymean=daymean[2:dim(daymean)[1],]}
+      radial.plot(daymean$avgct,
+                  ((((daymean$dayofYear-1)*360)/366)*(3.14/180)),
+                  line.col=color2, labels=month.abb,
+                  clockwise=T, start=1.62,
+                  radial.lim = c(0,max(daymean$avgct)),
+                  main=title2,boxed.radial=FALSE,
+                  show.grid.labels=3,rp.type=plottype2)
+    }
   }
   if(timescale2=="w"){
-    if(is.na(weektab[1,1])){weektab=weektab[2:dim(weektab)[1],]}
-    if(dim(weektab)[1]==54){
-      weektab[1,2]=weektab[1,2]+weektab[54,2]
-      weektab=weektab[1:53,]
+    weektab=sqldf("select weekofYear, count(*) as wct from indf group by weekofYear")
+    if(avg==F){
+      if(is.na(weektab[1,1])){weektab=weektab[2:dim(weektab)[1],]}
+      if(dim(weektab)[1]==54){
+        weektab[1,2]=weektab[1,2]+weektab[54,2]
+        weektab=weektab[1:53,]
+      }
+      radial.plot(weektab$wct,
+                  ((((weektab$weekofYear-1)*360)/53)*(3.14/180)),
+                  line.col=color2,start=1.62, labels=month.abb,
+                  radial.lim = c(0,max(weektab$wct)),
+                  clockwise=TRUE,main=title2,boxed.radial=FALSE,
+                  show.grid.labels=3,rp.type=plottype2,lwd=4)
+    } else {
+      allweeks=sqldf("select weekofYear, Year, count(*) as ct from indf group by weekofYear,Year")
+      weekmean=sqldf("select weekofyear,avg(ct) as avgct,stdev(ct) as sdct from allweeks group by weekofyear")
+      if(is.na(weekmean[1,1])){weekmean=weekmean[2:dim(weekmean)[1],]}
+      if(dim(weekmean)[1]==54){
+        weekmean[1,2]=weekmean[1,2]+weekmean[54,2]
+        weekmean=weekmean[1:53,]
+      }
+      radial.plot(weekmean$avgct,
+                  ((((weekmean$weekofYear-1)*360)/53)*(3.14/180)),
+                  line.col=color2,start=1.62, labels=month.abb,
+                  radial.lim = c(0,max(weekmean$avgct)),
+                  clockwise=TRUE,main=title2,boxed.radial=FALSE,
+                  show.grid.labels=3,rp.type=plottype2,lwd=4)
     }
-    radial.plot(weektab$wct,
-                ((((weektab$weekofYear-1)*360)/53)*(3.14/180)),
-                line.col=color2,start=1.62, labels=month.abb,
-                radial.lim = c(0,max(weektab$wct)),
-                clockwise=TRUE,main=title2,boxed.radial=FALSE,
-                show.grid.labels=3,rp.type=plottype2,lwd=4)
   }
   if(timescale2=="m"){
-    if(is.na(monthtab[1,1])){monthtab=monthtab[2:dim(monthtab)[1],]}
-    radial.plot(monthtab$mct,
-                ((((monthtab$monthofYear-1)*360)/12)*(3.14/180)),
-                line.col=color2,start=1.62, labels=month.abb,
-                radial.lim = c(0,max(monthtab$mct)),
-                clockwise=TRUE,main=title2,boxed.radial=FALSE,
-                show.grid.labels=3,rp.type=plottype2,lwd=4)  
+    monthtab=sqldf("select monthofYear, count(*) as mct from indf group by monthofYear")
+    if(avg==F){
+      if(is.na(monthtab[1,1])){monthtab=monthtab[2:dim(monthtab)[1],]}
+      radial.plot(monthtab$mct,
+                  ((((monthtab$monthofYear-1)*360)/12)*(3.14/180)),
+                  line.col=color2,start=1.62, labels=month.abb,
+                  radial.lim = c(0,max(monthtab$mct)),
+                  clockwise=TRUE,main=title2,boxed.radial=FALSE,
+                  show.grid.labels=3,rp.type=plottype2,lwd=4)  
+    } else {
+      allmonths=sqldf("select monthofYear, Year, count(*) as ct from indf group by monthofYear,Year")
+      monthmean=sqldf("select monthofyear,avg(ct) as avgct,stdev(ct) as sdct from allmonths group by monthofyear")
+      if(is.na(monthmean[1,1])){monthmean=monthmean[2:dim(monthmean)[1],]}
+      radial.plot(monthmean$avgct,
+                  ((((monthmean$monthofYear-1)*360)/12)*(3.14/180)),
+                  line.col=color2,start=1.62, labels=month.abb,
+                  radial.lim = c(0,max(monthmean$avgct)),
+                  clockwise=TRUE,main=title2,boxed.radial=FALSE,
+                  show.grid.labels=3,rp.type=plottype2,lwd=4)  
+    }
   }
 }

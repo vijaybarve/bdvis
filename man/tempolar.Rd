@@ -4,7 +4,7 @@
 \title{tempolar - Polar plot of temporal data}
 \usage{
 tempolar(indf = NA, timescale = NA, title = NA, color = NA,
-  plottype = NA)
+  plottype = NA, avg = FALSE)
 }
 \arguments{
 \item{indf}{input data frame containing biodiversity data set}
@@ -18,6 +18,8 @@ m - monthly. Default is d.}
 
 \item{plottype}{plot types of r - lines, p - polygon and s - symbols.
 Dafault is p.}
+
+\item{avg}{If TRUE plots a graph of average records rather than actual numbers}
 }
 \description{
 tempolar - Polar plot of temporal data
