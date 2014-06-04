@@ -3,10 +3,12 @@
 \alias{gettaxo}
 \title{gettaxo - Get higher taxonomy fields data}
 \usage{
-gettaxo(indf)
+gettaxo(indf, genus = FALSE)
 }
 \arguments{
 \item{indf}{input data frame containing biodiversity data set}
+
+\item{genus}{If true use only genus level data to get taxanomy}
 }
 \value{
 indf with added / updated columns

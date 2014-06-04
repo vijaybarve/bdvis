@@ -3,6 +3,7 @@
 #'@import taxize
 #'@import sqldf
 #'@param indf input data frame containing biodiversity data set
+#'@param genus If true use only genus level data to get taxanomy
 #'@return indf with added / updated columns
 #'\itemize{
 #'  \item{"kingdom"}{Kingdom of the Scientific name}
@@ -15,7 +16,7 @@
 #'inat=gettaxo(inat)
 #'}
 #'@export
-gettaxo <- function(indf){
+gettaxo <- function(indf,genus=FALSE){
   indf=sqldf("select * from indf order by Scientific_name")
   indf$Kingdom[1]=""
   indf$Phylum[1]=""
@@ -26,8 +27,14 @@ gettaxo <- function(indf){
   sciname=""
   dat1<-NULL
   for(i in 1:dim(indf)[1]){
-    if (!indf$Scientific_name[i]==sciname){
-      dat <- classification(get_uid(indf$Scientific_name[i]))
+    if(genus){
+      Scientific_name=strsplit(indf$Scientific_name[i]," ")[[1]][1]
+      if(is.na(Scientific_name)){Scientific_name=""}
+    } else {
+      Scientific_name=indf$Scientific_name[i]
+    }
+    if (!Scientific_name==sciname){
+      dat <- classification(get_uid(Scientific_name))
       if(!is.na(dat)){
         dat1<-NULL
         dat1 <- ldply(dat, function(x) x[x$rank %in% c("kingdom","phylum","class","order","family","genus","species"), "name"])
@@ -44,7 +51,7 @@ gettaxo <- function(indf){
       if(!is.null(dat1$family)) indf$Family[i] <- dat1$family
       if(!is.null(dat1$genus)) indf$Genus[i] <- dat1$genus
     }
-    sciname <- indf$Scientific_name[i] 
+    sciname <- Scientific_name
   }
   return(indf)
 }
