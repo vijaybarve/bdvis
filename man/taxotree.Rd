@@ -3,10 +3,16 @@
 \alias{taxotree}
 \title{taxotree - Draws a treemap based on Taxonomic hierarchy of records}
 \usage{
-taxotree(indf)
+taxotree(indf, n = 30, title = NA, legend = NA)
 }
 \arguments{
 \item{indf}{input data frame containing biodiversity data set}
+
+\item{n}{max number of rectangles to be plotted in the treemap}
+
+\item{title}{title for the tree}
+
+\item{legend}{legend title}
 }
 \description{
 taxotree - Draws a treemap based on Taxonomic hierarchy of records
