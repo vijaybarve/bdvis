@@ -3,7 +3,8 @@
 \alias{taxotree}
 \title{taxotree - Draws a treemap based on Taxonomic hierarchy of records}
 \usage{
-taxotree(indf, n = 30, title = NA, legend = NA)
+taxotree(indf, n = 30, title = NA, legend = NA, sum1 = "Family",
+  sum2 = "Genus")
 }
 \arguments{
 \item{indf}{input data frame containing biodiversity data set}
@@ -13,6 +14,10 @@ taxotree(indf, n = 30, title = NA, legend = NA)
 \item{title}{title for the tree}
 
 \item{legend}{legend title}
+
+\item{sum1}{Taxanomic fieldname to summarize data level 1}
+
+\item{sum2}{Taxanomic fieldname to summarize data level 2}
 }
 \description{
 taxotree - Draws a treemap based on Taxonomic hierarchy of records
