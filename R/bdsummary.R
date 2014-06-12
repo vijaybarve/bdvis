@@ -1,4 +1,6 @@
-#'bdsummary - description
+#'bdsummary - Provides summary of data like number of records, Families,
+#'           Genus, Species, Bounding box of locations, date range and 
+#'           spatial coverage.
 #'@import sqldf
 #'@param indf input data frame containing biodiversity data set
 #'@export
@@ -21,4 +23,13 @@ bdsummary <- function(indf){
   cat(paste(" No of Families : ",length(unique(indf$Family)),"\n"))
   cat(paste(" No of Genus : ",length(unique(indf$Genus)),"\n"))
   cat(paste(" No of Species : ",length(unique(indf$Scientific_name)),"\n"))
+  cat(paste("\n Spatial coverage ... \n"))
+  if (!("cell_id" %in% colnames(indf))){
+    indf=getcellid(indf)
+  }
+  cellcover=sqldf("select count(*) from (select * from indf group by cell_id)")
+  cat(paste(" Degree celles covered : ",cellcover,"\n"))
+  latrng=ceiling(max(indf$Latitude,na.rm=T))-ceiling(min(indf$Latitude,na.rm=T))
+  longrng=ceiling(max(indf$Longitude,na.rm=T))-ceiling(min(indf$Longitude,na.rm=T))
+  cat(paste(" % degree cells covered : ",(cellcover/(latrng * longrng))*100,"\n"))
 }
