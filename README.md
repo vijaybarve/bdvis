@@ -29,6 +29,8 @@ Windows users have to first install [Rtools](http://cran.r-project.org/bin/windo
 + [treemap] (http://cran.r-project.org/web/packages/treemap/index.html)
 + [plyr] (http://cran.r-project.org/web/packages/plyr/index.html)
 + [taxize] (http://cran.r-project.org/web/packages/taxize/index.html)
++ [ggplot2] (http://cran.r-project.org/web/packages/ggplot2/index.html)
++ [grid] (http://cran.r-project.org/web/packages/grid/)
 
 For examples
 + [rinat] (https://github.com/ropensci/rinat)
@@ -42,7 +44,7 @@ Preapre some data using package ````riNat````
 #install_github("rinat", "vijaybarve")
 require(rinat)
 # Data downlaod might take some time
-inat=get_obs_project("indianmoths") 
+inat=get_inat_obs_project("indianmoths") 
 inat=fixstr(inat,DateCollected="Observed.on",SciName="Scientific.name")
 inat=getcellid(inat)
 ```

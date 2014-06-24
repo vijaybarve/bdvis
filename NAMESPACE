@@ -3,6 +3,7 @@
 export(bdcomplete)
 export(bdsummary)
 export(chronohorogram)
+export(datasubset)
 export(fixstr)
 export(format_bdvis)
 export(getcellid)
