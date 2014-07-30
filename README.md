@@ -85,3 +85,23 @@ chronohorogram(inat)
 ```r
 bdcomplete(inat)
 ```
+
+#### datasubset
+
+```r
+inat1=datasubset(inat,minyear=2000, maxyear=2014)
+```
+
+#### format_bdvis
+
+```r
+inat=format_bdvis(inat)
+```
+
+#### datasubset
+
+```r
+distrigraph(inat2,type="cell")
+distrigraph(inat2,type="species")
+distrigraph(inat2,type="efforts")
+```

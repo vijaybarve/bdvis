@@ -15,7 +15,7 @@ format_bdvis - Convert data to bdvis native format
 }
 \examples{
 \dontrun{
-inat=format_bdvi(inat)
+inat=format_bdvis(inat)
 }
 }
 

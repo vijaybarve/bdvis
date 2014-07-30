@@ -2,7 +2,7 @@
 #' @param indf input data frame containing biodiversity data set
 #' @param gettaxo Run gettaxo function to get higher taxonomy if true
 #' @examples \dontrun{
-#' inat=format_bdvi(inat)
+#' inat=format_bdvis(inat)
 #' }
 #' @export
 format_bdvis <- function(indf=NA,gettaxo=F){
@@ -14,6 +14,7 @@ format_bdvis <- function(indf=NA,gettaxo=F){
       cat(paste("\n Field ",orig," not present in input data\n"))
     }
   }
+  names(indf)=gsub("\\.","_",names(indf))
   if(is.element("Scientific.name",names(indf))){
     names(indf)=gsub("\\.","_",names(indf))
   }
@@ -26,8 +27,17 @@ format_bdvis <- function(indf=NA,gettaxo=F){
   if(is.element("decimalLongitude",names(indf))){
     indf=chgname("decimalLongitude","Longitude")
   }  
+  if(is.element("latitude",names(indf))){
+    indf=chgname("latitude","Latitude")
+  }  
+  if(is.element("longitude",names(indf))){
+    indf=chgname("longitude","Longitude")
+  }  
   if(is.element("name",names(indf))){
     indf=chgname("name","Scientific_name")
+  }  
+  if(is.element("scientific_name",names(indf))){
+    indf=chgname("scientific_name","Scientific_name")
   }  
   
   indf=getcellid(indf)
