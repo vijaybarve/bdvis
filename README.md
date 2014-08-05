@@ -31,6 +31,8 @@ Windows users have to first install [Rtools](http://cran.r-project.org/bin/windo
 + [taxize] (http://cran.r-project.org/web/packages/taxize/index.html)
 + [ggplot2] (http://cran.r-project.org/web/packages/ggplot2/index.html)
 + [grid] (http://cran.r-project.org/web/packages/grid/)
++ [lattice] (http://cran.r-project.org/web/packages/lattice/)
++ [chron] (http://cran.r-project.org/web/packages/chron/)
 
 For examples
 + [rinat] (https://github.com/ropensci/rinat)
@@ -98,10 +100,15 @@ inat1=datasubset(inat,minyear=2000, maxyear=2014)
 inat=format_bdvis(inat)
 ```
 
-#### datasubset
+#### distrigraph
 
 ```r
 distrigraph(inat2,type="cell")
 distrigraph(inat2,type="species")
 distrigraph(inat2,type="efforts")
+```
+#### bdcalenderheat
+
+```r
+bdcalenderheat(inat)
 ```
