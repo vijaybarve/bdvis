@@ -7,7 +7,7 @@
 #' bdcalenderheat(inat)
 #' }
 #' @export
-bdcaltenderheat <- function(indf=NA,title=NA){
+bdcalenderheat <- function(indf=NA,title=NA){
   if(is.na(title)){
     title="number of records"
   }
