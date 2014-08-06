@@ -10,6 +10,7 @@
 #'  \item{"Sobs"}{Number of Observed species}
 #'  \item{"Sest"}{Estimated number of species}
 #'  \item{"c"}{Completeness ratio the cell}
+#'  Plots a graph of Number of species vs completeness
 #' }
 #'@examples \dontrun{
 #'bdcomplete(inat)
@@ -37,5 +38,6 @@ bdcomplete <- function(indf,recs=50){
   }
   retmat=as.data.frame(retmat)
   names(retmat)=c("Cell_id","Sobs","Sest","c")
+  plot(retmat$Sobs,retmat$c,main="Completeness vs number of species",xlab="Number of species",ylab="Completeness")
   return(retmat)
 }

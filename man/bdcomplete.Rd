@@ -18,6 +18,7 @@ data.frame with the columns
  \item{"Sobs"}{Number of Observed species}
  \item{"Sest"}{Estimated number of species}
  \item{"c"}{Completeness ratio the cell}
+ Plots a graph of Number of species vs completeness
 }
 }
 \description{
