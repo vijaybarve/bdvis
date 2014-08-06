@@ -3,12 +3,14 @@
 \alias{distrigraph}
 \title{distrigraph - Distribution graphs}
 \usage{
-distrigraph(indf, type = NA)
+distrigraph(indf, type = NA, ...)
 }
 \arguments{
 \item{indf}{input data frame containing biodiversity data set}
 
 \item{type}{type of graph i.e. cell, species, efforts}
+
+\item{...}{any additional parameters for plot}
 }
 \description{
 distrigraph - Distribution graphs
@@ -17,7 +19,7 @@ distrigraph - Distribution graphs
 \dontrun{
  distrigraph(inat2,type="cell")
  distrigraph(inat2,type="species")
- distrigraph(inat2,type="efforts")
+ distrigraph(inat2,type="efforts",col="red")
 }
 }
 

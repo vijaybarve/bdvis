@@ -105,8 +105,8 @@ inat=format_bdvis(inat)
 ```r
 distrigraph(inat2,type="cell")
 distrigraph(inat2,type="species")
-distrigraph(inat2,type="efforts")
-```
+distrigraph(inat2,type="efforts",col="red)
+```"
 #### bdcalenderheat
 
 ```r
