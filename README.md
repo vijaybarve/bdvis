@@ -110,6 +110,7 @@ distrigraph(inat2,type="cell")
 distrigraph(inat2,type="species")
 distrigraph(inat2,type="efforts",col="red")
 ```
+
 #### bdcalenderheat
 
 ```r
