@@ -10,6 +10,10 @@
 #'bdsummary(inat)
 #'}
 bdsummary <- function(indf){
+  if(is.null(indf) || is.na(indf || dim(indf)[1]==0)){
+    cat("No data in dataset \n")
+    return()
+  }
   names(indf)=gsub("\\.","_",names(indf))
   cat(paste("\n Total no of records =",dim(indf)[1],"\n"))
   if("Date_collected" %in% colnames(indf)){
