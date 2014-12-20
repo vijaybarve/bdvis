@@ -1,3 +1,6 @@
+---
+output: html_document
+---
 # `bdvis`
 
 
@@ -60,7 +63,7 @@ bdsummary(inat)
 #### mapgrid
 
 ```r
-mapgrid(inat,ptype="records",bbox=c(60,100,5,40))
+mapgrid(inat,ptype="records",bbox=c(60,100,5,40),regions=c("India"))
 ```
 
 #### tempolar
@@ -107,7 +110,6 @@ distrigraph(inat2,type="cell")
 distrigraph(inat2,type="species")
 distrigraph(inat2,type="efforts",col="red")
 ```
-
 #### bdcalenderheat
 
 ```r

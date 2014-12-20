@@ -39,7 +39,8 @@ format_bdvis <- function(indf=NA,gettaxo=F){
   if(is.element("scientific_name",names(indf))){
     indf=chgname("scientific_name","Scientific_name")
   }  
-  
+  indf$Latitude=as.numeric(indf$Latitude)
+  indf$Longitude=as.numeric(indf$Longitude)
   indf=getcellid(indf)
   if(gettaxo){
     indf=gettaxo(indf)

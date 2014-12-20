@@ -3,7 +3,7 @@ bdvis 0.1.5
 
 New Features
 
-* taxotree has param n, tatle and legend to control number of rectangles, tatle and legend title
+* taxotree has param n, title and legend to control number of rectangles, title and legend title
 * taxotree has summerization parameters
 * gettaxo has genus param to improve effeciency
 * avg param in tempolar to display average number of records rather than raw numbers
