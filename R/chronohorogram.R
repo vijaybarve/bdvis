@@ -13,6 +13,10 @@
 #'}
 chronohorogram <- function (indf=NA,title=NA,startyear=0,endyear=0,
                             colors=c("red", "blue")){
+  if(!is.element("Date_collected",names(indf))){
+    cat(paste("Field Date_collected not found in dataset \n"))
+    return()
+  }
   if (!is.na(title)) {
     title2 <- title
   } else {
