@@ -13,6 +13,14 @@
 #'taxotree(inat)
 #'}
 taxotree <- function(indf,n=30,title=NA,legend=NA,sum1="Family",sum2="Genus"){
+  if(!is.element(sum1,names(indf))){
+    cat(paste("Field",sum1," not found in dataset \n"))
+    return()
+  }
+  if(!is.element(sum2,names(indf))){
+    cat(paste("Field",sum2," not found in dataset \n"))
+    return()
+  }
   if (!is.na(title)) {
     title2 <- title
   } else {
