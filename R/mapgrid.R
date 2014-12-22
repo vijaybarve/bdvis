@@ -19,8 +19,6 @@ mapgrid <- function(indf=NA, ptype="records",bbox=NA, title = "",
                     customize = NULL)
 {
   names(indf)=gsub("\\.","_",names(indf))
-  
-  # Type presence needs to be coded yet
   if (ptype=="species"){
     sps=sqldf("select Scientific_name, cell_id from indf group by cell_id, Scientific_name")
     cts=sqldf("select cell_id, count(*) from sps group by cell_id")
@@ -29,8 +27,8 @@ mapgrid <- function(indf=NA, ptype="records",bbox=NA, title = "",
     cts=sqldf("select cell_id, count(*) from indf group by cell_id")
   }  
   if (ptype=="presence"){
-    #cts=sqldf("select cell_id, count(*) from indf group by cell_id")
-    print("Presence option to be coded yet")
+    cts1=sqldf("select cell_id, count(*) as ct1 from indf group by cell_id")
+    cts=sqldf("select cell_id, 1 as ct from cts1 where ct1 <> 0")
   }  
   if (!is.na(bbox[1])){
     clist=as.data.frame(cellid_bbox(bbox=bbox))
@@ -38,12 +36,17 @@ mapgrid <- function(indf=NA, ptype="records",bbox=NA, title = "",
     cts = cts1[2:dim(cts1)[1],]
   }
   lat=long=group=NULL
-  Lat= -90 + (cts$Cell_id %/% 360) + 1
-  Long= -180 + (cts$Cell_id %% 360) + 1
+  Lat= -90 + (cts$Cell_id %/% 360) 
+  Long= -180 + (cts$Cell_id %% 360) 
   cts=cbind(cts,Lat,Long)
   names(cts)=c("Cell_id", "ct", "Lat", "Long"  )
-  mybreaks=seq(0:(ceiling(log10(max(cts$ct)))))
-  myleg=10^mybreaks
+  if (ptype=="presence"){
+    mybreaks=seq(0:1)
+    myleg=seq(0:1)
+  } else{
+    mybreaks=seq(0:(ceiling(log10(max(cts$ct)))))
+    myleg=10^mybreaks
+  }
   middf <- data.frame(
     lat = cts$Lat,
     long = cts$Long,
@@ -51,17 +54,32 @@ mapgrid <- function(indf=NA, ptype="records",bbox=NA, title = "",
   )
   mapp <- map_data(map=mapdatabase, region=region)
   message(paste("Rendering map...plotting ", nrow(cts), " tiles", sep=""))
-  ggplot(mapp, aes(long, lat)) + # make the plot
-    ggtitle(title) +
-    geom_raster(data=middf, aes(long, lat, fill=log10(count), width=1, height=1)) +  
-    coord_fixed(ratio = 1) +
-    scale_fill_gradient2(low = "white", mid="blue", high = "red", name=ptype, breaks = mybreaks, labels = myleg) +
-    geom_polygon(aes(group=group), fill="white", alpha=0, color="gray80", size=0.8) +
-    labs(x="", y="") +
-    theme_bw(base_size=14) + 
-    theme(legend.position = "bottom", legend.key = element_blank()) +
-    blanktheme() +
-    customize
+  if (ptype=="presence"){ 
+    ggplot(mapp, aes(long, lat)) + # make the plot
+      ggtitle(title) +
+      geom_raster(data=middf, aes(long, lat, fill=(count), width=1, height=1),hjust = 1, vjust = 1) +  
+      coord_fixed(ratio = 1) +
+      scale_fill_gradient2(low = "white", mid="red", high = "red", name=ptype) +
+      #scale_fill_gradient(low = "white", high = "red", name=ptype) +
+      geom_polygon(aes(group=group), fill="white", alpha=0, color="gray80", size=0.8) +
+      labs(x="", y="") +
+      theme_bw(base_size=14) + 
+      theme(legend.position = "bottom", legend.key = element_blank()) +
+      blanktheme() +
+      customize
+  } else {
+    ggplot(mapp, aes(long, lat)) + # make the plot
+      ggtitle(title) +
+      geom_raster(data=middf, aes(long, lat, fill=log10(count), width=0.1, height=0.1),hjust = 1, vjust = 1) +  
+      coord_fixed(ratio = 1) +
+      scale_fill_gradient2(low = "white", mid="blue", high = "red", name=ptype, breaks = mybreaks, labels = myleg) +
+      geom_polygon(aes(group=group), fill="white", alpha=0, color="gray80", size=0.8) +
+      labs(x="", y="") +
+      theme_bw(base_size=14) + 
+      theme(legend.position = "bottom", legend.key = element_blank()) +
+      blanktheme() +
+      customize
+  }
 }
 
 # Function borrowed from rgbif package
