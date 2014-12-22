@@ -16,18 +16,19 @@ bdsummary <- function(indf){
   }
   names(indf)=gsub("\\.","_",names(indf))
   cat(paste("\n Total no of records =",dim(indf)[1],"\n"))
+  cat(paste("\n Temporal coverage... \n"))
   if("Date_collected" %in% colnames(indf)){
     cat(paste(" Date range of the records from ",
               range(as.Date(indf$Date_collected),na.rm=T)[1]," to ",
               range(as.Date(indf$Date_collected),na.rm=T)[2],"\n"))
   }
-  cat(paste(" Bounding box of records ",min(indf$Latitude,na.rm=T),",",min(indf$Longitude,na.rm=T),
-            " - ",max(indf$Latitude,na.rm=T),",",max(indf$Longitude,na.rm=T),"\n"))
-  cat(paste(" Taxonomic summary... \n"))
+  cat(paste("\n Taxonomic coverage... \n"))
   cat(paste(" No of Families : ",length(unique(indf$Family)),"\n"))
   cat(paste(" No of Genus : ",length(unique(indf$Genus)),"\n"))
   cat(paste(" No of Species : ",length(unique(indf$Scientific_name)),"\n"))
   cat(paste("\n Spatial coverage ... \n"))
+  cat(paste(" Bounding box of records ",min(indf$Latitude,na.rm=T),",",min(indf$Longitude,na.rm=T),
+            " - ",max(indf$Latitude,na.rm=T),",",max(indf$Longitude,na.rm=T),"\n"))
   if (!("cell_id" %in% colnames(indf))){
     indf=getcellid(indf)
   }
