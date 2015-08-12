@@ -21,6 +21,9 @@ format_bdvis <- function(indf=NA,gettaxo=F){
   if(is.element("Observed_on",names(indf))){
     indf=chgname("Observed_on","Date_collected")
   }
+  if(is.element("datetaken",names(indf))){
+    indf=chgname("datetaken","Date_collected")
+  }
   if(is.element("decimalLatitude",names(indf))){
     indf=chgname("decimalLatitude","Latitude")
   }  
@@ -35,6 +38,9 @@ format_bdvis <- function(indf=NA,gettaxo=F){
   }  
   if(is.element("name",names(indf))){
     indf=chgname("name","Scientific_name")
+  }  
+  if(is.element("searchText",names(indf))){
+    indf=chgname("searchText","Scientific_name")
   }  
   if(is.element("scientific_name",names(indf))){
     indf=chgname("scientific_name","Scientific_name")
