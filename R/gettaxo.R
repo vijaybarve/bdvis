@@ -17,21 +17,21 @@
 #'}
 #'@export
 gettaxo <- function(indf,genus=FALSE){
-  indf=sqldf("select * from indf order by Scientific_name")
-  indf$Kingdom[1]=""
-  indf$Phylum[1]=""
-  indf$Class[1]=""
-  indf$Order[1]=""
-  indf$Family[1]=""
-  indf$Genus[1]=""
+  indfu=sqldf("select Scientific_name from indf group by Scientific_name order by Scientific_name")
+  indfu$Kingdom[1]=""
+  indfu$Phylum[1]=""
+  indfu$Class[1]=""
+  indfu$Order[1]=""
+  indfu$Family[1]=""
+  indfu$Genus[1]=""
   sciname=""
   dat1<-NULL
-  for(i in 1:dim(indf)[1]){
+  for(i in 1:dim(indfu)[1]){
     if(genus){
-      Scientific_name=strsplit(indf$Scientific_name[i]," ")[[1]][1]
+      Scientific_name=strsplit(indfu$Scientific_name[i]," ")[[1]][1]
       if(is.na(Scientific_name)){Scientific_name=""}
     } else {
-      Scientific_name=indf$Scientific_name[i]
+      Scientific_name=indfu$Scientific_name[i]
     }
     if (!Scientific_name==sciname){
       dat <- classification(get_uid(Scientific_name))
@@ -44,14 +44,15 @@ gettaxo <- function(indf,genus=FALSE){
     if(!is.null(dat1)) {
       names(dat1) <- dat2
       if(!is.null(dat1)) print(dat1)
-      if(!is.null(dat1$kingdom)) indf$Kingdom[i] <- dat1$kingdom
-      if(!is.null(dat1$phylum)) indf$Phylum[i] <- dat1$phylum
-      if(!is.null(dat1$class)) indf$Class[i] <- dat1$class
-      if(!is.null(dat1$order)) indf$Order[i] <- dat1$order
-      if(!is.null(dat1$family)) indf$Family[i] <- dat1$family
-      if(!is.null(dat1$genus)) indf$Genus[i] <- dat1$genus
+      if(!is.null(dat1$kingdom)) indfu$Kingdom[i] <- dat1$kingdom
+      if(!is.null(dat1$phylum)) indfu$Phylum[i] <- dat1$phylum
+      if(!is.null(dat1$class)) indfu$Class[i] <- dat1$class
+      if(!is.null(dat1$order)) indfu$Order[i] <- dat1$order
+      if(!is.null(dat1$family)) indfu$Family[i] <- dat1$family
+      if(!is.null(dat1$genus)) indfu$Genus[i] <- dat1$genus
     }
     sciname <- Scientific_name
   }
+  indf=sqldf("select * from indf, indfu where indf.Scientific_name = indfu.Scientific_name")
   return(indf)
 }
