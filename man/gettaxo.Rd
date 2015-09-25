@@ -19,6 +19,7 @@ indf with added / updated columns
  \item{"family"}{Family of the Scientific name}
  \item{"genus"}{Genus of the Scientific name}
 }
+and also saves a local copy of taxanomy downloaded for future use in taxo.bd sqlite file,
 }
 \description{
 gettaxo - Get higher taxonomy fields data
