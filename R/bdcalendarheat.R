@@ -1,13 +1,13 @@
-#' bdcalenderheat - Calender Heat map of biodiversity data
+#' bdcalendarheat - Calendar Heat map of biodiversity data
 #' @import sqldf
 #' @import grid
 #' @param indf input data frame containing biodiversity data set
 #' @param title title field name for the plot
 #' @examples \dontrun{
-#' bdcalenderheat(inat)
+#' bdcalendarheat(inat)
 #' }
 #' @export
-bdcalenderheat <- function(indf=NA,title=NA){
+bdcalendarheat <- function(indf=NA,title=NA){
   if(is.na(title)){
     title="number of records"
   }
