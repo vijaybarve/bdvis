@@ -1,5 +1,10 @@
-#'fixstr - Fix structure of the data frame to match the key fields to GBIF style 
-#'  data fireld names
+#'Change structure of the data frame 
+#'
+#'
+#'  
+#'Change the structure of data frame to match the key fields to GBIF style 
+#'  data fireld names which all the bdsns package functions understand
+#'  
 #'@param indf input data frame containing biodiversity data set
 #'@param Latitude name of Latitude field in original data frame
 #'@param Longitude name of Longitude field in original data frame

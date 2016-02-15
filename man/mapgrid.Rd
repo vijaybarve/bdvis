@@ -2,7 +2,7 @@
 % Please edit documentation in R/mapgrid.R
 \name{mapgrid}
 \alias{mapgrid}
-\title{mapgrid - Maps the data points on the map in grid format}
+\title{Maps the data points on the map in grid format}
 \usage{
 mapgrid(indf = NA, ptype = "records", bbox = NA, title = "",
   mapdatabase = "world", region = ".", customize = NULL)
@@ -10,9 +10,9 @@ mapgrid(indf = NA, ptype = "records", bbox = NA, title = "",
 \arguments{
 \item{indf}{- input data frame containing biodiversity data set}
 
-\item{ptype}{- type of map on the grid valid values are presence, records, species}
+\item{ptype}{- plot type of map on the grid valid values are presence, records, species. Presence will generate presence maps, species will display number of species in each map pixel and records will display number of records in each map pixel.}
 
-\item{bbox}{- Bounding box for the map in format c(xmin,xmax,ymin,ymax)}
+\item{bbox}{- bounding box for the map in format c(xmin,xmax,ymin,ymax)}
 
 \item{title}{- title for the map}
 
@@ -20,10 +20,10 @@ mapgrid(indf = NA, ptype = "records", bbox = NA, title = "",
 
 \item{region}{- specify region(s) to map i.e. countries default . for whole world}
 
-\item{customize}{- customization string}
+\item{customize}{- customization string to customize the map output using ggplo2 parameters}
 }
 \description{
-mapgrid - Maps the data points on the map in grid format
+Maps the data points on the map in grid format
 }
 \examples{
 \dontrun{

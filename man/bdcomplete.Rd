@@ -2,14 +2,14 @@
 % Please edit documentation in R/bdcomplete.R
 \name{bdcomplete}
 \alias{bdcomplete}
-\title{bdcomplete - Computes completeness values for each cell currently returns Chao2}
+\title{Computes completeness values for each cell}
 \usage{
 bdcomplete(indf, recs = 50)
 }
 \arguments{
-\item{indf}{- Input data frame containing biodiversity data set}
+\item{indf}{input data frame containing biodiversity data set}
 
-\item{recs}{- Minimum number of records per grid cell 
+\item{recs}{minimum number of records per grid cell 
 (Default is 50, if the number is too low, might give error)}
 }
 \value{
@@ -23,7 +23,7 @@ data.frame with the columns
 }
 }
 \description{
-bdcomplete - Computes completeness values for each cell currently returns Chao2
+Computes completeness values for each cell currently returns Chao2
 }
 \examples{
 \dontrun{

@@ -15,7 +15,7 @@ on [this blog](http://vijaybarve.wordpress.com/2013/04/29/gsoc-proposal-2013-bio
 install.packages("devtools")
 require(devtools)
 
-install_github("bdvis", "vijaybarve")
+install_github(vijaybarve/bdvis")
 require(bdvis)
 ```
 
@@ -44,7 +44,7 @@ For examples
 Preapre some data using package ````riNat````
 
 ```r
-#install_github("rinat", "vijaybarve")
+#install_github("vijaybarve/rinat")
 require(rinat)
 # Data downlaod might take some time
 inat=get_inat_obs_project("indianmoths") 
@@ -61,7 +61,7 @@ bdsummary(inat)
 #### mapgrid
 
 ```r
-mapgrid(inat,ptype="records",bbox=c(60,100,5,40),regions=c("India"))
+mapgrid(inat,ptype="records",bbox=c(60,100,5,40),region=c("India"))
 ```
 
 #### tempolar

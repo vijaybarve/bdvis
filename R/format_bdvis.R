@@ -1,4 +1,7 @@
-#' format_bdvis - Convert data to bdvis native format
+#' Convert data to bdvis native format
+#' 
+#' Convert data to bdvis native format so that other bdvis functions understand the data
+#' 
 #' @param indf input data frame containing biodiversity data set
 #' @param gettaxo Run gettaxo function to get higher taxonomy if true
 #' @examples \dontrun{

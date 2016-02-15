@@ -2,7 +2,7 @@
 % Please edit documentation in R/gettaxo.R
 \name{gettaxo}
 \alias{gettaxo}
-\title{gettaxo - Get higher taxonomy fields data}
+\title{Get higher taxonomy fields data}
 \usage{
 gettaxo(indf, genus = FALSE)
 }
@@ -23,7 +23,7 @@ indf with added / updated columns
 and also saves a local copy of taxanomy downloaded for future use in taxo.bd sqlite file,
 }
 \description{
-gettaxo - Get higher taxonomy fields data
+Get higher taxonomy fields like Family and Order from "Encyclopedia of Life" website
 }
 \examples{
 \dontrun{

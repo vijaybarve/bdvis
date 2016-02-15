@@ -1,4 +1,7 @@
-#' tempolar - Polar plot of temporal data 
+#' Polar plot of temporal data 
+#' 
+#' Polar plot of temporal biodiversity data 
+#' 
 #' @import sqldf
 #' @import plotrix
 #' @param indf input data frame containing biodiversity data set
@@ -9,7 +12,7 @@
 #' @param plottype plot types of r - lines, p - polygon and s - symbols. 
 #'      Dafault is p.
 #' @param avg If TRUE plots a graph of average records rather than actual numbers
-#'@references Otegui, J., Arino, A. H., Encinas, M. A., & Pando, F. (2013). Assessing the Primary Data Hosted by the Spanish Node of the Global Biodiversity Information Facility (GBIF). PLoS ONE, 8(1), e55144. doi:10.1371/journal.pone.0055144
+#' @references Otegui, J., Arino, A. H., Encinas, M. A., & Pando, F. (2013). Assessing the Primary Data Hosted by the Spanish Node of the Global Biodiversity Information Facility (GBIF). PLoS ONE, 8(1), e55144. doi:10.1371/journal.pone.0055144
 #' @examples \dontrun{
 #' tempolar(inat)
 #' }

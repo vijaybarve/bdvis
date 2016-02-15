@@ -2,19 +2,19 @@
 % Please edit documentation in R/distrigraph.R
 \name{distrigraph}
 \alias{distrigraph}
-\title{distrigraph - Distribution graphs}
+\title{Distribution graphs}
 \usage{
-distrigraph(indf, type = NA, ...)
+distrigraph(indf, ptype = NA, ...)
 }
 \arguments{
 \item{indf}{input data frame containing biodiversity data set}
 
-\item{type}{type of graph i.e. cell, species, efforts}
+\item{ptype}{type of graph i.e. cell, species, efforts}
 
-\item{...}{any additional parameters for plot}
+\item{...}{any additional parameters for plot. Standard papramaterrs like graph type, color etc.}
 }
 \description{
-distrigraph - Distribution graphs
+Graphs dispalying distribution of biodiversity data
 }
 \examples{
 \dontrun{

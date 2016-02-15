@@ -2,7 +2,7 @@
 % Please edit documentation in R/tempolar.R
 \name{tempolar}
 \alias{tempolar}
-\title{tempolar - Polar plot of temporal data}
+\title{Polar plot of temporal data}
 \usage{
 tempolar(indf = NA, timescale = NA, title = NA, color = NA,
   plottype = NA, avg = FALSE)
@@ -23,7 +23,7 @@ Dafault is p.}
 \item{avg}{If TRUE plots a graph of average records rather than actual numbers}
 }
 \description{
-tempolar - Polar plot of temporal data
+Polar plot of temporal biodiversity data
 }
 \examples{
 \dontrun{

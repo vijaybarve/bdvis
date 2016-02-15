@@ -1,15 +1,15 @@
-#' mapgrid - Maps the data points on the map in grid format
+#' Maps the data points on the map in grid format
 #' @import sqldf
 #' @import maps
-#' @import ggplot2
 #' @import grid
+#' @import ggplot2
 #' @param indf - input data frame containing biodiversity data set
-#' @param ptype - type of map on the grid valid values are presence, records, species
+#' @param ptype - plot type of map on the grid valid values are presence, records, species. Presence will generate presence maps, species will display number of species in each map pixel and records will display number of records in each map pixel.
 #' @param title - title for the map
-#' @param bbox - Bounding box for the map in format c(xmin,xmax,ymin,ymax)
+#' @param bbox - bounding box for the map in format c(xmin,xmax,ymin,ymax)
 #' @param mapdatabase - database to be used default world
 #' @param region - specify region(s) to map i.e. countries default . for whole world
-#' @param customize - customization string
+#' @param customize - customization string to customize the map output using ggplo2 parameters
 #' @examples \dontrun{
 #' mapgrid(inat,ptype="records")
 #' }

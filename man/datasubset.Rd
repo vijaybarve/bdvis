@@ -2,7 +2,7 @@
 % Please edit documentation in R/datasubset.R
 \name{datasubset}
 \alias{datasubset}
-\title{datasubset - Subset data for bdvis}
+\title{Subset data for bdvis}
 \usage{
 datasubset(indf = NA, sql = "", minyear = -1, maxyear = -1,
   scname = NA)
@@ -19,7 +19,7 @@ datasubset(indf = NA, sql = "", minyear = -1, maxyear = -1,
 \item{scname}{Scientific_name to select}
 }
 \description{
-datasubset - Subset data for bdvis
+Subset data for bdvis
 }
 \examples{
 \dontrun{

@@ -1,17 +1,20 @@
-#' distrigraph - Distribution graphs
+#' Distribution graphs
+#' 
+#' Graphs dispalying distribution of biodiversity data
+#' 
 #' @import sqldf
 #' @param indf input data frame containing biodiversity data set
-#' @param type type of graph i.e. cell, species, efforts
-#' @param ... any additional parameters for plot 
+#' @param ptype type of graph i.e. cell, species, efforts
+#' @param ... any additional parameters for plot. Standard papramaterrs like graph type, color etc.
 #' @examples \dontrun{
 #'  distrigraph(inat2,type="cell")
 #'  distrigraph(inat2,type="species")
 #'  distrigraph(inat2,type="efforts",col="red")
 #' }
 #' @export
-distrigraph <- function(indf,type=NA,...){
+distrigraph <- function(indf,ptype=NA,...){
   custgraph='col="red"'
-  if(!is.na(type)){
+  if(!is.na(ptype)){
     switch(type,
            cell={
              mat=sqldf("select Cell_id, count(*) as Records from indf group by Cell_id")

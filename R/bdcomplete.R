@@ -1,8 +1,9 @@
-#'bdcomplete - Computes completeness values for each cell currently returns Chao2
+#'Computes completeness values for each cell
 #'
+#'Computes completeness values for each cell currently returns Chao2
 #'@import sqldf
-#'@param indf - Input data frame containing biodiversity data set
-#'@param recs - Minimum number of records per grid cell 
+#'@param indf input data frame containing biodiversity data set
+#'@param recs minimum number of records per grid cell 
 #'  (Default is 50, if the number is too low, might give error)
 #'@return data.frame with the columns
 #' \itemize{

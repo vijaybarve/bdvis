@@ -2,7 +2,7 @@
 % Please edit documentation in R/format_bdvis.R
 \name{format_bdvis}
 \alias{format_bdvis}
-\title{format_bdvis - Convert data to bdvis native format}
+\title{Convert data to bdvis native format}
 \usage{
 format_bdvis(indf = NA, gettaxo = F)
 }
@@ -12,7 +12,7 @@ format_bdvis(indf = NA, gettaxo = F)
 \item{gettaxo}{Run gettaxo function to get higher taxonomy if true}
 }
 \description{
-format_bdvis - Convert data to bdvis native format
+Convert data to bdvis native format so that other bdvis functions understand the data
 }
 \examples{
 \dontrun{

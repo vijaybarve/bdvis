@@ -2,7 +2,7 @@
 % Please edit documentation in R/taxotree.R
 \name{taxotree}
 \alias{taxotree}
-\title{taxotree - Draws a treemap based on Taxonomic hierarchy of records}
+\title{Draws a treemap based on Taxonomic hierarchy of records}
 \usage{
 taxotree(indf, n = 30, title = NA, legend = NA, sum1 = "Family",
   sum2 = "Genus")
@@ -21,7 +21,7 @@ taxotree(indf, n = 30, title = NA, legend = NA, sum1 = "Family",
 \item{sum2}{Taxanomic fieldname to summarize data level 2}
 }
 \description{
-taxotree - Draws a treemap based on Taxonomic hierarchy of records
+Draws a treemap based on Taxonomic hierarchy of records
 }
 \examples{
 \dontrun{

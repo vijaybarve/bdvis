@@ -2,17 +2,17 @@
 % Please edit documentation in R/bdcalendarheat.R
 \name{bdcalendarheat}
 \alias{bdcalendarheat}
-\title{bdcalendarheat - Calendar Heat map of biodiversity data}
+\title{Calendar Heat map of biodiversity data}
 \usage{
 bdcalendarheat(indf = NA, title = NA)
 }
 \arguments{
 \item{indf}{input data frame containing biodiversity data set}
 
-\item{title}{title field name for the plot}
+\item{title}{title custome title for the plot}
 }
 \description{
-bdcalendarheat - Calendar Heat map of biodiversity data
+Calendar Heat map of biodiversity data
 }
 \examples{
 \dontrun{

@@ -2,8 +2,7 @@
 % Please edit documentation in R/fixstr.R
 \name{fixstr}
 \alias{fixstr}
-\title{fixstr - Fix structure of the data frame to match the key fields to GBIF style 
- data fireld names}
+\title{Change structure of the data frame}
 \usage{
 fixstr(indf, Latitude = NA, Longitude = NA, DateCollected = NA,
   datefmt = NA, SciName = NA)
@@ -22,8 +21,8 @@ fixstr(indf, Latitude = NA, Longitude = NA, DateCollected = NA,
 \item{SciName}{name of Scientific Name field in original data frame}
 }
 \description{
-fixstr - Fix structure of the data frame to match the key fields to GBIF style 
- data fireld names
+Change the structure of data frame to match the key fields to GBIF style 
+ data fireld names which all the bdsns package functions understand
 }
 \examples{
 \dontrun{

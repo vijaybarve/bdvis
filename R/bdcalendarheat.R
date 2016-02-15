@@ -1,8 +1,8 @@
-#' bdcalendarheat - Calendar Heat map of biodiversity data
+#' Calendar Heat map of biodiversity data
 #' @import sqldf
 #' @import grid
 #' @param indf input data frame containing biodiversity data set
-#' @param title title field name for the plot
+#' @param title title custome title for the plot
 #' @examples \dontrun{
 #' bdcalendarheat(inat)
 #' }

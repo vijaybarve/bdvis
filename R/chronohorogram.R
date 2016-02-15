@@ -1,11 +1,14 @@
-#'chronohorogram - Draws a chronohorogram of records
+#'Draws a chronohorogram of records
+#'
+#'Draws a chronohorogram of records
+#'
 #'@import sqldf
 #'@import plotrix
-#'@param indf - Input data frame containing biodiversity data set
-#'@param title - Title of the plot
-#'@param startyear - Starting year for the plot
-#'@param endyear - End year for the graph
-#'@param colors - Colors to build color ramp 
+#'@param indf input data frame containing biodiversity data set
+#'@param title title of the plot
+#'@param startyear starting year for the plot
+#'@param endyear end year for the graph
+#'@param colors colors to build color ramp 
 #'@references Arino, A. H., & Otegui, J. (2008). Sampling biodiversity sampling. In Proceedings of TDWG (pp. 77-78). Retrieved from http://www.tdwg.org/fileadmin/2008conference/documents/Proceedings2008.pdf#page=77
 #'@export
 #'@examples \dontrun{

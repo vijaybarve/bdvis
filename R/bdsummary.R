@@ -1,6 +1,9 @@
-#'bdsummary - Provides summary of data like number of records, Families,
-#'           Genus, Species, Bounding box of locations, date range and 
-#'           spatial coverage.
+#'Provides summary of biodiversity data
+#'
+#'
+#'           
+#'Provides summary of biodiversity data like number of records, Families, Genus, Species, Bounding box of locations, date range and spatial coverage.
+#'
 #'@import sqldf
 #'@param indf input data frame containing biodiversity data set
 #'@export

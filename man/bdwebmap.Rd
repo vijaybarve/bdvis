@@ -2,7 +2,7 @@
 % Please edit documentation in R/bdwebmap.R
 \name{bdwebmap}
 \alias{bdwebmap}
-\title{bdwebmap - Interactive web page based map of records}
+\title{Interactive web page based map of records}
 \usage{
 bdwebmap(indf)
 }
@@ -10,7 +10,7 @@ bdwebmap(indf)
 \item{indf}{input data frame containing biodiversity data set}
 }
 \description{
-bdwebmap - Interactive web page based map of records
+Generates a interactive web map and opens it in new browser window
 }
 \examples{
 \dontrun{

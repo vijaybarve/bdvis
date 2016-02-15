@@ -1,4 +1,7 @@
-#'gettaxo - Get higher taxonomy fields data
+#'Get higher taxonomy fields data
+#'
+#'Get higher taxonomy fields like Family and Order from "Encyclopedia of Life" website
+#'
 #'@import plyr
 #'@import taxize
 #'@import sqldf

@@ -1,4 +1,7 @@
-#'taxotree - Draws a treemap based on Taxonomic hierarchy of records
+#'Draws a treemap based on Taxonomic hierarchy of records
+#'
+#'Draws a treemap based on Taxonomic hierarchy of records
+#'
 #'@import sqldf
 #'@import treemap
 #'@param indf input data frame containing biodiversity data set

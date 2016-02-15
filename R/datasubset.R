@@ -1,4 +1,4 @@
-#' datasubset - Subset data for bdvis
+#' Subset data for bdvis
 #' @param indf input data frame containing biodiversity data set
 #' @param sql sql string to run query on indf
 #' @param minyear Minimum year value
@@ -27,3 +27,4 @@ datasubset <- function(indf=NA,sql="",minyear=-1,maxyear=-1,scname=NA){
   }
   return(indf)
 }
+  

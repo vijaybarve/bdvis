@@ -2,9 +2,7 @@
 % Please edit documentation in R/bdsummary.R
 \name{bdsummary}
 \alias{bdsummary}
-\title{bdsummary - Provides summary of data like number of records, Families,
-          Genus, Species, Bounding box of locations, date range and 
-          spatial coverage.}
+\title{Provides summary of biodiversity data}
 \usage{
 bdsummary(indf)
 }
@@ -12,9 +10,7 @@ bdsummary(indf)
 \item{indf}{input data frame containing biodiversity data set}
 }
 \description{
-bdsummary - Provides summary of data like number of records, Families,
-          Genus, Species, Bounding box of locations, date range and 
-          spatial coverage.
+Provides summary of biodiversity data like number of records, Families, Genus, Species, Bounding box of locations, date range and spatial coverage.
 }
 \examples{
 \dontrun{
