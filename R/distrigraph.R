@@ -7,15 +7,16 @@
 #' @param ptype type of graph i.e. cell, species, efforts
 #' @param ... any additional parameters for plot. Standard papramaterrs like graph type, color etc.
 #' @examples \dontrun{
-#'  distrigraph(inat2,type="cell")
-#'  distrigraph(inat2,type="species")
-#'  distrigraph(inat2,type="efforts",col="red")
+#'  distrigraph(inat,ptype="cell",col="tomato")
+#'  distrigraph(inat,ptype="species",ylab="Species")
+#'  distrigraph(inat,ptype="efforts",col="red")
+#'  distrigraph(inat,ptype="efforts",col="red",type="s")
 #' }
 #' @export
 distrigraph <- function(indf,ptype=NA,...){
   custgraph='col="red"'
   if(!is.na(ptype)){
-    switch(type,
+    switch(ptype,
            cell={
              mat=sqldf("select Cell_id, count(*) as Records from indf group by Cell_id")
              hist(mat$Records,main="Distribution of Records per cell",xlab="Records",...)
@@ -28,10 +29,9 @@ distrigraph <- function(indf,ptype=NA,...){
              Year = as.numeric(strftime(as.Date(indf$Date_collected,na.rm=T), format = "%Y"))
              indf=cbind(indf,Year)
              mat=sqldf("select Year, count(*) as Records from indf group by Year order by Year")
-             plot(mat,type="l",main="Distribution of collection effforts over time",...)
-             plot(mat,type="p",main="Distribution of collection effforts over time",...)
+             plot(mat,main="Distribution of collection effforts over time",...)
            },
-           stop("Enter valid type i.e. cell, species, efforts")
+           stop("Enter valid plot type (ptype) i.e. cell, species, efforts")
     )
   }
 }

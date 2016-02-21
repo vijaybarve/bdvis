@@ -18,9 +18,10 @@ Graphs dispalying distribution of biodiversity data
 }
 \examples{
 \dontrun{
- distrigraph(inat2,type="cell")
- distrigraph(inat2,type="species")
- distrigraph(inat2,type="efforts",col="red")
+ distrigraph(inat,ptype="cell",col="tomato")
+ distrigraph(inat,ptype="species",ylab="Species")
+ distrigraph(inat,ptype="efforts",col="red")
+ distrigraph(inat,ptype="efforts",col="red",type="s")
 }
 }
 
