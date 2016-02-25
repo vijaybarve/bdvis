@@ -2,7 +2,9 @@
 % Please edit documentation in R/getcellid.R
 \name{getcellid}
 \alias{getcellid}
-\title{Assigns GBIF style degree cell ids}
+\title{Assigns GBIF style degree cell ids
+ 
+Assigns GBIF style degree cell ids and Centi degree (0.1) cell ids for each record which are used in functions like \link[bdvis]{mapgrid}}
 \usage{
 getcellid(indf)
 }
@@ -10,6 +12,8 @@ getcellid(indf)
 \item{indf}{input data frame containing biodiversity data set}
 }
 \description{
+Assigns GBIF style degree cell ids
+ 
 Assigns GBIF style degree cell ids and Centi degree (0.1) cell ids for each record which are used in functions like \link[bdvis]{mapgrid}
 }
 \examples{
