@@ -82,5 +82,6 @@ gettaxo <- function(indf,genus=FALSE){
     sqldf("create table taxo as select * from indfu", ,dbname="taxo.db")
     print("Creating local database taxo.db ...")
   } 
+  indf <- indf[, !duplicated(colnames(indf))]
   return(indf)
 }
