@@ -8,19 +8,19 @@ mapgrid(indf = NA, ptype = "records", bbox = NA, title = "",
   mapdatabase = "world", region = ".", customize = NULL)
 }
 \arguments{
-\item{indf}{- input data frame containing biodiversity data set}
+\item{indf}{input data frame containing biodiversity data set}
 
-\item{ptype}{- plot type of map on the grid valid values are presence, records, species. Presence will generate presence maps, species will display number of species in each map pixel and records will display number of records in each map pixel.}
+\item{ptype}{plot type of map on the grid valid values are presence, records, species. Presence will generate presence maps, species will display number of species in each map pixel and records will display number of records in each map pixel.}
 
-\item{bbox}{- bounding box for the map in format c(xmin,xmax,ymin,ymax)}
+\item{bbox}{bounding box for the map in format c(xmin,xmax,ymin,ymax)}
 
-\item{title}{- title for the map}
+\item{title}{title for the map}
 
-\item{mapdatabase}{- database to be used default world}
+\item{mapdatabase}{database to be used default world}
 
-\item{region}{- specify region(s) to map i.e. countries default . for whole world}
+\item{region}{specify region(s) to map i.e. countries default '.' for whole world map}
 
-\item{customize}{- customization string to customize the map output using ggplo2 parameters}
+\item{customize}{additional customization string to customize the map output using ggplo2 parameters}
 }
 \description{
 Maps the data points on the map in grid format

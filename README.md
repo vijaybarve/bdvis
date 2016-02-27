@@ -15,7 +15,7 @@ on [this blog](http://vijaybarve.wordpress.com/2013/04/29/gsoc-proposal-2013-bio
 install.packages("devtools")
 require(devtools)
 
-install_github("bdvis", "vijaybarve")
+install_github("vijaybarve/bdvis")
 require(bdvis)
 ```
 
@@ -44,10 +44,10 @@ For examples
 Preapre some data using package ````riNat````
 
 ```r
-#install_github("rinat", "vijaybarve")
+#install.packages("rinat")
 require(rinat)
 # Data downlaod might take some time
-inat=get_inat_obs_project("indianmoths") 
+inat=get_inat_obs_project("reptileindia") 
 inat=fixstr(inat,DateCollected="Observed.on",SciName="Scientific.name")
 inat=getcellid(inat)
 ```
@@ -108,10 +108,10 @@ distrigraph(inat,ptype="cell",col="tomato")
 distrigraph(inat,ptype="species",ylab="Species")
 distrigraph(inat,ptype="efforts",col="red")
 distrigraph(inat,ptype="efforts",col="red",type="s")
-
 ```
 #### bdcalenderheat
 
 ```r
 bdcalendarheat(inat)
 ```
+

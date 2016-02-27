@@ -1,15 +1,14 @@
 #' Maps the data points on the map in grid format
 #' @import sqldf
 #' @import maps
-#' @import grid
 #' @import ggplot2
-#' @param indf - input data frame containing biodiversity data set
-#' @param ptype - plot type of map on the grid valid values are presence, records, species. Presence will generate presence maps, species will display number of species in each map pixel and records will display number of records in each map pixel.
-#' @param title - title for the map
-#' @param bbox - bounding box for the map in format c(xmin,xmax,ymin,ymax)
-#' @param mapdatabase - database to be used default world
-#' @param region - specify region(s) to map i.e. countries default . for whole world
-#' @param customize - customization string to customize the map output using ggplo2 parameters
+#' @param indf input data frame containing biodiversity data set
+#' @param ptype plot type of map on the grid valid values are presence, records, species. Presence will generate presence maps, species will display number of species in each map pixel and records will display number of records in each map pixel.
+#' @param title title for the map
+#' @param bbox bounding box for the map in format c(xmin,xmax,ymin,ymax)
+#' @param mapdatabase database to be used default world
+#' @param region specify region(s) to map i.e. countries default '.' for whole world map
+#' @param customize additional customization string to customize the map output using ggplo2 parameters
 #' @examples \dontrun{
 #' mapgrid(inat,ptype="records")
 #' }
@@ -56,12 +55,11 @@ mapgrid <- function(indf=NA, ptype="records",bbox=NA, title = "",
   message(paste("Rendering map...plotting ", nrow(cts), " tiles", sep=""))
   if (ptype=="presence"){ 
     ggplot(mapp, aes(long, lat)) + # make the plot
+      geom_polygon(aes(group=group), fill="white", color="gray80", size=0.8) +
       ggtitle(title) +
       geom_raster(data=middf, aes(long, lat, fill=(count), width=1, height=1),hjust = 1, vjust = 1) +  
       coord_fixed(ratio = 1) +
       scale_fill_gradient2(low = "white", mid="red", high = "red", name=ptype, space="Lab") +
-      #scale_fill_gradient(low = "white", high = "red", name=ptype) +
-      geom_polygon(aes(group=group), fill="white", alpha=0, color="gray80", size=0.8) +
       labs(x="", y="") +
       theme_bw(base_size=14) + 
       theme(legend.position = "bottom", legend.key = element_blank()) +
@@ -69,11 +67,11 @@ mapgrid <- function(indf=NA, ptype="records",bbox=NA, title = "",
       customize
   } else {
     ggplot(mapp, aes(long, lat)) + # make the plot
+      geom_polygon(aes(group=group), fill="white", color="gray80", size=0.8) +
       ggtitle(title) +
       geom_raster(data=middf, aes(long, lat, fill=log10(count), width=0.1, height=0.1),hjust = 1, vjust = 1) +  
       coord_fixed(ratio = 1) +
       scale_fill_gradient2(low = "white", mid="blue", high = "red", name=ptype, breaks = mybreaks, labels = myleg, space="Lab") +
-      geom_polygon(aes(group=group), fill="white", alpha=0, color="gray80", size=0.8) +
       labs(x="", y="") +
       theme_bw(base_size=14) + 
       theme(legend.position = "bottom", legend.key = element_blank()) +
