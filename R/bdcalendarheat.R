@@ -1,6 +1,5 @@
 #' Calendar Heat map of biodiversity data
 #' @import sqldf
-#' @import grid
 #' @param indf input data frame containing biodiversity data set
 #' @param title title custome title for the plot
 #' @examples \dontrun{

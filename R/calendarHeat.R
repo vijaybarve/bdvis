@@ -1,5 +1,6 @@
 #' @import lattice
 #' @import chron
+#' @importFrom grid grid.lines gpar
 
 ##############################################################################
 #                        Calendar Heatmap                                    #
@@ -35,9 +36,6 @@ calendarHeat <- function(dates,
                          color="r2g", 
                          varname="Values",
                          date.form = "%Y-%m-%d", ...) {
-  #  require(lattice)
-  #  require(grid)
-  #  require(chron)
   if (class(dates) == "character" | class(dates) == "factor" ) {
     dates <- strptime(dates, date.form)
   }
