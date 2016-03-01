@@ -14,11 +14,11 @@ gettaxo(indf, genus = FALSE)
 \value{
 indf with added / updated columns
 \itemize{
- \item{"kingdom"}{Kingdom of the Scientific name}
- \item{"phylum"}{Phylum of the Scientific name}
- \item{"order"}{Order of the Scientific name}
- \item{"family"}{Family of the Scientific name}
- \item{"genus"}{Genus of the Scientific name}
+ \item{"Kingdom"}{Kingdom of the Scientific name}
+ \item{"Phylum"}{Phylum of the Scientific name}
+ \item{"Order_"}{Order of the Scientific name}
+ \item{"Family"}{Family of the Scientific name}
+ \item{"Genus"}{Genus of the Scientific name}
 }
 and also saves a local copy of taxanomy downloaded for future use in taxo.bd sqlite file,
 }

@@ -9,11 +9,11 @@
 #'@param genus If true use only genus level data to get taxanomy
 #'@return indf with added / updated columns
 #'\itemize{
-#'  \item{"kingdom"}{Kingdom of the Scientific name}
-#'  \item{"phylum"}{Phylum of the Scientific name}
-#'  \item{"order"}{Order of the Scientific name}
-#'  \item{"family"}{Family of the Scientific name}
-#'  \item{"genus"}{Genus of the Scientific name}
+#'  \item{"Kingdom"}{Kingdom of the Scientific name}
+#'  \item{"Phylum"}{Phylum of the Scientific name}
+#'  \item{"Order_"}{Order of the Scientific name}
+#'  \item{"Family"}{Family of the Scientific name}
+#'  \item{"Genus"}{Genus of the Scientific name}
 #'}
 #'and also saves a local copy of taxanomy downloaded for future use in taxo.bd sqlite file,
 #'@examples \dontrun{
@@ -83,5 +83,6 @@ gettaxo <- function(indf,genus=FALSE){
     print("Creating local database taxo.db ...")
   } 
   indf <- indf[, !duplicated(colnames(indf))]
+  names(indf)[names(indf)=="Order"]<-"Order_"
   return(indf)
 }
