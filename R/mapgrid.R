@@ -18,6 +18,8 @@ mapgrid <- function(indf=NA, ptype="records",bbox=NA, title = "",
                     customize = NULL)
 {
   names(indf)=gsub("\\.","_",names(indf))
+  indf=indf[which(!is.na(indf$Latitude)),]
+  indf=indf[which(!is.na(indf$Longitude)),]
   if (ptype=="species"){
     sps=sqldf("select Scientific_name, cell_id from indf group by cell_id, Scientific_name")
     cts=sqldf("select cell_id, count(*) from sps group by cell_id")
