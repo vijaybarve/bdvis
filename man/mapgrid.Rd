@@ -4,17 +4,19 @@
 \alias{mapgrid}
 \title{Maps the data points on the map in grid format}
 \usage{
-mapgrid(indf = NA, ptype = "records", bbox = NA, title = "",
-  mapdatabase = "world", region = ".", customize = NULL)
+mapgrid(indf = NA, ptype = "records", title = "", bbox = NA,
+  legscale = 0, mapdatabase = "world", region = ".", customize = NULL)
 }
 \arguments{
 \item{indf}{input data frame containing biodiversity data set}
 
 \item{ptype}{plot type of map on the grid valid values are presence, records, species. Presence will generate presence maps, species will display number of species in each map pixel and records will display number of records in each map pixel.}
 
+\item{title}{title for the map}
+
 \item{bbox}{bounding box for the map in format c(xmin,xmax,ymin,ymax)}
 
-\item{title}{title for the map}
+\item{legscale}{Set legend scale to a higher value than the max value in the data}
 
 \item{mapdatabase}{database to be used default world}
 

@@ -6,6 +6,7 @@
 #' @param ptype plot type of map on the grid valid values are presence, records, species. Presence will generate presence maps, species will display number of species in each map pixel and records will display number of records in each map pixel.
 #' @param title title for the map
 #' @param bbox bounding box for the map in format c(xmin,xmax,ymin,ymax)
+#' @param legscale Set legend scale to a higher value than the max value in the data
 #' @param mapdatabase database to be used default world
 #' @param region specify region(s) to map i.e. countries default '.' for whole world map
 #' @param customize additional customization string to customize the map output using ggplo2 parameters
@@ -13,8 +14,8 @@
 #' mapgrid(inat,ptype="records")
 #' }
 #' @export
-mapgrid <- function(indf=NA, ptype="records",bbox=NA, title = "",
-                    mapdatabase = "world", region = ".", 
+mapgrid <- function(indf=NA, ptype="records",title = "", bbox=NA, 
+                    legscale=0, mapdatabase = "world", region = ".", 
                     customize = NULL)
 {
   names(indf)=gsub("\\.","_",names(indf))
@@ -53,6 +54,14 @@ mapgrid <- function(indf=NA, ptype="records",bbox=NA, title = "",
     long = cts$Long,
     count = cts$ct
   )
+  if(legscale>0){
+    legent=c(
+      lat = 0,
+      long = 0,
+      count = legscale
+    )
+    middf=rbind(middf,legent)
+  }
   mapp <- map_data(map=mapdatabase, region=region)
   message(paste("Rendering map...plotting ", nrow(cts), " tiles", sep=""))
   if (ptype=="presence"){ 
