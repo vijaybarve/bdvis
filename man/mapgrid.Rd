@@ -25,7 +25,8 @@ mapgrid(indf = NA, ptype = "records", title = "", bbox = NA,
 \item{customize}{additional customization string to customize the map output using ggplo2 parameters}
 }
 \description{
-Maps the data points on the map in grid format
+Maps the data points aggrigated on the map in grid format showing presence 
+  or number of records in each gid cell by color gradiant.
 }
 \examples{
 \dontrun{

@@ -1,4 +1,8 @@
 #' Maps the data points on the map in grid format
+#' 
+#' Maps the data points aggrigated on the map in grid format showing presence 
+#'   or number of records in each gid cell by color gradiant.
+#' 
 #' @import sqldf
 #' @import maps
 #' @import ggplot2
@@ -73,7 +77,7 @@ mapgrid <- function(indf=NA, ptype="records",title = "", bbox=NA,
       scale_fill_gradient2(low = "white", mid="red", high = "red", name=ptype, space="Lab") +
       labs(x="", y="") +
       theme_bw(base_size=14) + 
-      theme(legend.position = "bottom", legend.key = element_blank()) +
+      theme(legend.position = c(.1, .25), legend.key = element_blank()) +
       blanktheme() +
       customize
   } else {
@@ -85,7 +89,7 @@ mapgrid <- function(indf=NA, ptype="records",title = "", bbox=NA,
       scale_fill_gradient2(low = "white", mid="blue", high = "red", name=ptype, breaks = mybreaks, labels = myleg, space="Lab") +
       labs(x="", y="") +
       theme_bw(base_size=14) + 
-      theme(legend.position = "bottom", legend.key = element_blank()) +
+      theme(legend.position = c(.1, .25), legend.key = element_blank()) +
       blanktheme() +
       customize
   }

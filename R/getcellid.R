@@ -1,6 +1,9 @@
 #'Assigns GBIF style degree cell ids
+#'
 #'  
-#'Assigns GBIF style degree cell ids and Centi degree (0.1) cell ids for each record which are used in functions like \link[bdvis]{mapgrid}
+#'Assigns GBIF style degree cell ids and Centi degree (0.1) cell ids for each 
+#'  record which are used in functions like \link[bdvis]{mapgrid}
+#'  
 #'  
 #'@param indf input data frame containing biodiversity data set
 #'@export
