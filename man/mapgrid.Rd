@@ -5,7 +5,8 @@
 \title{Maps the data points on the map in grid format}
 \usage{
 mapgrid(indf = NA, ptype = "records", title = "", bbox = NA,
-  legscale = 0, mapdatabase = "world", region = ".", customize = NULL)
+  legscale = 0, collow = "blue", colhigh = "red", mapdatabase = "world",
+  region = ".", customize = NULL)
 }
 \arguments{
 \item{indf}{input data frame containing biodiversity data set}
@@ -17,6 +18,10 @@ mapgrid(indf = NA, ptype = "records", title = "", bbox = NA,
 \item{bbox}{bounding box for the map in format c(xmin,xmax,ymin,ymax)}
 
 \item{legscale}{Set legend scale to a higher value than the max value in the data}
+
+\item{collow}{Color for lower range in the color ramp of the grid}
+
+\item{colhigh}{Color for higher range in the color ramp of the grid}
 
 \item{mapdatabase}{database to be used default world}
 

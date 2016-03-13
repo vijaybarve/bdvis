@@ -11,6 +11,8 @@
 #' @param title title for the map
 #' @param bbox bounding box for the map in format c(xmin,xmax,ymin,ymax)
 #' @param legscale Set legend scale to a higher value than the max value in the data
+#' @param collow Color for lower range in the color ramp of the grid
+#' @param colhigh Color for higher range in the color ramp of the grid
 #' @param mapdatabase database to be used default world
 #' @param region specify region(s) to map i.e. countries default '.' for whole world map
 #' @param customize additional customization string to customize the map output using ggplo2 parameters
@@ -19,7 +21,8 @@
 #' }
 #' @export
 mapgrid <- function(indf=NA, ptype="records",title = "", bbox=NA, 
-                    legscale=0, mapdatabase = "world", region = ".", 
+                    legscale=0, collow="blue",colhigh="red", 
+                    mapdatabase = "world", region = ".", 
                     customize = NULL)
 {
   names(indf)=gsub("\\.","_",names(indf))
@@ -66,6 +69,7 @@ mapgrid <- function(indf=NA, ptype="records",title = "", bbox=NA,
     )
     middf=rbind(middf,legent)
   }
+  #legname=paste(ptype,"\n    ",max(cts$ct))
   legname=paste(ptype,"\n    ",max(middf$count))
   mapp <- map_data(map=mapdatabase, region=region)
   message(paste("Rendering map...plotting ", nrow(cts), " tiles", sep=""))
@@ -75,7 +79,7 @@ mapgrid <- function(indf=NA, ptype="records",title = "", bbox=NA,
       ggtitle(title) +
       geom_raster(data=middf, aes(long, lat, fill=(count), width=1, height=1),hjust = 1, vjust = 1) +  
       coord_fixed(ratio = 1) +
-      scale_fill_gradient2(low = "white", mid="red", high = "red", name=ptype, space="Lab") +
+      scale_fill_gradient2(low = "white", mid=colhigh, high = colhigh, name=ptype, space="Lab") +
       labs(x="", y="") +
       theme_bw(base_size=14) + 
       theme(legend.position = c(.1, .25), legend.key = element_blank()) +
@@ -87,7 +91,7 @@ mapgrid <- function(indf=NA, ptype="records",title = "", bbox=NA,
       ggtitle(title) +
       geom_raster(data=middf, aes(long, lat, fill=log10(count), width=0.1, height=0.1),hjust = 1, vjust = 1) +  
       coord_fixed(ratio = 1) +
-      scale_fill_gradient2(low = "white", mid="blue", high = "red", name=legname, 
+      scale_fill_gradient2(low = "white", mid=collow, high = colhigh, name=legname, 
                            breaks = mybreaks, labels = myleg, space="Lab") +
       labs(x="", y="") +
       theme_bw(base_size=14) + 
