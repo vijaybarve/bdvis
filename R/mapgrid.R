@@ -7,7 +7,7 @@
 #' @import maps
 #' @import ggplot2
 #' @param indf input data frame containing biodiversity data set
-#' @param ptype plot type of map on the grid valid values are presence, records, species. Presence will generate presence maps, species will display number of species in each map pixel and records will display number of records in each map pixel.
+#' @param ptype plot type of map on the grid valid values are presence, records, species. Presence will generate presence maps, species will display number of species in each map pixel and records will display number of records in each map pixel, complete will display completeness on scale 0 to 1.
 #' @param title title for the map
 #' @param bbox bounding box for the map in format c(xmin,xmax,ymin,ymax)
 #' @param legscale Set legend scale to a higher value than the max value in the data
@@ -26,8 +26,10 @@ mapgrid <- function(indf=NA, ptype="records",title = "", bbox=NA,
                     customize = NULL)
 {
   names(indf)=gsub("\\.","_",names(indf))
-  indf=indf[which(!is.na(indf$Latitude)),]
-  indf=indf[which(!is.na(indf$Longitude)),]
+  if(ptype!="complete"){
+    indf=indf[which(!is.na(indf$Latitude)),]
+    indf=indf[which(!is.na(indf$Longitude)),]
+  }
   if (ptype=="species"){
     sps=sqldf("select Scientific_name, cell_id from indf group by cell_id, Scientific_name")
     cts=sqldf("select cell_id, count(*) from sps group by cell_id")
@@ -39,6 +41,10 @@ mapgrid <- function(indf=NA, ptype="records",title = "", bbox=NA,
     cts1=sqldf("select cell_id, count(*) as ct1 from indf group by cell_id")
     cts=sqldf("select cell_id, 1 as ct from cts1 where ct1 <> 0")
   }  
+  if (ptype=="complete"){
+    cts=sqldf("select Cell_id,(c ) as ct from indf")
+  }  
+  
   if (!is.na(bbox[1])){
     clist=as.data.frame(cellid_bbox(bbox=bbox))
     cts1=sqldf("select * from cts where cell_id in (select * from clist)")

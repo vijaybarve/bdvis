@@ -11,7 +11,7 @@ mapgrid(indf = NA, ptype = "records", title = "", bbox = NA,
 \arguments{
 \item{indf}{input data frame containing biodiversity data set}
 
-\item{ptype}{plot type of map on the grid valid values are presence, records, species. Presence will generate presence maps, species will display number of species in each map pixel and records will display number of records in each map pixel.}
+\item{ptype}{plot type of map on the grid valid values are presence, records, species. Presence will generate presence maps, species will display number of species in each map pixel and records will display number of records in each map pixel, complete will display completeness on scale 0 to 1.}
 
 \item{title}{title for the map}
 

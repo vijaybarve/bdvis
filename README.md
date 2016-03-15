@@ -86,7 +86,9 @@ chronohorogram(inat)
 #### bdcomplete
 
 ```r
-bdcomplete(inat)
+comp=bdcomplete(inat,recs=5)
+mapgrid(comp,ptype="complete",bbox=c(60,100,5,40),region=c("India"))
+
 ```
 
 #### datasubset
