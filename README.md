@@ -3,13 +3,11 @@
 
 
 ## About
-Biodiversity Data Visualizations using R This set of functions to visualise 
-biodiversity occurrence data through R. The Detailed proposal is available
-on [this blog](http://vijaybarve.wordpress.com/2013/04/29/gsoc-proposal-2013-biodiversity-visualizations-using-r/) 
+Biodiversity Data Visualizations using R. This package offers a set of functions to visualize biodiversity occurrence data through R. The development of the package started as a Google Summer of Code project. The detailed proposal is available on [this blog entry](http://vijaybarve.wordpress.com/2013/04/29/gsoc-proposal-2013-biodiversity-visualizations-using-r/).
 
-## Install
+## Installation
 
-### Install the development version using `install_github` within Hadley's [devtools](https://github.com/hadley/devtools) package.
+### Install the latest version using `install_github` within Hadley's [devtools](https://github.com/hadley/devtools) package.
 
 ```R
 install.packages("devtools")
@@ -35,13 +33,13 @@ Windows users have to first install [Rtools](http://cran.r-project.org/bin/windo
 + [lattice] (http://cran.r-project.org/web/packages/lattice/)
 + [chron] (http://cran.r-project.org/web/packages/chron/)
 
-For examples
+### Packages `bdvis` suggests (for the purpose of building examples)
 + [rinat] (https://github.com/ropensci/rinat)
 
 
 ### Functions currently available
 
-Preapre some data using package ````riNat````
+Preapre some data using package ````rinat````
 
 ```r
 #install.packages("rinat")
@@ -109,7 +107,7 @@ distrigraph(inat,ptype="species",ylab="Species")
 distrigraph(inat,ptype="efforts",col="red")
 distrigraph(inat,ptype="efforts",col="red",type="s")
 ```
-#### bdcalenderheat
+#### bdcalendarheat
 
 ```r
 bdcalendarheat(inat)
