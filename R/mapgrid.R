@@ -1,11 +1,18 @@
 #' Maps the data points on the map in grid format
+#' 
+#' Maps the data points aggrigated on the map in grid format showing presence 
+#'   or number of records in each gid cell by color gradiant.
+#' 
 #' @import sqldf
 #' @import maps
 #' @import ggplot2
 #' @param indf input data frame containing biodiversity data set
-#' @param ptype plot type of map on the grid valid values are presence, records, species. Presence will generate presence maps, species will display number of species in each map pixel and records will display number of records in each map pixel.
+#' @param ptype plot type of map on the grid valid values are presence, records, species. Presence will generate presence maps, species will display number of species in each map pixel and records will display number of records in each map pixel, complete will display completeness on scale 0 to 1.
 #' @param title title for the map
 #' @param bbox bounding box for the map in format c(xmin,xmax,ymin,ymax)
+#' @param legscale Set legend scale to a higher value than the max value in the data
+#' @param collow Color for lower range in the color ramp of the grid
+#' @param colhigh Color for higher range in the color ramp of the grid
 #' @param mapdatabase database to be used default world
 #' @param region specify region(s) to map i.e. countries default '.' for whole world map
 #' @param customize additional customization string to customize the map output using ggplo2 parameters
@@ -13,11 +20,16 @@
 #' mapgrid(inat,ptype="records")
 #' }
 #' @export
-mapgrid <- function(indf=NA, ptype="records",bbox=NA, title = "",
+mapgrid <- function(indf=NA, ptype="records",title = "", bbox=NA, 
+                    legscale=0, collow="blue",colhigh="red", 
                     mapdatabase = "world", region = ".", 
                     customize = NULL)
 {
   names(indf)=gsub("\\.","_",names(indf))
+  if(ptype!="complete"){
+    indf=indf[which(!is.na(indf$Latitude)),]
+    indf=indf[which(!is.na(indf$Longitude)),]
+  }
   if (ptype=="species"){
     sps=sqldf("select Scientific_name, cell_id from indf group by cell_id, Scientific_name")
     cts=sqldf("select cell_id, count(*) from sps group by cell_id")
@@ -29,6 +41,10 @@ mapgrid <- function(indf=NA, ptype="records",bbox=NA, title = "",
     cts1=sqldf("select cell_id, count(*) as ct1 from indf group by cell_id")
     cts=sqldf("select cell_id, 1 as ct from cts1 where ct1 <> 0")
   }  
+  if (ptype=="complete"){
+    cts=sqldf("select Cell_id,(c ) as ct from indf")
+  }  
+  
   if (!is.na(bbox[1])){
     clist=as.data.frame(cellid_bbox(bbox=bbox))
     cts1=sqldf("select * from cts where cell_id in (select * from clist)")
@@ -51,6 +67,16 @@ mapgrid <- function(indf=NA, ptype="records",bbox=NA, title = "",
     long = cts$Long,
     count = cts$ct
   )
+  if(legscale>0){
+    legent=c(
+      lat = 0,
+      long = 0,
+      count = legscale
+    )
+    middf=rbind(middf,legent)
+  }
+  #legname=paste(ptype,"\n    ",max(cts$ct))
+  legname=paste(ptype,"\n    ",max(middf$count))
   mapp <- map_data(map=mapdatabase, region=region)
   message(paste("Rendering map...plotting ", nrow(cts), " tiles", sep=""))
   if (ptype=="presence"){ 
@@ -59,10 +85,10 @@ mapgrid <- function(indf=NA, ptype="records",bbox=NA, title = "",
       ggtitle(title) +
       geom_raster(data=middf, aes(long, lat, fill=(count), width=1, height=1),hjust = 1, vjust = 1) +  
       coord_fixed(ratio = 1) +
-      scale_fill_gradient2(low = "white", mid="red", high = "red", name=ptype, space="Lab") +
+      scale_fill_gradient2(low = "white", mid=colhigh, high = colhigh, name=ptype, space="Lab") +
       labs(x="", y="") +
       theme_bw(base_size=14) + 
-      theme(legend.position = "bottom", legend.key = element_blank()) +
+      theme(legend.position = c(.1, .25), legend.key = element_blank()) +
       blanktheme() +
       customize
   } else {
@@ -71,10 +97,11 @@ mapgrid <- function(indf=NA, ptype="records",bbox=NA, title = "",
       ggtitle(title) +
       geom_raster(data=middf, aes(long, lat, fill=log10(count), width=0.1, height=0.1),hjust = 1, vjust = 1) +  
       coord_fixed(ratio = 1) +
-      scale_fill_gradient2(low = "white", mid="blue", high = "red", name=ptype, breaks = mybreaks, labels = myleg, space="Lab") +
+      scale_fill_gradient2(low = "white", mid=collow, high = colhigh, name=legname, 
+                           breaks = mybreaks, labels = myleg, space="Lab") +
       labs(x="", y="") +
       theme_bw(base_size=14) + 
-      theme(legend.position = "bottom", legend.key = element_blank()) +
+      theme(legend.position = c(.1, .25), legend.key = element_blank()) +
       blanktheme() +
       customize
   }

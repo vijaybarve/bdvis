@@ -25,6 +25,10 @@ bdcomplete <- function(indf,recs=50){
   dat2=na.omit(dat2)
   dat3=na.omit(dat3)
   retmat=NULL
+  if(dim(dat3)[1]<1){
+    print("Too less data to compute completeness")
+    return(NULL)
+  }
   for (i in 1:dim(dat3)[1]){
     Cell_id=dat3$Cell_id[i]
     cset = dat1[which(dat1$Cell_id==dat3$Cell_id[i]),]

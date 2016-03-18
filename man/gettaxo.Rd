@@ -4,12 +4,14 @@
 \alias{gettaxo}
 \title{Get higher taxonomy fields data}
 \usage{
-gettaxo(indf, genus = FALSE)
+gettaxo(indf, genus = FALSE, verbose = FALSE)
 }
 \arguments{
 \item{indf}{input data frame containing biodiversity data set}
 
 \item{genus}{If true use only genus level data to get taxanomy}
+
+\item{verbose}{IF true displays each name string for which the higher taxonomy is sought}
 }
 \value{
 indf with added / updated columns

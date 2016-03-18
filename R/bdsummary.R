@@ -1,6 +1,5 @@
 #'Provides summary of biodiversity data
 #'
-#'
 #'           
 #'Provides summary of biodiversity data like number of records, Families, Genus, Species, Bounding box of locations, date range and spatial coverage.
 #'
@@ -17,6 +16,7 @@ bdsummary <- function(indf){
     cat("No data in dataset \n")
     return()
   }
+  cellcover=sqldf("select count(*) from (select * from indf group by cell_id)")
   names(indf)=gsub("\\.","_",names(indf))
   cat(paste("\n Total no of records =",dim(indf)[1],"\n"))
   cat(paste("\n Temporal coverage... \n"))
@@ -35,7 +35,6 @@ bdsummary <- function(indf){
   if (!("cell_id" %in% colnames(indf))){
     indf=getcellid(indf)
   }
-  cellcover=sqldf("select count(*) from (select * from indf group by cell_id)")
   cat(paste(" Degree celles covered : ",cellcover,"\n"))
   latrng=ceiling(max(indf$Latitude,na.rm=T))-ceiling(min(indf$Latitude,na.rm=T))
   longrng=ceiling(max(indf$Longitude,na.rm=T))-ceiling(min(indf$Longitude,na.rm=T))

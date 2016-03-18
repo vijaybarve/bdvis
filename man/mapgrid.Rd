@@ -4,17 +4,24 @@
 \alias{mapgrid}
 \title{Maps the data points on the map in grid format}
 \usage{
-mapgrid(indf = NA, ptype = "records", bbox = NA, title = "",
-  mapdatabase = "world", region = ".", customize = NULL)
+mapgrid(indf = NA, ptype = "records", title = "", bbox = NA,
+  legscale = 0, collow = "blue", colhigh = "red", mapdatabase = "world",
+  region = ".", customize = NULL)
 }
 \arguments{
 \item{indf}{input data frame containing biodiversity data set}
 
-\item{ptype}{plot type of map on the grid valid values are presence, records, species. Presence will generate presence maps, species will display number of species in each map pixel and records will display number of records in each map pixel.}
+\item{ptype}{plot type of map on the grid valid values are presence, records, species. Presence will generate presence maps, species will display number of species in each map pixel and records will display number of records in each map pixel, complete will display completeness on scale 0 to 1.}
+
+\item{title}{title for the map}
 
 \item{bbox}{bounding box for the map in format c(xmin,xmax,ymin,ymax)}
 
-\item{title}{title for the map}
+\item{legscale}{Set legend scale to a higher value than the max value in the data}
+
+\item{collow}{Color for lower range in the color ramp of the grid}
+
+\item{colhigh}{Color for higher range in the color ramp of the grid}
 
 \item{mapdatabase}{database to be used default world}
 
@@ -23,7 +30,8 @@ mapgrid(indf = NA, ptype = "records", bbox = NA, title = "",
 \item{customize}{additional customization string to customize the map output using ggplo2 parameters}
 }
 \description{
-Maps the data points on the map in grid format
+Maps the data points aggrigated on the map in grid format showing presence 
+  or number of records in each gid cell by color gradiant.
 }
 \examples{
 \dontrun{

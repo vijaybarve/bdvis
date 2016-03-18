@@ -1,9 +1,44 @@
+bdvis 0.1.35
+===============
+
+New Features 
+
+* improved documentation of the package
+* various reported bugs fixed
+* function distrigraph can accept additional plot parameters
+* verbose option added for function gettaxo
+
+bdvis 0.1.25
+===============
+
+New Features 
+
+* validations added to functions taxotree and chronohorogram
+* function mapgrid has a Presence map option now
+* seamless support ro package bdsns data frames
+* function gettaxo stores a local database of queried names for future reference and efficiency 
+
+
+
+bdvis 0.1.15
+===============
+
+New Features 
+
+* added function format_bdvis to handle more data formats seamlessly
+* added function datasubset to subset data 
+* added function distrigraphs to generate graphs of records distributed across species, time and geography
+* added function bdcalendarheat to generate calendar of data records
+* function bdcomplete has plot showing completeness versus species
+* added function bdwebmap to generate a point map which can be viewed in a browser
+
+
 bdvis 0.1.5
 ===============
 
 New Features
 
-* taxotree has param n, title and legend to control number of rectangles, title and legend title
+* taxotree has param n, title and legend to control number of rectangles, tatle and legend title
 * taxotree has summerization parameters
 * gettaxo has genus param to improve effeciency
 * avg param in tempolar to display average number of records rather than raw numbers
