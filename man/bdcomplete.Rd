@@ -2,32 +2,41 @@
 % Please edit documentation in R/bdcomplete.R
 \name{bdcomplete}
 \alias{bdcomplete}
-\title{Computes completeness values for each cell}
+\title{Computes completeness values of the dataset}
 \usage{
 bdcomplete(indf, recs = 50)
 }
 \arguments{
 \item{indf}{input data frame containing biodiversity data set}
 
-\item{recs}{minimum number of records per grid cell 
-(Default is 50, if the number is too low, might give error)}
+\item{recs}{minimum number of records per grid cell required to make the 
+calculations. Default is 50. If there are too few records, the function 
+throws an error.}
 }
 \value{
-data.frame with the columns
-\itemize{
- \item{"Cell_id"}{id of the cell}
- \item{"Sobs"}{Number of Observed species}
- \item{"Sest"}{Estimated number of species}
- \item{"c"}{Completeness ratio the cell}
- Plots a graph of Number of species vs completeness
-}
+data.frame with the columns \itemize{ \item{"Cell_id"}{id of the cell}
+ \item{"Sobs"}{Number of Observed species} \item{"Sest"}{Estimated number of 
+ species} \item{"c"}{Completeness ratio the cell} Plots a graph of Number of 
+ species vs completeness }
 }
 \description{
-Computes completeness values for each cell currently returns Chao2
+Computes completeness values for each cell. Currently returns Chao2 index of 
+species richness.
+}
+\details{
+After dividing the extent of the dataset in cells (via the
+\code{\link{getcellid}} function), the function calculates the Chao2 estimator
+of species richness. Given the nature of the calculations, a minimum number of
+records must be present on each cell to properly compute the index. If there
+are too few records in the cells, the function is unable to finish, and it
+throws an error.
 }
 \examples{
 \dontrun{
 bdcomplete(inat)
 }
+}
+\seealso{
+\code{\link{getcellid}}
 }
 

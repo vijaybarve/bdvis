@@ -1,25 +1,30 @@
-#'Get higher taxonomy fields data
+#'Get higher taxonomy data
 #'
-#'Get higher taxonomy fields like Family and Order from "Encyclopedia of Life" website
+#'Retrieve higher taxonomy information (like Family and Order) for each record 
+#'from the "Encyclopedia of Life" web API.
+#'
+#'This function makes use of certain functions in the \code{\link{taxize}}
+#'package. It scans and retrieves the taxonomic hierarchy for each scientific
+#'name (or just genus name) in the data set. When new data are retrieved, they
+#'are stored in a local sqlite database, taxo.db, for faster further access.
 #'
 #'@import plyr
 #'@import taxize
 #'@import sqldf
 #'@param indf input data frame containing biodiversity data set
-#'@param genus If true use only genus level data to get taxanomy
-#'@param verbose IF true displays each name string for which the higher taxonomy is sought
-#'@return indf with added / updated columns
-#'\itemize{
-#'  \item{"Kingdom"}{Kingdom of the Scientific name}
-#'  \item{"Phylum"}{Phylum of the Scientific name}
-#'  \item{"Order_"}{Order of the Scientific name}
-#'  \item{"Family"}{Family of the Scientific name}
-#'  \item{"Genus"}{Genus of the Scientific name}
-#'}
-#'and also saves a local copy of taxanomy downloaded for future use in taxo.bd sqlite file,
+#'@param genus If TRUE, use only genus level data to get taxanomy
+#'@param verbose If TRUE, displays each name string for which the higher 
+#'  taxonomy is sought
+#'@return indf with added / updated columns \itemize{ \item{"Kingdom"}{Kingdom 
+#'  of the Scientific name} \item{"Phylum"}{Phylum of the Scientific name} 
+#'  \item{"Order_"}{Order of the Scientific name} \item{"Family"}{Family of the 
+#'  Scientific name} \item{"Genus"}{Genus of the Scientific name} } and also 
+#'  saves a local copy of taxanomy downloaded for future use in taxo.bd sqlite 
+#'  file
 #'@examples \dontrun{
 #'inat=gettaxo(inat)
 #'}
+#'@family Data preparation functions
 #'@export
 gettaxo <- function(indf,genus=FALSE,verbose=FALSE){
   names(indf)[names(indf)=="Order_"]<-"Order"

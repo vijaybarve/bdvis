@@ -2,34 +2,44 @@
 % Please edit documentation in R/gettaxo.R
 \name{gettaxo}
 \alias{gettaxo}
-\title{Get higher taxonomy fields data}
+\title{Get higher taxonomy data}
 \usage{
 gettaxo(indf, genus = FALSE, verbose = FALSE)
 }
 \arguments{
 \item{indf}{input data frame containing biodiversity data set}
 
-\item{genus}{If true use only genus level data to get taxanomy}
+\item{genus}{If TRUE, use only genus level data to get taxanomy}
 
-\item{verbose}{IF true displays each name string for which the higher taxonomy is sought}
+\item{verbose}{If TRUE, displays each name string for which the higher 
+taxonomy is sought}
 }
 \value{
-indf with added / updated columns
-\itemize{
- \item{"Kingdom"}{Kingdom of the Scientific name}
- \item{"Phylum"}{Phylum of the Scientific name}
- \item{"Order_"}{Order of the Scientific name}
- \item{"Family"}{Family of the Scientific name}
- \item{"Genus"}{Genus of the Scientific name}
-}
-and also saves a local copy of taxanomy downloaded for future use in taxo.bd sqlite file,
+indf with added / updated columns \itemize{ \item{"Kingdom"}{Kingdom 
+ of the Scientific name} \item{"Phylum"}{Phylum of the Scientific name} 
+ \item{"Order_"}{Order of the Scientific name} \item{"Family"}{Family of the 
+ Scientific name} \item{"Genus"}{Genus of the Scientific name} } and also 
+ saves a local copy of taxanomy downloaded for future use in taxo.bd sqlite 
+ file
 }
 \description{
-Get higher taxonomy fields like Family and Order from "Encyclopedia of Life" website
+Retrieve higher taxonomy information (like Family and Order) for each record 
+from the "Encyclopedia of Life" web API.
+}
+\details{
+This function makes use of certain functions in the \code{\link{taxize}}
+package. It scans and retrieves the taxonomic hierarchy for each scientific
+name (or just genus name) in the data set. When new data are retrieved, they
+are stored in a local sqlite database, taxo.db, for faster further access.
 }
 \examples{
 \dontrun{
 inat=gettaxo(inat)
 }
+}
+\seealso{
+Other Data preparation functions: \code{\link{bdsummary}},
+  \code{\link{distrigraph}}, \code{\link{fixstr}},
+  \code{\link{getcellid}}
 }
 

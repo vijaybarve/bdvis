@@ -9,12 +9,20 @@ distrigraph(indf, ptype = NA, ...)
 \arguments{
 \item{indf}{input data frame containing biodiversity data set}
 
-\item{ptype}{type of graph i.e. cell, species, efforts}
+\item{ptype}{Feature to represent. Accepted values are "species", "cell" and 
+"efforts" (year)}
 
-\item{...}{any additional parameters for plot. Standard papramaterrs like graph type, color etc.}
+\item{...}{any additional parameters for the \code{\link{plot}} function.}
 }
 \description{
-Graphs dispalying distribution of biodiversity data
+Build plots dispalying distribution of biodiversity records among 
+user-defined features.
+}
+\details{
+The main use of this function is to create record histograms according to
+different features of the data set. For example, one might want to see the 
+evolution of records by year, or by species. This function enables easy 
+access to such plots.
 }
 \examples{
 \dontrun{
@@ -23,5 +31,10 @@ Graphs dispalying distribution of biodiversity data
  distrigraph(inat,ptype="efforts",col="red")
  distrigraph(inat,ptype="efforts",col="red",type="s")
 }
+}
+\seealso{
+Other Data preparation functions: \code{\link{bdsummary}},
+  \code{\link{fixstr}}, \code{\link{getcellid}},
+  \code{\link{gettaxo}}
 }
 

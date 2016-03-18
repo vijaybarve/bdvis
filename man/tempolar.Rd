@@ -10,20 +10,32 @@ tempolar(indf = NA, timescale = NA, title = NA, color = NA,
 \arguments{
 \item{indf}{input data frame containing biodiversity data set}
 
-\item{timescale}{Temporal scale of the graph d - daily, w - weekly 
-m - monthly. Default is d.}
+\item{timescale}{Temporal scale of the graph, or how are dates aggregated. 
+Accepted values are: d (daily, each feature in the plot represents a day), 
+w (weekly, each feature in the plot represents a week) and m (monthly, each
+feature in the plot represents a month). Default is d (daily).}
 
 \item{title}{Title for the graph. Default is "Temporal coverage".}
 
-\item{color}{color of the graph plot. Dafault is "red".}
+\item{color}{color of the graph plot. Default is "red".}
 
-\item{plottype}{plot types of r - lines, p - polygon and s - symbols. 
-Dafault is p.}
+\item{plottype}{Type of feature. Accepted values are: r (lines), p (polygon) 
+and s (symbols). Default is p (polygon).}
 
-\item{avg}{If TRUE plots a graph of average records rather than actual numbers}
+\item{avg}{If TRUE plots a graph of the average records rather than total 
+numbers. Default is FALSE.}
 }
 \description{
-Polar plot of temporal biodiversity data
+Representation in polar axis of the distribution of dates in the provided 
+data set.
+}
+\details{
+This function returns a plot representing the temporal distribution of 
+records in the data set. This is done by representing dates in a radial axis,
+with the distance from the center being the amount of records for that 
+particular date. This function allows several arguments indicating different 
+representation types. See the \code{arguments} section for an enumeration of 
+them.
 }
 \examples{
 \dontrun{
@@ -31,6 +43,13 @@ tempolar(inat)
 }
 }
 \references{
-Otegui, J., Arino, A. H., Encinas, M. A., & Pando, F. (2013). Assessing the Primary Data Hosted by the Spanish Node of the Global Biodiversity Information Facility (GBIF). PLoS ONE, 8(1), e55144. doi:10.1371/journal.pone.0055144
+Otegui, J., Arino, A. H., Encinas, M. A., & Pando, F. (2013). 
+  Assessing the Primary Data Hosted by the Spanish Node of the Global 
+  Biodiversity Information Facility (GBIF). PLoS ONE, 8(1), e55144. 
+  doi:10.1371/journal.pone.0055144
+}
+\seealso{
+Other Temporal visualizations: \code{\link{bdcalendarheat}},
+  \code{\link{chronohorogram}}
 }
 

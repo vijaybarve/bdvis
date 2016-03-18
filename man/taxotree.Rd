@@ -2,7 +2,7 @@
 % Please edit documentation in R/taxotree.R
 \name{taxotree}
 \alias{taxotree}
-\title{Draws a treemap based on Taxonomic hierarchy of records}
+\title{Treemap based on taxonomic hierarchy of records}
 \usage{
 taxotree(indf, n = 30, title = NA, legend = NA, sum1 = "Family",
   sum2 = "Genus")
@@ -10,18 +10,34 @@ taxotree(indf, n = 30, title = NA, legend = NA, sum1 = "Family",
 \arguments{
 \item{indf}{input data frame containing biodiversity data set}
 
-\item{n}{max number of rectangles to be plotted in the treemap}
+\item{n}{maximum number of rectangles to be plotted in the treemap. Default is
+30}
 
-\item{title}{title for the tree}
+\item{title}{title for the tree. Default is "Records per <sum1>"}
 
-\item{legend}{legend title}
+\item{legend}{legend title. Default is "Number of <sum2>"}
 
-\item{sum1}{Taxanomic fieldname to summarize data level 1}
+\item{sum1}{Taxonomic level whose density will be represented with different 
+cell sizes}
 
-\item{sum2}{Taxanomic fieldname to summarize data level 2}
+\item{sum2}{Taxonomic level whose density will be represented with a color 
+gradient}
 }
 \description{
-Draws a treemap based on Taxonomic hierarchy of records
+Draws a treemap (\url{https://en.wikipedia.org/wiki/Treemapping}) based on the
+taxonomic information of the records.
+}
+\details{
+This function builds a treemap of the taxonomic information present in the 
+data set. It represents this information at two levels (with the arguments 
+sum1 and sum2). The first level (sum1) will be represented with cell sizes and
+is a reflection of the number of records in that group. If, for example, 
+"Family" is selected as value for sum1, the size of the cells in the treemap 
+will be directly proportional to the number of records for that taxonomic 
+family. The second level (sum2) will be represented by color and is a 
+reflection of the number of sub-groups in a particular cell. If, for example, 
+"Genus" is selected as value for sum2, the color of the cell will depend on 
+the number of different genera for that particular cell.
 }
 \examples{
 \dontrun{
@@ -29,6 +45,9 @@ taxotree(inat)
 }
 }
 \references{
-Otegui, J., Arino, A. H., Encinas, M. A., & Pando, F. (2013). Assessing the Primary Data Hosted by the Spanish Node of the Global Biodiversity Information Facility (GBIF). PLoS ONE, 8(1), e55144. doi:10.1371/journal.pone.0055144
+Otegui, J., Arino, A. H., Encinas, M. A., & Pando, F. (2013). 
+ Assessing the Primary Data Hosted by the Spanish Node of the Global 
+ Biodiversity Information Facility (GBIF). PLoS ONE, 8(1), e55144. 
+ doi:10.1371/journal.pone.0055144
 }
 

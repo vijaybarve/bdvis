@@ -10,11 +10,14 @@ bdwebmap(indf)
 \item{indf}{input data frame containing biodiversity data set}
 }
 \description{
-Generates a interactive web map and opens it in new browser window
+Generates a interactive web map and opens it in a new browser window
 }
 \examples{
 \dontrun{
  bdwebmap(inat)
 }
+}
+\seealso{
+Other Spatial visualizations: \code{\link{mapgrid}}
 }
 

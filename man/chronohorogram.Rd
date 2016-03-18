@@ -4,22 +4,26 @@
 \alias{chronohorogram}
 \title{Draws a chronohorogram of records}
 \usage{
-chronohorogram(indf = NA, title = NA, startyear = 0, endyear = 0,
-  colors = c("red", "blue"))
+chronohorogram(indf = NA, title = "Chronohorogram", startyear = 1980,
+  endyear = NA, colors = c("red", "blue"))
 }
 \arguments{
 \item{indf}{input data frame containing biodiversity data set}
 
-\item{title}{title of the plot}
+\item{title}{title of the plot. Default is "Chronohorogram"}
 
-\item{startyear}{starting year for the plot}
+\item{startyear}{starting year for the plot. Default is 1980}
 
-\item{endyear}{end year for the graph}
+\item{endyear}{end year for the plot. Default is current year}
 
-\item{colors}{colors to build color ramp}
+\item{colors}{Pair of colors to build color gradient, in the form of a
+character vector. Default is blue (less) - red (more) gradient
+\code{c("red", "blue")}}
 }
 \description{
-Draws a chronohorogram of records
+Draws a detailed temporal representation (also known as chronohorogram) of the
+dates in the provided data set. For more information on the chronhorogram, 
+please see the \code{References} section.
 }
 \examples{
 \dontrun{
@@ -27,6 +31,12 @@ chronohorogram(inat)
 }
 }
 \references{
-Arino, A. H., & Otegui, J. (2008). Sampling biodiversity sampling. In Proceedings of TDWG (pp. 77-78). Retrieved from http://www.tdwg.org/fileadmin/2008conference/documents/Proceedings2008.pdf#page=77
+Arino, A. H., & Otegui, J. (2008). Sampling biodiversity sampling.
+ In Proceedings of TDWG (pp. 77-78). Retrieved from 
+ http://www.tdwg.org/fileadmin/2008conference/documents/Proceedings2008.pdf#page=77
+}
+\seealso{
+Other Temporal visualizations: \code{\link{bdcalendarheat}},
+  \code{\link{tempolar}}
 }
 

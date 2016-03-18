@@ -1,12 +1,13 @@
 #' Interactive web page based map of records
 #' 
-#' Generates a interactive web map and opens it in new browser window 
+#' Generates a interactive web map and opens it in a new browser window 
 #' 
 #' @import leafletR
 #' @param indf input data frame containing biodiversity data set
 #' @examples \dontrun{
 #'  bdwebmap(inat)
 #' }
+#' @family Spatial visualizations
 #' @export
 bdwebmap <- function(indf){
 bs=indf[,c(which(names(indf)=="Scientific_name"),

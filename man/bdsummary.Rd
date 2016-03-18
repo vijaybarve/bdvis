@@ -10,7 +10,15 @@ bdsummary(indf)
 \item{indf}{input data frame containing biodiversity data set}
 }
 \description{
-Provides summary of biodiversity data like number of records, Families, Genus, Species, Bounding box of locations, date range and spatial coverage.
+Calculates some general indicators of the volume, spatial, temporal and
+taxonomic aspects of the provided data set.
+}
+\details{
+The function returns information on the volume of the data set (number of
+records), temporal coverage (minimum and maximum dates), taxonomic coverage
+(brief breakdown of the records by taxonomic levels) and spatial coverage
+(coordinates of the edges of the bounding box containing all records and
+division of covered area in degree cells) of the records.
 }
 \examples{
 \dontrun{
@@ -18,5 +26,10 @@ require(rinat)
 inat<-get_inat_obs_project("reptileindia") 
 bdsummary(inat)
 }
+}
+\seealso{
+Other Data preparation functions: \code{\link{distrigraph}},
+  \code{\link{fixstr}}, \code{\link{getcellid}},
+  \code{\link{gettaxo}}
 }
 
