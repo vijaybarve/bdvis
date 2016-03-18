@@ -1,17 +1,16 @@
-#'Change structure of the data frame 
+#'Change structure of the data frame according to the package's needs
 #'
+#'Modify the name of certain fields in the provided data.frame to meet the
+#'requirements of the package, to make sure functions are executed properly.
 #'
-#'  
-#'Change the structure of data frame to match the key fields to GBIF style 
-#'  data fireld names which all the bdsns package functions understand
-#'  
 #'@param indf input data frame containing biodiversity data set
-#'@param Latitude name of Latitude field in original data frame
-#'@param Longitude name of Longitude field in original data frame
-#'@param DateCollected name of Date Collected field in original data frame
+#'@param Latitude name of the Latitude field in original data frame
+#'@param Longitude name of the Longitude field in original data frame
+#'@param DateCollected name of the Date Collected field in original data frame
 #'@param datefmt format string for the original date field \link[base]{strptime}
-#'@param SciName name of Scientific Name field in original data frame
+#'@param SciName name of the Scientific Name field in original data frame
 #'@export
+#'@family Data preparation functions
 #'@examples \dontrun{
 #'inat = fixstr(inat, DateCollected = "Date.collected", datefmt = "%Y-%m-%d %H:%M:%S")
 #'}
@@ -22,7 +21,7 @@ fixstr <- function (indf, Latitude =NA, Longitude=NA, DateCollected=NA,
       names(indf)[which(names(indf)==orig)]=new
       return(indf)
     } else {
-      cat(paste("\n Field ",orig," not present in input data\n"))
+      stop(paste("\n Field ",orig," not present in input data\n"))
     }
   }
   if (!is.na(Latitude)) {

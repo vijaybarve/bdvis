@@ -6,9 +6,10 @@ Date: 2016-03-14
 Author: Vijay Barve <vijay.barve@gmail.com>, Javier Otegui
     <javier.otegui@gmail.com>
 Maintainer: Vijay Barve <vijay.barve@gmail.com>
-Description: Biodiversity data visualizations using R would be helpful to
-    understand completeness of biodiversity inventory, extent of geographical,
-    taxonomic and temporal coverage, gaps and biases in data.
+Description: This package provides a set of functions to create basic
+    visualizations to quickly preview different aspects of biodiversity
+    information such as inventory completeness, extent of coverages (taxonomic,
+    temporal and geographic), gaps and biases.
 License: GPL-3
 Roxygen: list(wrap = FALSE)
 Imports:

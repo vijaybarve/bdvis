@@ -2,7 +2,7 @@
 % Please edit documentation in R/bdcalendarheat.R
 \name{bdcalendarheat}
 \alias{bdcalendarheat}
-\title{Calendar Heat map of biodiversity data}
+\title{Calendar heat map of biodiversity data}
 \usage{
 bdcalendarheat(indf = NA, title = NA)
 }
@@ -12,11 +12,22 @@ bdcalendarheat(indf = NA, title = NA)
 \item{title}{title custome title for the plot}
 }
 \description{
-Calendar Heat map of biodiversity data
+Produces a heat map (\code{\link{https://en.wikipedia.org/wiki/Heat_map}})
+representing the distribution of records in time.
+}
+\details{
+The calendar heat map is a matrix-like plot where each cell represents a 
+unique date, and the color the cell is painted with shows the amount of 
+records that have that particular date. Rows are weekdays and columns are 
+week numbers, each year having its own "panel".
 }
 \examples{
 \dontrun{
 bdcalendarheat(inat)
 }
+}
+\seealso{
+Other Temporal visualizations: \code{\link{chronohorogram}},
+  \code{\link{tempolar}}
 }
 

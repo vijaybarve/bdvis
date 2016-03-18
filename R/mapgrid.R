@@ -1,24 +1,45 @@
 #' Maps the data points on the map in grid format
 #' 
-#' Maps the data points aggrigated on the map in grid format showing presence 
-#'   or number of records in each gid cell by color gradiant.
+#' Customizable grid-based spatial representation of the coordinates of the 
+#' records in the data set.
+#' 
+#' This function builds a grid map colored according to the density of records 
+#' in each cell. Grids are 1-degree cells, build with the 
+#' \code{\link{getcellid}} function. Currently, four types of map can be 
+#' rendered. Presence maps show only if the cell is populated or not, without 
+#' paying attention to how many records or species there are. Record-density 
+#' maps apply a color gradient according to the number of records in the cell, 
+#' regardless of the species they represent. Species-density maps apply a color 
+#' gradient according to the number of different species in the cell, regardless
+#' of how many records ther are for each one of those. Completeness maps show 
+#' apply a color gradient according to the completeness index, from 0
+#' (incomplete) to 1 (complete).
+#' 
+#' See parameter descriptions for ways of customizing the map.
 #' 
 #' @import sqldf
 #' @import maps
 #' @import ggplot2
 #' @param indf input data frame containing biodiversity data set
-#' @param ptype plot type of map on the grid valid values are presence, records, species. Presence will generate presence maps, species will display number of species in each map pixel and records will display number of records in each map pixel, complete will display completeness on scale 0 to 1.
-#' @param title title for the map
+#' @param ptype Type of map on the grid. Accepted values are "presence" for 
+#'   presence/absence maps, "records" for record-density map, "species" for 
+#'   species-density map and "complete" for completeness map
+#' @param title title for the map. There is no default title
 #' @param bbox bounding box for the map in format c(xmin,xmax,ymin,ymax)
-#' @param legscale Set legend scale to a higher value than the max value in the data
+#' @param legscale Set legend scale to a higher value than the max value in the 
+#'   data
 #' @param collow Color for lower range in the color ramp of the grid
 #' @param colhigh Color for higher range in the color ramp of the grid
-#' @param mapdatabase database to be used default world
-#' @param region specify region(s) to map i.e. countries default '.' for whole world map
-#' @param customize additional customization string to customize the map output using ggplo2 parameters
+#' @param mapdatabase database to be used. By default, the world database is 
+#'   used
+#' @param region Specific region(s) to map, like countries. Default is the whole
+#'   world map
+#' @param customize additional customization string to customize the map output 
+#'   using ggplot2 parameters
 #' @examples \dontrun{
-#' mapgrid(inat,ptype="records")
+#' mapgrid(inat,ptype="records", region="India")
 #' }
+#' @family Spatial visualizations
 #' @export
 mapgrid <- function(indf=NA, ptype="records",title = "", bbox=NA, 
                     legscale=0, collow="blue",colhigh="red", 

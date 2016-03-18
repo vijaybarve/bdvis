@@ -1,12 +1,13 @@
-#'Assigns GBIF style degree cell ids
+#'Assign GBIF style degree cell ids
 #'
-#'  
-#'Assigns GBIF style degree cell ids and Centi degree (0.1) cell ids for each 
-#'  record which are used in functions like \link[bdvis]{mapgrid}
-#'  
-#'  
+#'Calculate and assign a GBIF-style degree cell id and centi-degree (0.1 
+#'degrees, dividing a 1 degree cell into 100 centi-degree cells) cell id to each
+#'record. This is a necessary previous step for some functions like
+#'\code{\link{mapgrid}}
+#'
 #'@param indf input data frame containing biodiversity data set
 #'@export
+#'@family Data preparation functions
 #'@examples \dontrun{
 #'getcellid(inat)
 #'}

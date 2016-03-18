@@ -2,7 +2,7 @@
 % Please edit documentation in R/fixstr.R
 \name{fixstr}
 \alias{fixstr}
-\title{Change structure of the data frame}
+\title{Change structure of the data frame according to the package's needs}
 \usage{
 fixstr(indf, Latitude = NA, Longitude = NA, DateCollected = NA,
   datefmt = NA, SciName = NA)
@@ -10,23 +10,28 @@ fixstr(indf, Latitude = NA, Longitude = NA, DateCollected = NA,
 \arguments{
 \item{indf}{input data frame containing biodiversity data set}
 
-\item{Latitude}{name of Latitude field in original data frame}
+\item{Latitude}{name of the Latitude field in original data frame}
 
-\item{Longitude}{name of Longitude field in original data frame}
+\item{Longitude}{name of the Longitude field in original data frame}
 
-\item{DateCollected}{name of Date Collected field in original data frame}
+\item{DateCollected}{name of the Date Collected field in original data frame}
 
 \item{datefmt}{format string for the original date field \link[base]{strptime}}
 
-\item{SciName}{name of Scientific Name field in original data frame}
+\item{SciName}{name of the Scientific Name field in original data frame}
 }
 \description{
-Change the structure of data frame to match the key fields to GBIF style 
- data fireld names which all the bdsns package functions understand
+Modify the name of certain fields in the provided data.frame to meet the
+requirements of the package, to make sure functions are executed properly.
 }
 \examples{
 \dontrun{
 inat = fixstr(inat, DateCollected = "Date.collected", datefmt = "\%Y-\%m-\%d \%H:\%M:\%S")
 }
+}
+\seealso{
+Other Data preparation functions: \code{\link{bdsummary}},
+  \code{\link{distrigraph}}, \code{\link{getcellid}},
+  \code{\link{gettaxo}}
 }
 
