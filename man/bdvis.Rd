@@ -14,7 +14,6 @@ and temporal coverage, gaps and biases in data.
 
 \itemize{  
 \item \link{bdsummary}
-\item \link{datasubset}
 \item \link{fixstr}
 \item \link{format_bdvis}
 \item \link{getcellid}

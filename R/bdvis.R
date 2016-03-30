@@ -7,7 +7,6 @@
 #'@section Data preparation:
 #'\itemize{  
 #'\item \link{bdsummary}
-#'\item \link{datasubset}
 #'\item \link{fixstr}
 #'\item \link{format_bdvis}
 #'\item \link{getcellid}
