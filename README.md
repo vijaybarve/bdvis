@@ -10,12 +10,14 @@ entry](http://vijaybarve.wordpress.com/2013/04/29/gsoc-proposal-2013-biodiversit
 
 ## Installation
 
-### Install the latest version using `install_github` within Hadley's
-[devtools](https://github.com/hadley/devtools) package.
+### Install the latest version using `install_github` within Hadley's [devtools](https://github.com/hadley/devtools) package.
 
-```R install.packages("devtools") require(devtools)
-
-install_github("vijaybarve/bdvis") require(bdvis) ```
+```r
+install.packages("devtools") 
+require(devtools)
+install_github("vijaybarve/bdvis") 
+require(bdvis) 
+```
 
 Note:
 
@@ -44,50 +46,74 @@ For the sake of examples, we will work with some data obtained using the package
 `rinat`
 
 ```r 
-install.packages("rinat") require(rinat)  # Data download might take some time
+install.packages("rinat") 
+require(rinat)  # Data download might take some time
 inat=get_inat_obs_project("reptileindia") 
 inat=fixstr(inat,DateCollected="Observed.on",SciName="Scientific.name") 
-inat=getcellid(inat) ```
+inat=getcellid(inat) 
+```
 
 #### bdsummary
 
-```r bdsummary(inat) ```
+```r
+bdsummary(inat) 
+```
 
 #### mapgrid
 
-```r mapgrid(inat,ptype="records",bbox=c(60,100,5,40),region=c("India")) ```
+```r 
+mapgrid(inat,ptype="records",bbox=c(60,100,5,40),region=c("India")) 
+```
 
-#### tempolar ```r tempolar(inat, color="green", title="iNaturalist daily",
-plottype="r", timescale="d") tempolar(inat, color="blue", title="iNaturalist
-weekly", plottype="p", timescale="w") tempolar(inat, color="red",
-title="iNaturalist monthly", plottype="r", timescale="m") ``` #### taxotree
+#### tempolar 
+```r 
+tempolar(inat, color="green", title="iNaturalist daily", plottype="r", timescale="d") 
+tempolar(inat, color="blue", title="iNaturalist weekly", plottype="p", timescale="w") 
+tempolar(inat, color="red", title="iNaturalist monthly", plottype="r", timescale="m") 
+``` 
 
-```r inat=gettaxo(inat) taxotree(inat) ```
+#### taxotree
+
+```r 
+inat=gettaxo(inat) 
+taxotree(inat) 
+```
 
 #### chronohorogram
 
-```r chronohorogram(inat) ```
+```r 
+chronohorogram(inat) 
+```
 
 #### bdcomplete
 
-```r comp=bdcomplete(inat,recs=5) 
-mapgrid(comp,ptype="complete",bbox=c(60,100,5,40),region=c("India"))
-
+```r 
+comp=bdcomplete(inat,recs=5) mapgrid(comp,ptype="complete",bbox=c(60,100,5,40),region=c("India"))
 ```
 
 #### datasubset
 
-```r inat1=datasubset(inat,minyear=2000, maxyear=2014) ```
+```r 
+inat1=datasubset(inat,minyear=2000, maxyear=2014) 
+```
 
 #### format_bdvis
 
-```r inat=format_bdvis(inat) ```
+```r 
+inat=format_bdvis(inat) 
+```
 
 #### distrigraph
 
-```r distrigraph(inat,ptype="cell",col="tomato") 
+```r 
+distrigraph(inat,ptype="cell",col="tomato") 
 distrigraph(inat,ptype="species",ylab="Species") 
 distrigraph(inat,ptype="efforts",col="red") 
-distrigraph(inat,ptype="efforts",col="red",type="s") ``` #### bdcalendarheat
+distrigraph(inat,ptype="efforts",col="red",type="s") 
+``` 
 
-```r bdcalendarheat(inat) ```
+#### bdcalendarheat
+
+```r 
+bdcalendarheat(inat) 
+```

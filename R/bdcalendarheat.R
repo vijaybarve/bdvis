@@ -1,6 +1,6 @@
 #' Calendar heat map of biodiversity data
 #' 
-#' Produces a heat map (\code{\link{https://en.wikipedia.org/wiki/Heat_map}})
+#' Produces a heat map {\url{https://en.wikipedia.org/wiki/Heat_map}}
 #' representing the distribution of records in time.
 #' 
 #' The calendar heat map is a matrix-like plot where each cell represents a 

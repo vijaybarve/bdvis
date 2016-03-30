@@ -12,7 +12,7 @@ bdcalendarheat(indf = NA, title = NA)
 \item{title}{title custome title for the plot}
 }
 \description{
-Produces a heat map (\code{\link{https://en.wikipedia.org/wiki/Heat_map}})
+Produces a heat map {\url{https://en.wikipedia.org/wiki/Heat_map}}
 representing the distribution of records in time.
 }
 \details{
