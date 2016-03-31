@@ -2,21 +2,92 @@
 % Please edit documentation in R/format_bdvis.R
 \name{format_bdvis}
 \alias{format_bdvis}
-\title{Convert data to bdvis native format}
+\title{Prepare data frame for flagging functions}
 \usage{
-format_bdvis(indf = NA, gettaxo = F)
+format_bdvis(indf, source = NULL, config = NULL, quiet = FALSE,
+  gettaxo = F, ...)
 }
 \arguments{
-\item{indf}{input data frame containing biodiversity data set}
+\item{indf}{Required. The data.frame on which to operate.}
 
-\item{gettaxo}{Run gettaxo function to get higher taxonomy if true}
+\item{source}{Optional. Indicates the package that was used to retrieve the
+data. Currently accepted values are "rvertnet", "rgbif" or "rinat". Either
+\code{source}, \code{config} or individual parameters must be present (see
+details).}
+
+\item{config}{Optional. Configuration object indicating mapping of field
+names from the data.frame to the DarwinCore standard. Useful when importing
+data multiple times from a source not available via the \code{source}
+argument. Either \code{source}, \code{config} or individual parameters must
+be present (see details).}
+
+\item{quiet}{Optional. Don't show any logging message at all. Defaults to
+FALSE.}
+
+\item{gettaxo}{optional. Call function \link{gettaxo} to build higher level 
+taxanony. Defauls to FALSE.}
+
+\item{...}{Optional. If none of the previous is present, the four key
+arguments (\code{Latitude}, \code{Longitude},
+\code{Date_collected}, \code{Scientific_name}) can be put here. See examples.}
+}
+\value{
+The provided data frame, with field names changed to suite the functioning
+of further visulization functions.
 }
 \description{
-Convert data to bdvis native format so that other bdvis functions understand the data
+\code{format_bdvis} renames certain fields in the data frame to make sure the 
+other package functions knows how to use them. This step is highly recommended 
+for the proper working of the functions.
+}
+\details{
+When invoked, there are three ways of indicating the function how to
+transform the data.frame: using the \code{source} parameter, providing a
+\code{config} object with field mapping, or passing individual values to the
+mapping function. This is the order in which the function will parse
+arguments; \code{source} overrides \code{config}, which overrides other
+mapping arguments.
+
+\code{source} refers to the package that was used to retrieve the data.
+Currently, three values are supported for this argument: "\code{rgbif}",
+"\code{rvertnet}" and "\code{rinat}", but many more are on their way.
+
+\code{config} asks for a configuration object holding the mapping of the
+field names. This option is basically a shortcut for those users with
+custom-formatted data.frames who will use the same mapping many times, to
+avoid having to type them each time. In practice, this object is a named list
+with the following four fields: \code{Latitude}, \code{Longitude}, 
+\code{Date_collected} and \code{Scientific_name}. Each element must have a 
+string indicating the name of the column in the data.frame holding the values 
+for that element. If the data.frame doesn't have one or more of these fields, 
+put \code{NA} in that element; otherwise, the function will throw an error. 
+See the examples section.
+
+If none of the two is provided, the function expects the user to provide the
+mapping by passing the individual column names associated with the right term.
+See the examples section.
 }
 \examples{
-\dontrun{
-inat=format_bdvis(inat)
+# Using the rgbif package and the source argument
+if (requireNamespace("rgbif", quietly=TRUE)) {
+ d <- rgbif::occ_data(scientificName="Apis mellifera", limit=50, minimal=FALSE)
+ d <- d$data
+ d <- format_bdvis(d, source="rgbif")
+
+ # Using a configuration object, matches 'rinat' schema
+ conf <- list(Latitude="latitude",
+              Longitude="longitude",
+              Date_collected=NULL,
+              Scientific_name="Scientific_name")
+ d <- format_bdvis(d, config=conf)
+
+ # Passing individual parameters, all optional
+ d <- format_bdvis(d,
+                Latitude="lat",
+                Longitude="lng",
+                Date_collected="ObservedOn",
+                Scientific_name="sciname")
 }
+
 }
 

@@ -1,5 +1,8 @@
 #'Change structure of the data frame according to the package's needs
 #'
+#'This function is slated to depriciate in next version. Please use function
+#'\link{format_bdvis} insted.
+#'
 #'Modify the name of certain fields in the provided data.frame to meet the
 #'requirements of the package, to make sure functions are executed properly.
 #'
@@ -39,5 +42,6 @@ fixstr <- function (indf, Latitude =NA, Longitude=NA, DateCollected=NA,
   if (!is.na(SciName)) {
     indf=chgname(SciName,"Scientific_name")
   } 
+  message("This function is slated to depriciate in next version. Please use function format_bdvis insted.")
   return(indf)
 }

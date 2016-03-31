@@ -21,6 +21,10 @@ fixstr(indf, Latitude = NA, Longitude = NA, DateCollected = NA,
 \item{SciName}{name of the Scientific Name field in original data frame}
 }
 \description{
+This function is slated to depriciate in next version. Please use function
+\link{format_bdvis} insted.
+}
+\details{
 Modify the name of certain fields in the provided data.frame to meet the
 requirements of the package, to make sure functions are executed properly.
 }

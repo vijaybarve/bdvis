@@ -50,8 +50,7 @@ For the sake of examples, we will work with some data obtained using the package
 install.packages("rinat") 
 require(rinat)  # Data download might take some time
 inat=get_inat_obs_project("reptileindia") 
-inat=fixstr(inat,DateCollected="Observed.on",SciName="Scientific.name") 
-inat=getcellid(inat) 
+inat=format_bdvis(inat,source='rinat')
 ```
 
 #### bdsummary
@@ -91,12 +90,6 @@ chronohorogram(inat)
 ```r 
 comp=bdcomplete(inat,recs=5)
 mapgrid(comp,ptype="complete",bbox=c(60,100,5,40),region=c("India"))
-```
-
-#### format_bdvis
-
-```r 
-inat=format_bdvis(inat) 
 ```
 
 #### distrigraph
