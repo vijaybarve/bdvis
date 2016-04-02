@@ -11,6 +11,7 @@
 #'@import plyr
 #'@import taxize
 #'@import sqldf
+#'@importFrom utils setTxtProgressBar txtProgressBar
 #'@param indf input data frame containing biodiversity data set
 #'@param genus If TRUE, use only genus level data to get taxanomy
 #'@param verbose If TRUE, displays each name string for which the higher 

@@ -1,6 +1,7 @@
 #' @import lattice
 #' @import chron
 #' @importFrom grid grid.lines gpar
+#' @importFrom grDevices colorRampPalette
 
 ##############################################################################
 #                        Calendar Heatmap                                    #

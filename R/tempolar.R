@@ -12,6 +12,7 @@
 #' 
 #' @import sqldf
 #' @import plotrix
+#' @importFrom grDevices col2rgb
 #' @param indf input data frame containing biodiversity data set
 #' @param timescale Temporal scale of the graph, or how are dates aggregated. 
 #'   Accepted values are: d (daily, each feature in the plot represents a day), 

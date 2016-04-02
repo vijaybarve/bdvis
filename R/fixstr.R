@@ -19,6 +19,7 @@
 #'}
 fixstr <- function (indf, Latitude =NA, Longitude=NA, DateCollected=NA,
                     datefmt=NA,SciName=NA){
+  .Deprecated("format_bdvis")
   chgname <- function (orig,new){
     if(is.element(orig,names(indf))){
       names(indf)[which(names(indf)==orig)]=new
@@ -42,6 +43,5 @@ fixstr <- function (indf, Latitude =NA, Longitude=NA, DateCollected=NA,
   if (!is.na(SciName)) {
     indf=chgname(SciName,"Scientific_name")
   } 
-  message("This function is slated to depriciate in next version. Please use function format_bdvis insted.")
   return(indf)
 }

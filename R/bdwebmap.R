@@ -3,6 +3,7 @@
 #' Generates a interactive web map and opens it in a new browser window 
 #' 
 #' @import leafletR
+#' @importFrom utils browseURL
 #' @param indf input data frame containing biodiversity data set
 #' @examples \dontrun{
 #'  bdwebmap(inat)

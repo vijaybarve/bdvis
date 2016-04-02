@@ -9,6 +9,7 @@
 #' week numbers, each year having its own "panel".
 #' 
 #' @import sqldf
+#' @importFrom stats na.omit
 #' @param indf input data frame containing biodiversity data set
 #' @param title title custome title for the plot
 #' @examples \dontrun{

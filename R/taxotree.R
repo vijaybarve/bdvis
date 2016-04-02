@@ -16,6 +16,7 @@
 #'
 #'@import sqldf
 #'@import treemap
+#'@importFrom utils tail
 #'@param indf input data frame containing biodiversity data set
 #'@param n maximum number of rectangles to be plotted in the treemap. Default is
 #'  30

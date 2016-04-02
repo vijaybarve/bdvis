@@ -6,6 +6,7 @@
 #'
 #'@import sqldf
 #'@import plotrix
+#'@importFrom grDevices colorRampPalette
 #'@param indf input data frame containing biodiversity data set
 #'@param title title of the plot. Default is "Chronohorogram"
 #'@param startyear starting year for the plot. Default is 1980

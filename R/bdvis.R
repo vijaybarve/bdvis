@@ -7,7 +7,7 @@
 #'@section Data preparation:
 #'\itemize{  
 #'\item \link{bdsummary}
-#'\item \link{fixstr}
+#'\item \link{fixstr} Depriciated 
 #'\item \link{format_bdvis}
 #'\item \link{getcellid}
 #'\item \link{gettaxo}
@@ -37,7 +37,7 @@
 #'@section Citation:
 #'\itemize{  
 #'\item Barve, V., & Otegui, J. (2016). bdvis: Biodiversity data 
-#'visualizations (R package V 0.1). Retrieved from 
+#'visualizations (R package V 0.2). Retrieved from 
 #'https://cran.r-project.org/web/packages/bdvis/index.html
 #'}
 #'

@@ -9,6 +9,7 @@
 #' access to such plots.
 #' 
 #' @import sqldf
+#' @importFrom graphics hist plot
 #' @param indf input data frame containing biodiversity data set
 #' @param ptype Feature to represent. Accepted values are "species", "cell" and 
 #'   "efforts" (year)

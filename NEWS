@@ -1,3 +1,12 @@
+bdvis 0.2.0
+===============
+
+* function bdcomplete bug fixes and visualizatio added in function mapgrid
+* improvements to function mapgrid in legend and color control
+* significant improvement in documentation
+* released to CRAN
+
+
 bdvis 0.1.35
 ===============
 

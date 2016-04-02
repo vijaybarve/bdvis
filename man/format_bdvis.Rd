@@ -68,17 +68,17 @@ mapping by passing the individual column names associated with the right term.
 See the examples section.
 }
 \examples{
+\dontrun{
 # Using the rgbif package and the source argument
-if (requireNamespace("rgbif", quietly=TRUE)) {
- d <- rgbif::occ_data(scientificName="Apis mellifera", limit=50, minimal=FALSE)
- d <- d$data
- d <- format_bdvis(d, source="rgbif")
+if (requireNamespace("rinat", quietly=TRUE)) {
+ d <- get_inat_obs_project("reptileindia") 
+ d <- format_bdvis(d, source="rinat")
 
  # Using a configuration object, matches 'rinat' schema
  conf <- list(Latitude="latitude",
               Longitude="longitude",
-              Date_collected=NULL,
-              Scientific_name="Scientific_name")
+              Date_collected="Observed.on",
+              Scientific_name="Scientific.name")
  d <- format_bdvis(d, config=conf)
 
  # Passing individual parameters, all optional
@@ -87,6 +87,7 @@ if (requireNamespace("rgbif", quietly=TRUE)) {
                 Longitude="lng",
                 Date_collected="ObservedOn",
                 Scientific_name="sciname")
+}
 }
 
 }

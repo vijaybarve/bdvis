@@ -11,6 +11,8 @@
 #'throws an error.
 #'
 #'@import sqldf
+#'@importFrom stats na.omit
+#'@importFrom graphics plot
 #'@param indf input data frame containing biodiversity data set
 #'@param recs minimum number of records per grid cell required to make the 
 #'  calculations. Default is 50. If there are too few records, the function 
