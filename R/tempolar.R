@@ -66,12 +66,12 @@ tempolar <- function(indf=NA, timescale=NA, title=NA, color=NA, plottype=NA,avg=
     dayofYear = as.numeric(strftime(as.Date(indf$Date_collected,na.rm=T), format = "%j"))
     weekofYear = as.numeric(strftime(as.Date(indf$Date_collected,na.rm=T), format = "%U"))
     monthofYear = as.numeric(strftime(as.Date(indf$Date_collected,na.rm=T), format = "%m"))
-    Year = as.numeric(strftime(as.Date(indf$Date_collected,na.rm=T), format = "%Y"))
+    Year_ = as.numeric(strftime(as.Date(indf$Date_collected,na.rm=T), format = "%Y"))
     
   } else {
     stop("Date_collected not found in data. Please use fixstr() to fix the problem")
   }
-  indf = cbind(indf,dayofYear,weekofYear,monthofYear,Year)
+  indf = cbind(indf,dayofYear,weekofYear,monthofYear,Year_)
   if(timescale2=="d"){
     daytab=sqldf("select dayofYear, count(*) as dct from indf group by dayofYear")
     if(avg==F){
@@ -84,7 +84,7 @@ tempolar <- function(indf=NA, timescale=NA, title=NA, color=NA, plottype=NA,avg=
                   main=title2,boxed.radial=FALSE,
                   show.grid.labels=3,rp.type=plottype2)
     } else {
-      alldays=sqldf("select dayofYear, Year, count(*) as ct from indf group by dayofYear,monthofYear,Year")
+      alldays=sqldf("select dayofYear, Year_, count(*) as ct from indf group by dayofYear,monthofYear,Year_")
       daymean=sqldf("select dayofyear,avg(ct) as avgct,stdev(ct) as sdct from alldays group by dayofyear")
       
       if(is.na(daymean[1,1])){daymean=daymean[2:dim(daymean)[1],]}
@@ -112,7 +112,7 @@ tempolar <- function(indf=NA, timescale=NA, title=NA, color=NA, plottype=NA,avg=
                   clockwise=TRUE,main=title2,boxed.radial=FALSE,
                   show.grid.labels=3,rp.type=plottype2,lwd=4)
     } else {
-      allweeks=sqldf("select weekofYear, Year, count(*) as ct from indf group by weekofYear,Year")
+      allweeks=sqldf("select weekofYear, Year_, count(*) as ct from indf group by weekofYear,Year_")
       weekmean=sqldf("select weekofyear,avg(ct) as avgct,stdev(ct) as sdct from allweeks group by weekofyear")
       if(is.na(weekmean[1,1])){weekmean=weekmean[2:dim(weekmean)[1],]}
       if(dim(weekmean)[1]==54){
@@ -138,7 +138,7 @@ tempolar <- function(indf=NA, timescale=NA, title=NA, color=NA, plottype=NA,avg=
                   clockwise=TRUE,main=title2,boxed.radial=FALSE,
                   show.grid.labels=3,rp.type=plottype2,lwd=4)  
     } else {
-      allmonths=sqldf("select monthofYear, Year, count(*) as ct from indf group by monthofYear,Year")
+      allmonths=sqldf("select monthofYear, Year_, count(*) as ct from indf group by monthofYear,Year_")
       monthmean=sqldf("select monthofyear,avg(ct) as avgct,stdev(ct) as sdct from allmonths group by monthofyear")
       if(is.na(monthmean[1,1])){monthmean=monthmean[2:dim(monthmean)[1],]}
       radial.plot(monthmean$avgct,
