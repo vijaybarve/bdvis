@@ -63,13 +63,16 @@ tempolar <- function(indf=NA, timescale=NA, title=NA, color=NA, plottype=NA,avg=
   
   names(indf)=gsub("\\.","_",names(indf))
   if("Date_collected" %in% colnames(indf)){
+    if(length(which(!is.na(indf$Date_collected)))==0){
+      stop("Date_collected has no data")
+    }
     dayofYear = as.numeric(strftime(as.Date(indf$Date_collected,na.rm=T), format = "%j"))
     weekofYear = as.numeric(strftime(as.Date(indf$Date_collected,na.rm=T), format = "%U"))
     monthofYear = as.numeric(strftime(as.Date(indf$Date_collected,na.rm=T), format = "%m"))
     Year_ = as.numeric(strftime(as.Date(indf$Date_collected,na.rm=T), format = "%Y"))
     
   } else {
-    stop("Date_collected not found in data. Please use fixstr() to fix the problem")
+    stop("Date_collected not found in data. Please use format_bdvis() to fix the problem")
   }
   indf = cbind(indf,dayofYear,weekofYear,monthofYear,Year_)
   if(timescale2=="d"){
