@@ -35,9 +35,9 @@ distrigraph <- function(indf,ptype=NA,...){
              hist(mat$Records,main="Distribution of Records per Species",xlab="Records",...)
            },
            efforts={
-             Year = as.numeric(strftime(as.Date(indf$Date_collected,na.rm=T), format = "%Y"))
-             indf=cbind(indf,Year)
-             mat=sqldf("select Year, count(*) as Records from indf group by Year order by Year")
+             Year_ = as.numeric(strftime(as.Date(indf$Date_collected,na.rm=T), format = "%Y"))
+             indf=cbind(indf,Year_)
+             mat=sqldf("select Year_, count(*) as Records from indf group by Year_ order by Year_")
              plot(mat,main="Distribution of collection effforts over time",...)
            },
            stop("Not a valid option. See ?distrigraph for currently accepted values")
