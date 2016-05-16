@@ -46,9 +46,11 @@ bdcomplete <- function(indf,recs=50){
     Q2=sqldf("select count(*) from csum where sct = 2 ")
     m=sqldf("select count(*) from ( select * from cset group by Date_collected )")
     Sobs = as.numeric(sqldf("select count(*) from ( select * from cset group by Scientific_name)"))
-    Sest = as.numeric(Sobs + (((m-1)/m) * ((Q1 *(Q1 -1))/(2 * (Q2+1)))))
-    c = Sobs / Sest
-    retmat=rbind(retmat,c(Cell_id,Sobs,Sest,c))
+    if(Sobs>0){
+      Sest = as.numeric(Sobs + (((m-1)/m) * ((Q1 *(Q1 -1))/(2 * (Q2+1)))))
+      c = Sobs / Sest
+      retmat=rbind(retmat,c(Cell_id,Sobs,Sest,c))
+    }
   }
   retmat=as.data.frame(retmat)
   names(retmat)=c("Cell_id","Sobs","Sest","c")
