@@ -19,6 +19,9 @@ records), temporal coverage (minimum and maximum dates), taxonomic coverage
 (brief breakdown of the records by taxonomic levels) and spatial coverage
 (coordinates of the edges of the bounding box containing all records and
 division of covered area in degree cells) of the records.
+
+To update spatial grid data to dataset, please use \link{format_bdvis} or 
+\link{getcellid} function before using bdsummary.
 }
 \examples{
 \dontrun{
@@ -28,8 +31,7 @@ bdsummary(inat)
 }
 }
 \seealso{
-Other Data preparation functions: \code{\link{distrigraph}},
-  \code{\link{fixstr}}, \code{\link{getcellid}},
-  \code{\link{gettaxo}}
+Other Data preparation functions: \code{\link{fixstr}},
+  \code{\link{getcellid}}, \code{\link{gettaxo}}
 }
 

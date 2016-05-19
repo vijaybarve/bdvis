@@ -1,7 +1,7 @@
 Package: bdvis
 Type: Package
 Title: Biodiversity Data Visualizations
-Version: 0.2.5
+Version: 0.2.6
 Date: 2016-05-19
 Author: Vijay Barve <vijay.barve@gmail.com>, Javier Otegui
     <javier.otegui@gmail.com>

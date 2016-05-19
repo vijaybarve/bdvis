@@ -39,7 +39,6 @@ inat=gettaxo(inat)
 }
 \seealso{
 Other Data preparation functions: \code{\link{bdsummary}},
-  \code{\link{distrigraph}}, \code{\link{fixstr}},
-  \code{\link{getcellid}}
+  \code{\link{fixstr}}, \code{\link{getcellid}}
 }
 

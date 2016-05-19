@@ -32,9 +32,4 @@ access to such plots.
  distrigraph(inat,ptype="efforts",col="red",type="s")
 }
 }
-\seealso{
-Other Data preparation functions: \code{\link{bdsummary}},
-  \code{\link{fixstr}}, \code{\link{getcellid}},
-  \code{\link{gettaxo}}
-}
 

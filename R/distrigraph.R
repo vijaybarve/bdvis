@@ -20,7 +20,6 @@
 #'  distrigraph(inat,ptype="efforts",col="red")
 #'  distrigraph(inat,ptype="efforts",col="red",type="s")
 #' }
-#' @family Data preparation functions
 #' @export
 distrigraph <- function(indf,ptype=NA,...){
   custgraph='col="red"'
