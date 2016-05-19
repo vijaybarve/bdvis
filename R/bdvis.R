@@ -7,7 +7,7 @@
 #'@section Data preparation:
 #'\itemize{  
 #'\item \link{bdsummary}
-#'\item \link{fixstr} Depriciated 
+#'\item \link{fixstr} Deprecated 
 #'\item \link{format_bdvis}
 #'\item \link{getcellid}
 #'\item \link{gettaxo}

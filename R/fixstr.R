@@ -1,6 +1,6 @@
 #'Change structure of the data frame according to the package's needs
 #'
-#'This function is slated to depriciate in next version. Please use function
+#'This function is slated to deprecate in next version. Please use function
 #'\link{format_bdvis} insted.
 #'
 #'Modify the name of certain fields in the provided data.frame to meet the

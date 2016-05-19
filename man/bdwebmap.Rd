@@ -10,7 +10,9 @@ bdwebmap(indf)
 \item{indf}{input data frame containing biodiversity data set}
 }
 \description{
-Generates a interactive web map and opens it in a new browser window
+Generates a interactive web map and opens it in a new browser window. To make 
+this map meaningful the number of species restricted to less than 30 and number 
+of map points to less than 1000.
 }
 \examples{
 \dontrun{

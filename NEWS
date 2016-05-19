@@ -1,7 +1,7 @@
-bdvis 0.2.2
+bdvis 0.2.5
 ===============
 
-* bug fix in function tempolar
+* bug fix in functions tempolar, distrigraph bdcomplete and bdwebmap.
 
 bdvis 0.2.0
 ===============
