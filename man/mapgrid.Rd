@@ -42,14 +42,14 @@ records in the data set.
 \details{
 This function builds a grid map colored according to the density of records 
 in each cell. Grids are 1-degree cells, build with the 
-\code{\link{getcellid}} function. Currently, four types of map can be 
+\code{\link{getcellid}} function. Currently, four types of maps can be 
 rendered. Presence maps show only if the cell is populated or not, without 
-paying attention to how many records or species there are. Record-density 
+paying attention to how many records or species are present. Record-density 
 maps apply a color gradient according to the number of records in the cell, 
-regardless of the species they represent. Species-density maps apply a color 
-gradient according to the number of different species in the cell, regardless
-of how many records ther are for each one of those. Completeness maps show 
-apply a color gradient according to the completeness index, from 0
+regardless of the number of species they represent. Species-density maps apply 
+a color gradient according to the number of different species in the cell, 
+regardless of how many records ther are for each one of those. Completeness 
+maps apply a color gradient according to the completeness index, from 0
 (incomplete) to 1 (complete).
 
 See parameter descriptions for ways of customizing the map.

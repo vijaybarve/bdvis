@@ -10,6 +10,11 @@
 #'are too few records in the cells, the function is unable to finish, and it
 #'throws an error.
 #'
+#'This function produces a plot of number of species versus completeness index to
+#'give an idea of output. The data frame  returned can be used to visualize the 
+#'completeness of the data using \code{\link{mapgrid}} function with ptype as 
+#'"complete".
+#'
 #'@import sqldf
 #'@importFrom stats na.omit
 #'@importFrom graphics plot
