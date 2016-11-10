@@ -5,7 +5,7 @@
 \title{Draws a chronohorogram of records}
 \usage{
 chronohorogram(indf = NA, title = "Chronohorogram", startyear = 1980,
-  endyear = NA, colors = c("red", "blue"))
+  endyear = NA, colors = c("red", "blue"), ptsize = 1)
 }
 \arguments{
 \item{indf}{input data frame containing biodiversity data set}
@@ -19,6 +19,8 @@ chronohorogram(indf = NA, title = "Chronohorogram", startyear = 1980,
 \item{colors}{Pair of colors to build color gradient, in the form of a
 character vector. Default is blue (less) - red (more) gradient
 \code{c("red", "blue")}}
+
+\item{ptsize}{point size atjustment factor. Dafault is 1}
 }
 \description{
 Draws a detailed temporal representation (also known as chronohorogram) of the
