@@ -35,7 +35,6 @@
 #' @param region Specific region(s) to map, like countries. Default is the whole
 #'   world map
 #' @param centigrid plot the map grids at 0.1 degree scale. Default is FALSE.
-#'   Currently does not work for completeness plot.
 #' @param customize additional customization string to customize the map output 
 #'   using ggplot2 parameters
 #' @examples \dontrun{
@@ -78,15 +77,13 @@ mapgrid <- function(indf=NA, ptype="records",title = "", bbox=NA,
       cts=sqldf("select cell_id, Centi_cell_id, 1 as ct from cts1 where ct1 <> 0")
     }
   }
-  
   if (ptype=="complete"){
     if (!centigrid){
       cts=sqldf("select Cell_id,(c ) as ct from indf")
     } else {
-      stop("centigrid is not yet available for completeness maps")
+      cts=sqldf("select Cell_id,Centi_cell_id, (c) as ct from indf")
     }
   }  
-  
   if (!is.na(bbox[1])){
     clist=as.data.frame(cellid_bbox(bbox=bbox))
     cts1=sqldf("select * from cts where cell_id in (select * from clist)")
@@ -146,7 +143,6 @@ mapgrid <- function(indf=NA, ptype="records",title = "", bbox=NA,
       geom_raster(data=middf, aes(long, lat, fill=log10(count)),alpha=1,hjust = 1, vjust = 1) +  
       coord_fixed(ratio = 1) +
       scale_fill_gradient2(low = "white", mid=collow, high = colhigh, name=legname, alpha(.3),
-                           #    scale_fill_manual(values=alpha(c("white",collow, colhigh),.3), name=legname, 
                            breaks = mybreaks, labels = myleg, space="Lab") +
       labs(x="", y="") +
       theme_bw(base_size=14) + 

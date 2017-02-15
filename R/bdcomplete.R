@@ -22,16 +22,22 @@
 #'@param recs minimum number of records per grid cell required to make the 
 #'  calculations. Default is 50. If there are too few records, the function 
 #'  throws an error.
+#'@param centigrid Calculate completeness at 0.1 degree cells. Default FALSE.
 #'@return data.frame with the columns \itemize{ \item{"Cell_id"}{id of the cell}
 #'  \item{"nrec"}{Number of records in the cell}\item{"Sobs"}{Number of Observed 
 #'  species} \item{"Sest"}{Estimated number of species} \item{"c"}{Completeness 
-#'  ratio the cell} Plots a graph of Number of species vs completeness }
+#'  ratio the cell} Plots a graph of Number of species vs completeness }\item
+#'  {"Centi_cell_id"}{Cell ids for 0.1 degree cells} Plots a graph of Number of 
+#'  species vs completeness }
 #'@examples \dontrun{
 #'bdcomplete(inat)
 #'}
 #'@seealso \code{\link{getcellid}}
 #'@export
-bdcomplete <- function(indf,recs=50){
+bdcomplete <- function(indf,recs=50,centigrid=FALSE){
+  if (centigrid){
+    indf$Cell_id <- (indf$Cell_id * 100) + indf$Centi_cell_id
+  }
   dat1 <- sqldf("select Scientific_name, Date_collected, Cell_id from indf group by Scientific_name, Date_collected, Cell_id")
   dat2 <- sqldf("select cell_id,count(*) as cell_ct from dat1 group by cell_id")
   dat3 <- sqldf(paste("select * from dat2 where cell_ct > ",recs))
@@ -61,5 +67,9 @@ bdcomplete <- function(indf,recs=50){
   names(retmat) <- c("Cell_id","nrec","Sobs","Sest","c")
   plot(retmat$Sobs, retmat$c, main="Completeness vs number of species", 
        xlab="Number of species", ylab="Completeness")
+  if (centigrid){
+    retmat$Centi_cell_id <- retmat$Cell_id %% 100
+    retmat$Cell_id <- retmat$Cell_id %/% 100
+  }
   return(retmat)
 }

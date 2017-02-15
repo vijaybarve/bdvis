@@ -32,8 +32,7 @@ used}
 \item{region}{Specific region(s) to map, like countries. Default is the whole
 world map}
 
-\item{centigrid}{plot the map grids at 0.1 degree scale. Default is FALSE.
-Currently does not work for completeness plot.}
+\item{centigrid}{plot the map grids at 0.1 degree scale. Default is FALSE.}
 
 \item{customize}{additional customization string to customize the map output 
 using ggplot2 parameters}

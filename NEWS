@@ -1,3 +1,8 @@
+bdvis 0.2.12
+===============
+* function mapgrid has option to map at 0.1 degree grid cells 
+* function bdcomplete has option to return 0.1 degree grid cells
+
 bdvis 0.2.9
 ===============
 
