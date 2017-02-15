@@ -6,7 +6,7 @@
 \usage{
 mapgrid(indf = NA, ptype = "records", title = "", bbox = NA,
   legscale = 0, collow = "blue", colhigh = "red", mapdatabase = "world",
-  region = ".", customize = NULL)
+  region = ".", centigrid = FALSE, customize = NULL)
 }
 \arguments{
 \item{indf}{input data frame containing biodiversity data set}
@@ -31,6 +31,9 @@ used}
 
 \item{region}{Specific region(s) to map, like countries. Default is the whole
 world map}
+
+\item{centigrid}{plot the map grids at 0.1 degree scale. Default is FALSE.
+Currently does not work for completeness plot.}
 
 \item{customize}{additional customization string to customize the map output 
 using ggplot2 parameters}

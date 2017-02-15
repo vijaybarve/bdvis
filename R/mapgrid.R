@@ -34,6 +34,8 @@
 #'   used
 #' @param region Specific region(s) to map, like countries. Default is the whole
 #'   world map
+#' @param centigrid plot the map grids at 0.1 degree scale. Default is FALSE.
+#'   Currently does not work for completeness plot.
 #' @param customize additional customization string to customize the map output 
 #'   using ggplot2 parameters
 #' @examples \dontrun{
@@ -43,7 +45,7 @@
 #' @export
 mapgrid <- function(indf=NA, ptype="records",title = "", bbox=NA, 
                     legscale=0, collow="blue",colhigh="red", 
-                    mapdatabase = "world", region = ".", 
+                    mapdatabase = "world", region = ".", centigrid = FALSE,
                     customize = NULL)
 {
   names(indf)=gsub("\\.","_",names(indf))
@@ -52,18 +54,37 @@ mapgrid <- function(indf=NA, ptype="records",title = "", bbox=NA,
     indf=indf[which(!is.na(indf$Longitude)),]
   }
   if (ptype=="species"){
-    sps=sqldf("select Scientific_name, cell_id from indf group by cell_id, Scientific_name")
-    cts=sqldf("select cell_id, count(*) from sps group by cell_id")
+    if (!centigrid){
+      sps=sqldf("select Scientific_name, cell_id from indf group by cell_id, Scientific_name")
+      cts=sqldf("select cell_id, count(*) from sps group by cell_id")
+    } else {
+      sps=sqldf("select Scientific_name, cell_id, Centi_cell_id from indf group by cell_id, Centi_cell_id, Scientific_name")
+      cts=sqldf("select cell_id, Centi_cell_id, count(*) from sps group by cell_id, Centi_cell_id")
+    }
   }
   if (ptype=="records"){
-    cts=sqldf("select cell_id, count(*) from indf group by cell_id")
+    if (!centigrid){
+      cts=sqldf("select cell_id, count(*) from indf group by cell_id")
+    } else {
+      cts=sqldf("select cell_id, Centi_cell_id, count(*) from indf group by cell_id, Centi_cell_id")
+    }
   }  
   if (ptype=="presence"){
-    cts1=sqldf("select cell_id, count(*) as ct1 from indf group by cell_id")
-    cts=sqldf("select cell_id, 1 as ct from cts1 where ct1 <> 0")
-  }  
+    if (!centigrid){
+      cts1=sqldf("select cell_id, count(*) as ct1 from indf group by cell_id")
+      cts=sqldf("select cell_id, 1 as ct from cts1 where ct1 <> 0")
+    } else {
+      cts1=sqldf("select cell_id, Centi_cell_id, count(*) as ct1 from indf group by cell_id, Centi_cell_id")
+      cts=sqldf("select cell_id, Centi_cell_id, 1 as ct from cts1 where ct1 <> 0")
+    }
+  }
+  
   if (ptype=="complete"){
-    cts=sqldf("select Cell_id,(c ) as ct from indf")
+    if (!centigrid){
+      cts=sqldf("select Cell_id,(c ) as ct from indf")
+    } else {
+      stop("centigrid is not yet available for completeness maps")
+    }
   }  
   
   if (!is.na(bbox[1])){
@@ -72,10 +93,17 @@ mapgrid <- function(indf=NA, ptype="records",title = "", bbox=NA,
     cts = cts1[2:dim(cts1)[1],]
   }
   lat=long=group=NULL
-  Lat= -90 + (cts$Cell_id %/% 360) 
-  Long= -180 + (cts$Cell_id %% 360) 
-  cts=cbind(cts,Lat,Long)
-  names(cts)=c("Cell_id", "ct", "Lat", "Long"  )
+  if (!centigrid){
+    Lat= -90 + (cts$Cell_id %/% 360) 
+    Long= -180 + (cts$Cell_id %% 360)
+    cts=cbind(cts,Lat,Long)
+    names(cts)=c("Cell_id","ct", "Lat", "Long"  )
+  } else {
+    Lat= -90 + (cts$Cell_id %/% 360) +  (cts$Centi_cell_id %/% 10) * 0.1 
+    Long= -180 + (cts$Cell_id %% 360) + (cts$Centi_cell_id %% 10) * 0.1
+    cts=cbind(cts,Lat,Long)
+    names(cts)=c("Cell_id", "Centicell","ct", "Lat", "Long"  )
+  }
   if (ptype=="presence"){
     mybreaks=seq(0:1)
     myleg=seq(0:1)
@@ -96,7 +124,6 @@ mapgrid <- function(indf=NA, ptype="records",title = "", bbox=NA,
     )
     middf=rbind(middf,legent)
   }
-  #legname=paste(ptype,"\n    ",max(cts$ct))
   legname=paste(ptype,"\n    ",max(middf$count))
   mapp <- map_data(map=mapdatabase, region=region)
   message(paste("Rendering map...plotting ", nrow(cts), " tiles", sep=""))
@@ -116,9 +143,10 @@ mapgrid <- function(indf=NA, ptype="records",title = "", bbox=NA,
     ggplot(mapp, aes(long, lat)) + # make the plot
       geom_polygon(aes(group=group), fill="white", color="gray80", size=0.8) +
       ggtitle(title) +
-      geom_raster(data=middf, aes(long, lat, fill=log10(count)),hjust = 1, vjust = 1) +  
+      geom_raster(data=middf, aes(long, lat, fill=log10(count)),alpha=1,hjust = 1, vjust = 1) +  
       coord_fixed(ratio = 1) +
-      scale_fill_gradient2(low = "white", mid=collow, high = colhigh, name=legname, 
+      scale_fill_gradient2(low = "white", mid=collow, high = colhigh, name=legname, alpha(.3),
+                           #    scale_fill_manual(values=alpha(c("white",collow, colhigh),.3), name=legname, 
                            breaks = mybreaks, labels = myleg, space="Lab") +
       labs(x="", y="") +
       theme_bw(base_size=14) + 
@@ -148,7 +176,6 @@ cellid_bbox <- function(bbox=c(-90,90,-180,180)){
   retvect=NULL
   for (Longitude in bbox[1]:bbox[2]){
     for (Latitude in bbox[3]:bbox[4]){
-      #print(paste(Latitude,Longitude))
       Cell_id <- (((Latitude %/% 1) + 90) * 360) + ((Longitude %/% 1) + 180)
       retvect=rbind(retvect,Cell_id)
     }
