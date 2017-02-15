@@ -1,6 +1,8 @@
-bdvis 0.2.6
+bdvis 0.2.9
 ===============
 
+* function bdcomplete now returns number of records per grid cell
+* added additional parameter ptsize in chronohorogram 
 * bug fix in functions tempolar, distrigraph bdcomplete and bdwebmap.
 * improved documentation 
 

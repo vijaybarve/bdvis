@@ -22,7 +22,7 @@ require(bdvis)
 Note:
 
 Windows users have to first install
-[Rtools](http://cran.r-project.org/bin/windows/Rtools/).
+[Rtools](https://cran.r-project.org/bin/windows/Rtools/).
 
 ### Packages `bdvis` depends on 
 + [maps] (http://cran.r-project.org/web/packages/maps/index.html) 

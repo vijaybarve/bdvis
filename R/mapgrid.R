@@ -104,7 +104,7 @@ mapgrid <- function(indf=NA, ptype="records",title = "", bbox=NA,
     ggplot(mapp, aes(long, lat)) + # make the plot
       geom_polygon(aes(group=group), fill="white", color="gray80", size=0.8) +
       ggtitle(title) +
-      geom_raster(data=middf, aes(long, lat, fill=(count), width=1, height=1),hjust = 1, vjust = 1) +  
+      geom_raster(data=middf, aes(long, lat, fill=(count)),hjust = 1, vjust = 1) +  
       coord_fixed(ratio = 1) +
       scale_fill_gradient2(low = "white", mid=colhigh, high = colhigh, name=ptype, space="Lab") +
       labs(x="", y="") +
@@ -116,7 +116,7 @@ mapgrid <- function(indf=NA, ptype="records",title = "", bbox=NA,
     ggplot(mapp, aes(long, lat)) + # make the plot
       geom_polygon(aes(group=group), fill="white", color="gray80", size=0.8) +
       ggtitle(title) +
-      geom_raster(data=middf, aes(long, lat, fill=log10(count), width=0.1, height=0.1),hjust = 1, vjust = 1) +  
+      geom_raster(data=middf, aes(long, lat, fill=log10(count)),hjust = 1, vjust = 1) +  
       coord_fixed(ratio = 1) +
       scale_fill_gradient2(low = "white", mid=collow, high = colhigh, name=legname, 
                            breaks = mybreaks, labels = myleg, space="Lab") +
