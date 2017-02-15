@@ -50,4 +50,3 @@ Otegui, J., Arino, A. H., Encinas, M. A., & Pando, F. (2013).
  Biodiversity Information Facility (GBIF). PLoS ONE, 8(1), e55144. 
  doi:10.1371/journal.pone.0055144
 }
-

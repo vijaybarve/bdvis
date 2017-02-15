@@ -15,6 +15,14 @@ throws an error.}
 
 \item{centigrid}{Calculate completeness at 0.1 degree cells. Default FALSE.}
 }
+\value{
+data.frame with the columns \itemize{ \item{"Cell_id"}{ id of the cell}
+ \item{"nrec"}{ Number of records in the cell} \item{"Sobs"}{ Number of Observed species} 
+ \item{"Sest"}{ Estimated number of species} \item{"c"}{ Completeness ratio the cell}
+ \item {"Centi_cell_id"}{ Cell ids for 0.1 degree cells} 
+ 
+ Plots a graph of Number of species vs completeness }
+}
 \description{
 Computes completeness values for each cell. Currently returns Chao2 index of 
 species richness.
@@ -40,4 +48,3 @@ bdcomplete(inat)
 \seealso{
 \code{\link{getcellid}}
 }
-

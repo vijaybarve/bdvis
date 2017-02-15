@@ -23,12 +23,12 @@
 #'  calculations. Default is 50. If there are too few records, the function 
 #'  throws an error.
 #'@param centigrid Calculate completeness at 0.1 degree cells. Default FALSE.
-#'@return data.frame with the columns \itemize{ \item{"Cell_id"}{id of the cell}
-#'  \item{"nrec"}{Number of records in the cell}\item{"Sobs"}{Number of Observed 
-#'  species} \item{"Sest"}{Estimated number of species} \item{"c"}{Completeness 
-#'  ratio the cell} Plots a graph of Number of species vs completeness }\item
-#'  {"Centi_cell_id"}{Cell ids for 0.1 degree cells} Plots a graph of Number of 
-#'  species vs completeness }
+#'@return data.frame with the columns \itemize{ \item{"Cell_id"}{ id of the cell}
+#'  \item{"nrec"}{ Number of records in the cell} \item{"Sobs"}{ Number of Observed species} 
+#'  \item{"Sest"}{ Estimated number of species} \item{"c"}{ Completeness ratio the cell}
+#'  \item {"Centi_cell_id"}{ Cell ids for 0.1 degree cells} 
+#'  
+#'  Plots a graph of Number of species vs completeness }
 #'@examples \dontrun{
 #'bdcomplete(inat)
 #'}

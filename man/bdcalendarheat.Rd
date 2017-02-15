@@ -30,4 +30,3 @@ bdcalendarheat(inat)
 Other Temporal visualizations: \code{\link{chronohorogram}},
   \code{\link{tempolar}}
 }
-

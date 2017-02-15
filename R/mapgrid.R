@@ -126,25 +126,24 @@ mapgrid <- function(indf=NA, ptype="records",title = "", bbox=NA,
   message(paste("Rendering map...plotting ", nrow(cts), " tiles", sep=""))
   if (ptype=="presence"){ 
     ggplot(mapp, aes(long, lat)) + # make the plot
-      geom_polygon(aes(group=group), fill="white", color="gray80", size=0.8) +
       ggtitle(title) +
       geom_raster(data=middf, aes(long, lat, fill=(count)),hjust = 1, vjust = 1) +  
       coord_fixed(ratio = 1) +
       scale_fill_gradient2(low = "white", mid=colhigh, high = colhigh, name=ptype, space="Lab") +
       labs(x="", y="") +
+      geom_polygon(aes(group=group), fill=NA, color="gray80", size=0.8) +
       theme_bw(base_size=14) + 
       theme(legend.position = c(.1, .25), legend.key = element_blank()) +
       blanktheme() +
       customize
   } else {
     ggplot(mapp, aes(long, lat)) + # make the plot
-      geom_polygon(aes(group=group), fill="white", color="gray80", size=0.8) +
       ggtitle(title) +
       geom_raster(data=middf, aes(long, lat, fill=log10(count)),alpha=1,hjust = 1, vjust = 1) +  
       coord_fixed(ratio = 1) +
-      scale_fill_gradient2(low = "white", mid=collow, high = colhigh, name=legname, alpha(.3),
-                           breaks = mybreaks, labels = myleg, space="Lab") +
+      scale_fill_gradient2(low = "white", mid=collow, high = colhigh, name=legname,                            breaks = mybreaks, labels = myleg, space="Lab") +
       labs(x="", y="") +
+      geom_polygon(aes(group=group), fill=NA, color="gray80", size=0.8) +
       theme_bw(base_size=14) + 
       theme(legend.position = c(.1, .25), legend.key = element_blank()) +
       blanktheme() +

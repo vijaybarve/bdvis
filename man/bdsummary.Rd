@@ -34,4 +34,3 @@ bdsummary(inat)
 Other Data preparation functions: \code{\link{fixstr}},
   \code{\link{getcellid}}, \code{\link{gettaxo}}
 }
-

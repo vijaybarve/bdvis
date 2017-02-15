@@ -64,4 +64,3 @@ mapgrid(inat,ptype="records", region="India")
 \seealso{
 Other Spatial visualizations: \code{\link{bdwebmap}}
 }
-

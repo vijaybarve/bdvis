@@ -1,7 +1,7 @@
 Package: bdvis
 Type: Package
 Title: Biodiversity Data Visualizations
-Version: 0.2.12
+Version: 0.2.13
 Date: 2017-02-14
 Author: Vijay Barve <vijay.barve@gmail.com>, Javier Otegui
     <javier.otegui@gmail.com>
@@ -25,4 +25,4 @@ Imports:
     leafletR
 Suggests:
     rinat
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1

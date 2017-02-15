@@ -37,4 +37,3 @@ inat = fixstr(inat, DateCollected = "Date.collected", datefmt = "\%Y-\%m-\%d \%H
 Other Data preparation functions: \code{\link{bdsummary}},
   \code{\link{getcellid}}, \code{\link{gettaxo}}
 }
-

@@ -32,4 +32,3 @@ access to such plots.
  distrigraph(inat,ptype="efforts",col="red",type="s")
 }
 }
-
