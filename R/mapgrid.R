@@ -34,7 +34,8 @@
 #'   used
 #' @param region Specific region(s) to map, like countries. Default is the whole
 #'   world map
-#' @param centigrid plot the map grids at 0.1 degree scale. Default is FALSE.
+#' @param gridscale plot the map grids at specific degree scale. Default is 1. 
+#'   Currently valid values are 1 and 0.1.
 #' @param customize additional customization string to customize the map output 
 #'   using ggplot2 parameters
 #' @examples \dontrun{
@@ -44,9 +45,16 @@
 #' @export
 mapgrid <- function(indf=NA, ptype="records",title = "", bbox=NA, 
                     legscale=0, collow="blue",colhigh="red", 
-                    mapdatabase = "world", region = ".", centigrid = FALSE,
+                    mapdatabase = "world", region = ".", gridscale = 1,
                     customize = NULL)
 {
+  centigrid = FALSE
+  if(gridscale==0.1){
+    centigrid =TRUE
+  }
+  if(!(gridscale==1 | gridscale==0.1)){
+    stop("Only values accepted currently are 1 or 0.1")
+  }
   names(indf)=gsub("\\.","_",names(indf))
   if(ptype!="complete"){
     indf=indf[which(!is.na(indf$Latitude)),]
@@ -141,7 +149,8 @@ mapgrid <- function(indf=NA, ptype="records",title = "", bbox=NA,
       ggtitle(title) +
       geom_raster(data=middf, aes(long, lat, fill=log10(count)),alpha=1,hjust = 1, vjust = 1) +  
       coord_fixed(ratio = 1) +
-      scale_fill_gradient2(low = "white", mid=collow, high = colhigh, name=legname,                            breaks = mybreaks, labels = myleg, space="Lab") +
+      scale_fill_gradient2(low = "white", mid=collow, high = colhigh, name=legname, alpha(.3),
+                           breaks = mybreaks, labels = myleg, space="Lab") +
       labs(x="", y="") +
       geom_polygon(aes(group=group), fill=NA, color="gray80", size=0.8) +
       theme_bw(base_size=14) + 

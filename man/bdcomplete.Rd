@@ -4,7 +4,7 @@
 \alias{bdcomplete}
 \title{Computes completeness values of the dataset}
 \usage{
-bdcomplete(indf, recs = 50, centigrid = FALSE)
+bdcomplete(indf, recs = 50, gridscale = 1)
 }
 \arguments{
 \item{indf}{input data frame containing biodiversity data set}
@@ -12,6 +12,9 @@ bdcomplete(indf, recs = 50, centigrid = FALSE)
 \item{recs}{minimum number of records per grid cell required to make the 
 calculations. Default is 50. If there are too few records, the function 
 throws an error.}
+
+\item{gridscale}{plot the map grids at specific degree scale. Default is 1. 
+Currently valid values are 1 and 0.1.}
 
 \item{centigrid}{Calculate completeness at 0.1 degree cells. Default FALSE.}
 }
