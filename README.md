@@ -63,6 +63,7 @@ bdsummary(inat)
 
 ```r 
 mapgrid(inat,ptype="records",bbox=c(60,100,5,40),region=c("India")) 
+mapgrid(inat,ptype="records",bbox=c(60,100,5,40),region=c("India"),gridscale=0.1) 
 ```
 
 #### tempolar 

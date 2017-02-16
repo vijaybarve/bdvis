@@ -15,8 +15,6 @@ throws an error.}
 
 \item{gridscale}{plot the map grids at specific degree scale. Default is 1. 
 Currently valid values are 1 and 0.1.}
-
-\item{centigrid}{Calculate completeness at 0.1 degree cells. Default FALSE.}
 }
 \value{
 data.frame with the columns \itemize{ \item{"Cell_id"}{ id of the cell}

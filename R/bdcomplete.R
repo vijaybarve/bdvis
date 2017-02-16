@@ -24,7 +24,6 @@
 #'  throws an error.
 #' @param gridscale plot the map grids at specific degree scale. Default is 1. 
 #'   Currently valid values are 1 and 0.1.
-#'@param centigrid Calculate completeness at 0.1 degree cells. Default FALSE.
 #'@return data.frame with the columns \itemize{ \item{"Cell_id"}{ id of the cell}
 #'  \item{"nrec"}{ Number of records in the cell} \item{"Sobs"}{ Number of Observed species} 
 #'  \item{"Sest"}{ Estimated number of species} \item{"c"}{ Completeness ratio the cell}
@@ -37,7 +36,6 @@
 #'@seealso \code{\link{getcellid}}
 #'@export
 bdcomplete <- function(indf,recs=50,gridscale=1){
-  
   centigrid = FALSE
   if(gridscale==0.1){
     centigrid =TRUE
