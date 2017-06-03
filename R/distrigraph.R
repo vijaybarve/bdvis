@@ -13,15 +13,18 @@
 #' @param indf input data frame containing biodiversity data set
 #' @param ptype Feature to represent. Accepted values are "species", "cell" and 
 #'   "efforts" (year)
+#' @param cumulative in combination with ptype as 'efforts', plots a cumulative 
+#'   records graph
 #' @param ... any additional parameters for the \code{\link{plot}} function.
 #' @examples \dontrun{
 #'  distrigraph(inat,ptype="cell",col="tomato")
 #'  distrigraph(inat,ptype="species",ylab="Species")
 #'  distrigraph(inat,ptype="efforts",col="red")
 #'  distrigraph(inat,ptype="efforts",col="red",type="s")
+#'  distrigraph(inat,ptype="efforts",col="red",cumulative=T)
 #' }
 #' @export
-distrigraph <- function(indf,ptype=NA,...){
+distrigraph <- function(indf,ptype=NA,cumulative=T,...){
   custgraph='col="red"'
   if(!is.na(ptype)){
     switch(ptype,
@@ -37,7 +40,12 @@ distrigraph <- function(indf,ptype=NA,...){
              Year_ = as.numeric(strftime(as.Date(indf$Date_collected,na.rm=T), format = "%Y"))
              indf=cbind(indf,Year_)
              mat=sqldf("select Year_, count(*) as Records from indf group by Year_ order by Year_")
-             plot(mat,main="Distribution of collection effforts over time",...)
+             if(!cumulative){
+               plot(mat,main="Distribution of collection effforts over time",...)
+             }else{
+               mat1 <- cbind(mat$Year_, cumsum(mat$Records))
+               plot(mat1,main="Accumulation of collection effforts over time",...)
+             }
            },
            stop("Not a valid option. See ?distrigraph for currently accepted values")
     )

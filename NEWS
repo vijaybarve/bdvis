@@ -1,3 +1,13 @@
+bdvis 0.2.16
+===============
+* function distrigraph has parameter cumulative for 'efforts' option
+
+
+bdvis 0.2.15
+===============
+* Improved documentation
+* function mapgrid has improved map layer arrangement
+
 bdvis 0.2.12
 ===============
 * function mapgrid has option to map at 0.1 degree grid cells 

@@ -4,13 +4,16 @@
 \alias{distrigraph}
 \title{Distribution graphs}
 \usage{
-distrigraph(indf, ptype = NA, ...)
+distrigraph(indf, ptype = NA, cumulative = T, ...)
 }
 \arguments{
 \item{indf}{input data frame containing biodiversity data set}
 
 \item{ptype}{Feature to represent. Accepted values are "species", "cell" and 
 "efforts" (year)}
+
+\item{cumulative}{in combination with ptype as 'efforts', plots a cumulative 
+records graph}
 
 \item{...}{any additional parameters for the \code{\link{plot}} function.}
 }
@@ -30,5 +33,6 @@ access to such plots.
  distrigraph(inat,ptype="species",ylab="Species")
  distrigraph(inat,ptype="efforts",col="red")
  distrigraph(inat,ptype="efforts",col="red",type="s")
+ distrigraph(inat,ptype="efforts",col="red",cumulative=T)
 }
 }
