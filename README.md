@@ -100,6 +100,8 @@ distrigraph(inat,ptype="cell",col="tomato")
 distrigraph(inat,ptype="species",ylab="Species") 
 distrigraph(inat,ptype="efforts",col="red") 
 distrigraph(inat,ptype="efforts",col="red",type="s") 
+distrigraph(inat,ptype="efforts",col="red",cumulative=T,type="l")
+distrigraph(inat,ptype="effortspecies",col="red",cumulative=T,type="l")
 ``` 
 
 #### bdcalendarheat

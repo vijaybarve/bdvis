@@ -1,6 +1,7 @@
-bdvis 0.2.16
+bdvis 0.2.17
 ===============
 * function distrigraph has parameter cumulative for 'efforts' option
+* function distrigraph has 'effortspecis' option in paramater ptype
 
 
 bdvis 0.2.15
