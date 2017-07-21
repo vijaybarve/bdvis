@@ -43,13 +43,15 @@
 #' @param quiet Optional. Don't show any logging message at all. Defaults to
 #'   FALSE.
 #' @param gettaxo optional. Call function \link{gettaxo} to build higher level 
-#'   taxanony. Defauls to FALSE.
+#'   taxanony. Defaults to FALSE.
 #' @param ... Optional. If none of the previous is present, the four key
 #'   arguments (\code{Latitude}, \code{Longitude},
 #'   \code{Date_collected}, \code{Scientific_name}) can be put here. See examples.
 #'
 #' @return The provided data frame, with field names changed to suite the functioning
 #' of further visulization functions.
+#'
+#'@family Data preparation functions
 #'
 #'@examples \dontrun{
 #' # Using the rgbif package and the source argument

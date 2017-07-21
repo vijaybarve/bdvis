@@ -1,6 +1,6 @@
 #' Distribution graphs
 #' 
-#' Build plots dispalying distribution of biodiversity records among 
+#' Build plots displaying distribution of biodiversity records among 
 #' user-defined features.
 #' 
 #' The main use of this function is to create record histograms according to

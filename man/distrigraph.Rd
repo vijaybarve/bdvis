@@ -17,7 +17,7 @@ distrigraph(indf, ptype = NA, cumulative = F, ...)
 \item{...}{any additional parameters for the \code{\link{plot}} function.}
 }
 \description{
-Build plots dispalying distribution of biodiversity records among 
+Build plots displaying distribution of biodiversity records among 
 user-defined features.
 }
 \details{

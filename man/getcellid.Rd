@@ -22,5 +22,6 @@ getcellid(inat)
 }
 \seealso{
 Other Data preparation functions: \code{\link{bdsummary}},
-  \code{\link{fixstr}}, \code{\link{gettaxo}}
+  \code{\link{fixstr}}, \code{\link{format_bdvis}},
+  \code{\link{gettaxo}}
 }

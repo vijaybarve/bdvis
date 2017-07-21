@@ -11,7 +11,7 @@
 #' maps apply a color gradient according to the number of records in the cell, 
 #' regardless of the number of species they represent. Species-density maps apply 
 #' a color gradient according to the number of different species in the cell, 
-#' regardless of how many records ther are for each one of those. Completeness 
+#' regardless of how many records there are for each one of those. Completeness 
 #' maps apply a color gradient according to the completeness index, from 0
 #' (incomplete) to 1 (complete).
 #' 
@@ -34,8 +34,7 @@
 #'   used
 #' @param region Specific region(s) to map, like countries. Default is the whole
 #'   world map
-#' @param gridscale plot the map grids at specific degree scale. Default is 1. 
-#'   Currently valid values are 1 and 0.1.
+#' @param centigrid plot the map grids at 0.1 degree scale. Default is FALSE.
 #' @param customize additional customization string to customize the map output 
 #'   using ggplot2 parameters
 #' @examples \dontrun{
@@ -54,6 +53,7 @@ mapgrid <- function(indf=NA, ptype="records",title = "", bbox=NA,
   }
   if(!(gridscale==1 | gridscale==0.1)){
     stop("Only values accepted currently are 1 or 0.1")
+    
   }
   names(indf)=gsub("\\.","_",names(indf))
   if(ptype!="complete"){
@@ -150,6 +150,7 @@ mapgrid <- function(indf=NA, ptype="records",title = "", bbox=NA,
       geom_raster(data=middf, aes(long, lat, fill=log10(count)),alpha=1,hjust = 1, vjust = 1) +  
       coord_fixed(ratio = 1) +
       scale_fill_gradient2(low = "white", mid=collow, high = colhigh, name=legname, alpha(.3),
+                           #    scale_fill_manual(values=alpha(c("white",collow, colhigh),.3), name=legname, 
                            breaks = mybreaks, labels = myleg, space="Lab") +
       labs(x="", y="") +
       geom_polygon(aes(group=group), fill=NA, color="gray80", size=0.8) +

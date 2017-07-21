@@ -32,11 +32,10 @@ used}
 \item{region}{Specific region(s) to map, like countries. Default is the whole
 world map}
 
-\item{gridscale}{plot the map grids at specific degree scale. Default is 1. 
-Currently valid values are 1 and 0.1.}
-
 \item{customize}{additional customization string to customize the map output 
 using ggplot2 parameters}
+
+\item{centigrid}{plot the map grids at 0.1 degree scale. Default is FALSE.}
 }
 \description{
 Customizable grid-based spatial representation of the coordinates of the 
@@ -51,7 +50,7 @@ paying attention to how many records or species are present. Record-density
 maps apply a color gradient according to the number of records in the cell, 
 regardless of the number of species they represent. Species-density maps apply 
 a color gradient according to the number of different species in the cell, 
-regardless of how many records ther are for each one of those. Completeness 
+regardless of how many records there are for each one of those. Completeness 
 maps apply a color gradient according to the completeness index, from 0
 (incomplete) to 1 (complete).
 

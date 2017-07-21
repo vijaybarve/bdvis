@@ -19,7 +19,7 @@ indf with added / updated columns \itemize{ \item{"Kingdom"}{Kingdom
  of the Scientific name} \item{"Phylum"}{Phylum of the Scientific name} 
  \item{"Order_"}{Order of the Scientific name} \item{"Family"}{Family of the 
  Scientific name} \item{"Genus"}{Genus of the Scientific name} } and also 
- saves a local copy of taxanomy downloaded for future use in taxo.bd sqlite 
+ saves a local copy of taxanomy downloaded for future use in taxo.db sqlite 
  file
 }
 \description{
@@ -39,5 +39,6 @@ inat=gettaxo(inat)
 }
 \seealso{
 Other Data preparation functions: \code{\link{bdsummary}},
-  \code{\link{fixstr}}, \code{\link{getcellid}}
+  \code{\link{fixstr}}, \code{\link{format_bdvis}},
+  \code{\link{getcellid}}
 }

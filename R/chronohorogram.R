@@ -1,7 +1,7 @@
 #'Draws a chronohorogram of records
 #'
 #'Draws a detailed temporal representation (also known as chronohorogram) of the
-#'dates in the provided data set. For more information on the chronhorogram, 
+#'dates in the provided data set. For more information on the chronohorogram, 
 #'please see the \code{References} section.
 #'
 #'@import sqldf
@@ -14,7 +14,7 @@
 #'@param colors Pair of colors to build color gradient, in the form of a
 #'  character vector. Default is blue (less) - red (more) gradient
 #'  \code{c("red", "blue")}
-#'@param ptsize point size atjustment factor. Dafault is 1
+#'@param ptsize point size adjustment factor. Default is 1
 #'@references Arino, A. H., & Otegui, J. (2008). Sampling biodiversity sampling.
 #'  In Proceedings of TDWG (pp. 77-78). Retrieved from 
 #'  http://www.tdwg.org/fileadmin/2008conference/documents/Proceedings2008.pdf#page=77

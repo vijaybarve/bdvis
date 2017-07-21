@@ -20,11 +20,11 @@ chronohorogram(indf = NA, title = "Chronohorogram", startyear = 1980,
 character vector. Default is blue (less) - red (more) gradient
 \code{c("red", "blue")}}
 
-\item{ptsize}{point size atjustment factor. Dafault is 1}
+\item{ptsize}{point size adjustment factor. Default is 1}
 }
 \description{
 Draws a detailed temporal representation (also known as chronohorogram) of the
-dates in the provided data set. For more information on the chronhorogram, 
+dates in the provided data set. For more information on the chronohorogram, 
 please see the \code{References} section.
 }
 \examples{

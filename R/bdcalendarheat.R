@@ -11,7 +11,7 @@
 #' @import sqldf
 #' @importFrom stats na.omit
 #' @param indf input data frame containing biodiversity data set
-#' @param title title custome title for the plot
+#' @param title title custom title for the plot
 #' @examples \dontrun{
 #' bdcalendarheat(inat)
 #' }

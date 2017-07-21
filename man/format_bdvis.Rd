@@ -25,7 +25,7 @@ be present (see details).}
 FALSE.}
 
 \item{gettaxo}{optional. Call function \link{gettaxo} to build higher level 
-taxanony. Defauls to FALSE.}
+taxanony. Defaults to FALSE.}
 
 \item{...}{Optional. If none of the previous is present, the four key
 arguments (\code{Latitude}, \code{Longitude},
@@ -90,4 +90,9 @@ if (requireNamespace("rinat", quietly=TRUE)) {
 }
 }
 
+}
+\seealso{
+Other Data preparation functions: \code{\link{bdsummary}},
+  \code{\link{fixstr}}, \code{\link{getcellid}},
+  \code{\link{gettaxo}}
 }

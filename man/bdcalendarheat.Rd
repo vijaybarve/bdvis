@@ -9,7 +9,7 @@ bdcalendarheat(indf = NA, title = NA)
 \arguments{
 \item{indf}{input data frame containing biodiversity data set}
 
-\item{title}{title custome title for the plot}
+\item{title}{title custom title for the plot}
 }
 \description{
 Produces a heat map {\url{https://en.wikipedia.org/wiki/Heat_map}}

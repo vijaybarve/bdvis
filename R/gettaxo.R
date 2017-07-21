@@ -20,7 +20,7 @@
 #'  of the Scientific name} \item{"Phylum"}{Phylum of the Scientific name} 
 #'  \item{"Order_"}{Order of the Scientific name} \item{"Family"}{Family of the 
 #'  Scientific name} \item{"Genus"}{Genus of the Scientific name} } and also 
-#'  saves a local copy of taxanomy downloaded for future use in taxo.bd sqlite 
+#'  saves a local copy of taxanomy downloaded for future use in taxo.db sqlite 
 #'  file
 #'@examples \dontrun{
 #'inat=gettaxo(inat)
