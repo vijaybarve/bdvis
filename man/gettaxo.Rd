@@ -4,7 +4,7 @@
 \alias{gettaxo}
 \title{Get higher taxonomy data}
 \usage{
-gettaxo(indf, genus = FALSE, verbose = FALSE)
+gettaxo(indf, genus = FALSE, verbose = FALSE, progress = TRUE)
 }
 \arguments{
 \item{indf}{input data frame containing biodiversity data set}
@@ -13,6 +13,8 @@ gettaxo(indf, genus = FALSE, verbose = FALSE)
 
 \item{verbose}{If TRUE, displays each name string for which the higher 
 taxonomy is sought}
+
+\item{progress}{If TRUE prints progress bar and messages on the consol.}
 }
 \value{
 indf with added / updated columns \itemize{ \item{"Kingdom"}{Kingdom 
@@ -34,7 +36,7 @@ are stored in a local sqlite database, taxo.db, for faster further access.
 }
 \examples{
 \dontrun{
-inat=gettaxo(inat)
+inat <- gettaxo(inat)
 }
 }
 \seealso{

@@ -1,3 +1,7 @@
+bdvis 0.2.19
+===============
+* function gettaxo has progress param to control progress bar output
+
 bdvis 0.2.17
 ===============
 * function distrigraph has parameter cumulative for 'efforts' option

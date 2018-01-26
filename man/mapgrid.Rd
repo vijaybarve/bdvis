@@ -32,10 +32,10 @@ used}
 \item{region}{Specific region(s) to map, like countries. Default is the whole
 world map}
 
+\item{gridscale}{plot the map grids at 0.1 degree scale. Default is FALSE.}
+
 \item{customize}{additional customization string to customize the map output 
 using ggplot2 parameters}
-
-\item{centigrid}{plot the map grids at 0.1 degree scale. Default is FALSE.}
 }
 \description{
 Customizable grid-based spatial representation of the coordinates of the 

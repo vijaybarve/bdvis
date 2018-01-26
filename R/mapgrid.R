@@ -34,7 +34,7 @@
 #'   used
 #' @param region Specific region(s) to map, like countries. Default is the whole
 #'   world map
-#' @param centigrid plot the map grids at 0.1 degree scale. Default is FALSE.
+#' @param gridscale plot the map grids at 0.1 degree scale. Default is FALSE.
 #' @param customize additional customization string to customize the map output 
 #'   using ggplot2 parameters
 #' @examples \dontrun{
