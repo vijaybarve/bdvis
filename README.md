@@ -4,37 +4,17 @@
 
 ## About 
 Biodiversity Data Visualizations using R. This package offers a set of
-functions to visualize biodiversity occurrence data through R. The development
-of the package started as a Google Summer of Code project. The detailed proposal
-is available on [this blog
-entry](http://vijaybarve.wordpress.com/2013/04/29/gsoc-proposal-2013-biodiversity-visualizations-using-r/).
+functions to visualize biodiversity occurrence data through R. Please check the 
+paper describing the package Barve, V., and J. Otegui. 2016. bdvis: visualizing biodiversity data in R. Bioinformatics:btw333.  https://academic.oup.com/bioinformatics/article/32/19/3049/2196391
 
-## Installation
-Install the latest version using `install_github` within Hadley's [devtools](https://github.com/hadley/devtools) package.
+The development of the package started as a Google Summer of Code project.
+
+### Installation
 
 ```r
-install.packages("devtools") 
-require(devtools)
-install_github("vijaybarve/bdvis") 
+install.packages("bdvis") 
 require(bdvis) 
 ```
-
-Note:
-
-Windows users have to first install
-[Rtools](https://cran.r-project.org/bin/windows/Rtools/).
-
-### Packages `bdvis` depends on 
-+ [maps] (http://cran.r-project.org/web/packages/maps/index.html) 
-+ [sqldf] (http://cran.r-project.org/web/packages/sqldf/index.html) 
-+ [plotrix] (http://cran.r-project.org/web/packages/plotrix/index.html) 
-+ [treemap] (http://cran.r-project.org/web/packages/treemap/index.html) 
-+ [plyr] (http://cran.r-project.org/web/packages/plyr/index.html) 
-+ [taxize] (http://cran.r-project.org/web/packages/taxize/index.html) 
-+ [ggplot2] (http://cran.r-project.org/web/packages/ggplot2/index.html) 
-+ [grid] (http://cran.r-project.org/web/packages/grid/) 
-+ [lattice] (http://cran.r-project.org/web/packages/lattice/) 
-+ [chron] (http://cran.r-project.org/web/packages/chron/)
 
 ### Packages `bdvis` suggests 
 (for the purpose of building examples) 
