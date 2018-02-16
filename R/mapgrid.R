@@ -20,6 +20,7 @@
 #' @import sqldf
 #' @import maps
 #' @import ggplot2
+#' @importFrom rgdal readOGR
 #' @param indf input data frame containing biodiversity data set
 #' @param ptype Type of map on the grid. Accepted values are "presence" for 
 #'   presence/absence maps, "records" for record-density map, "species" for 
@@ -34,6 +35,7 @@
 #'   used
 #' @param region Specific region(s) to map, like countries. Default is the whole
 #'   world map
+#' @param shp path to shapefile to load as basemap (default NA)
 #' @param gridscale plot the map grids at 0.1 degree scale. Default is FALSE.
 #' @param customize additional customization string to customize the map output 
 #'   using ggplot2 parameters
@@ -42,10 +44,11 @@
 #' }
 #' @family Spatial visualizations
 #' @export
-mapgrid <- function(indf=NA, ptype="records",title = "", bbox=NA, 
-                    legscale=0, collow="blue",colhigh="red", 
-                    mapdatabase = "world", region = ".", gridscale = 1,
-                    customize = NULL)
+mapgrid <- function(indf = NA, ptype="records",title = "", bbox = NA, 
+                     legscale=0, collow="blue",colhigh="red", 
+                     mapdatabase = "world", region = ".", 
+                     shp = NA, gridscale = 1,
+                     customize = NULL)
 {
   centigrid = FALSE
   if(gridscale==0.1){
@@ -131,6 +134,9 @@ mapgrid <- function(indf=NA, ptype="records",title = "", bbox=NA,
   }
   legname=paste(ptype,"\n    ",max(middf$count))
   mapp <- map_data(map=mapdatabase, region=region)
+  if(!is.na(shp)){
+    mapp <- rgdal::readOGR(shp)
+  }
   message(paste("Rendering map...plotting ", nrow(cts), " tiles", sep=""))
   if (ptype=="presence"){ 
     ggplot(mapp, aes(long, lat)) + # make the plot
@@ -150,7 +156,6 @@ mapgrid <- function(indf=NA, ptype="records",title = "", bbox=NA,
       geom_raster(data=middf, aes(long, lat, fill=log10(count)),alpha=1,hjust = 1, vjust = 1) +  
       coord_fixed(ratio = 1) +
       scale_fill_gradient2(low = "white", mid=collow, high = colhigh, name=legname, alpha(.3),
-                           #    scale_fill_manual(values=alpha(c("white",collow, colhigh),.3), name=legname, 
                            breaks = mybreaks, labels = myleg, space="Lab") +
       labs(x="", y="") +
       geom_polygon(aes(group=group), fill=NA, color="gray80", size=0.8) +
