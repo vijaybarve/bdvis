@@ -1,3 +1,7 @@
+bdvis 0.2.22
+===============
+* function run_gui provides a Graphical User Interface (GUI)
+
 bdvis 0.2.21
 ===============
 * function mapgrid can load a shapefile as basemap

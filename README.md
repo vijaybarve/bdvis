@@ -89,3 +89,11 @@ distrigraph(inat,ptype="effortspecies",col="red",cumulative=T,type="l")
 ```r 
 bdcalendarheat(inat) 
 ```
+
+#### run_gui
+
+If you are more comfortable with a Graphical User Interface (GUI), you can use this function.
+
+```r
+run_gui()
+```
