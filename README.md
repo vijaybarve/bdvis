@@ -7,7 +7,7 @@ Note: this is a fork of the original [repo](https://github.com/vijaybarve/bdvis)
 
 ```r
 devtools::install_github("boyanangelov/bdvis")
-require(bdvis)
+library(bdvis)
 ```
 
 ### Packages `bdvis` suggests
@@ -21,7 +21,7 @@ For the sake of examples, we will work with some data obtained using the package
 
 ```r
 install.packages("rinat")
-require(rinat)  # Data download might take some time
+library(rinat)  # Data download might take some time
 inat=get_inat_obs_project("reptileindia")
 inat=format_bdvis(inat,source='rinat')
 ```
