@@ -112,13 +112,6 @@ mapgrid <- function(indf = NA, ptype="records",title = "", bbox = NA,
     cts=cbind(cts,Lat,Long)
     names(cts)=c("Cell_id", "Centicell","ct", "Lat", "Long"  )
   }
-  if (ptype=="presence"){
-    mybreaks=seq(0:1)
-    myleg=seq(0:1)
-  } else{
-    mybreaks=seq(0:(ceiling(log10(max(cts$ct)))))
-    myleg=10^mybreaks
-  }
   middf <- data.frame(
     lat = cts$Lat,
     long = cts$Long,
@@ -156,7 +149,7 @@ mapgrid <- function(indf = NA, ptype="records",title = "", bbox = NA,
       geom_raster(data=middf, aes(long, lat, fill=log10(count)),alpha=1,hjust = 1, vjust = 1) +  
       coord_fixed(ratio = 1) +
       scale_fill_gradient2(low = "white", mid=collow, high = colhigh, name=legname, alpha(.3),
-                           breaks = mybreaks, labels = myleg, space="Lab") +
+                            space="Lab") +
       labs(x="", y="") +
       geom_polygon(aes(group=group), fill=NA, color="gray80", size=0.8) +
       theme_bw(base_size=14) + 

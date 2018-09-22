@@ -2,8 +2,8 @@ navbarPage("BDVis",
            tabPanel("Species Density Map",
                     sidebarLayout(
                       sidebarPanel(
-                        textInput("query", "Query", "Add query"),
-                        numericInput("limit", "Query imit", 100, min = 1, max = 10000),
+                        textInput("query", "Scientific species name", ""),
+                        numericInput("limit", "Maximum number of observations", 1000, min = 1, max = 10000),
                         actionButton("go", "Go")
                       ),
                       mainPanel(
