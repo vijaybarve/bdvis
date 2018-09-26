@@ -1,4 +1,4 @@
-bdvis 0.2.21
+bdvis 0.2.22
 ===============
 * function mapgrid can load a shapefile as basemap
 * function gettaxo has progress param to control progress bar output

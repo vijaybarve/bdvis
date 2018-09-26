@@ -27,3 +27,4 @@ cases, we recommend subsetting the dataset and making more than one map.
 \seealso{
 Other Spatial visualizations: \code{\link{mapgrid}}
 }
+\concept{Spatial visualizations}

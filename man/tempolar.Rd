@@ -52,3 +52,4 @@ Otegui, J., Arino, A. H., Encinas, M. A., & Pando, F. (2013).
 Other Temporal visualizations: \code{\link{bdcalendarheat}},
   \code{\link{chronohorogram}}
 }
+\concept{Temporal visualizations}

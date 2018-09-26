@@ -96,3 +96,4 @@ Other Data preparation functions: \code{\link{bdsummary}},
   \code{\link{fixstr}}, \code{\link{getcellid}},
   \code{\link{gettaxo}}
 }
+\concept{Data preparation functions}

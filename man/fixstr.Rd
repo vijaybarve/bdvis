@@ -38,3 +38,4 @@ Other Data preparation functions: \code{\link{bdsummary}},
   \code{\link{format_bdvis}}, \code{\link{getcellid}},
   \code{\link{gettaxo}}
 }
+\concept{Data preparation functions}

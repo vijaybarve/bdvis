@@ -41,3 +41,4 @@ Arino, A. H., & Otegui, J. (2008). Sampling biodiversity sampling.
 Other Temporal visualizations: \code{\link{bdcalendarheat}},
   \code{\link{tempolar}}
 }
+\concept{Temporal visualizations}
