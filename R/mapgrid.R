@@ -22,6 +22,7 @@
 #' @import ggplot2
 #' @importFrom rgdal readOGR
 #' @param indf input data frame containing biodiversity data set
+#' @param comp Completeness matrix generate by function \code{\link{bdcomplete}}
 #' @param ptype Type of map on the grid. Accepted values are "presence" for 
 #'   presence/absence maps, "records" for record-density map, "species" for 
 #'   species-density map and "complete" for completeness map
@@ -36,7 +37,8 @@
 #' @param region Specific region(s) to map, like countries. Default is the whole
 #'   world map
 #' @param shp path to shapefile to load as basemap (default NA)
-#' @param gridscale plot the map grids at 0.1 degree scale. Default is FALSE.
+#' @param gridscale plot the map grids at scale specified. Scale needs to 
+#'   specified in decimal degrees. Default is 1 degree which is approximately 100km.
 #' @param customize additional customization string to customize the map output 
 #'   using ggplot2 parameters
 #' @examples \dontrun{
@@ -44,80 +46,49 @@
 #' }
 #' @family Spatial visualizations
 #' @export
-mapgrid <- function(indf = NA, ptype="records",title = "", bbox = NA, 
-                     legscale=0, collow="blue",colhigh="red", 
-                     mapdatabase = "world", region = ".", 
-                     shp = NA, gridscale = 1,
-                     customize = NULL)
+mapgrid <- function(indf = NA, comp = NULL, ptype="records",title = "", bbox = NA, 
+                    legscale=0, collow="blue",colhigh="red", 
+                    mapdatabase = "world", region = ".", 
+                    shp = NA, gridscale = 1,
+                    customize = NULL)
 {
-  centigrid = FALSE
-  if(gridscale==0.1){
-    centigrid =TRUE
-  }
-  if(!(gridscale==1 | gridscale==0.1)){
-    stop("Only values accepted currently are 1 or 0.1")
-    
-  }
-  names(indf)=gsub("\\.","_",names(indf))
+  names(indf) <- gsub("\\.","_",names(indf))
   if(ptype!="complete"){
-    indf=indf[which(!is.na(indf$Latitude)),]
-    indf=indf[which(!is.na(indf$Longitude)),]
+    indf <- indf[which(!is.na(indf$Latitude)),]
+    indf <- indf[which(!is.na(indf$Longitude)),]
+    indf <- getcellid(indf,gridscale)
+  } else {
+    if(is.null(comp)){
+      stop("Please provide completeness matrix compnted using functions bdcomplete")
+    }
   }
   if (ptype=="species"){
-    if (!centigrid){
-      sps=sqldf("select Scientific_name, cell_id from indf group by cell_id, Scientific_name")
-      cts=sqldf("select cell_id, count(*) from sps group by cell_id")
-    } else {
-      sps=sqldf("select Scientific_name, cell_id, Centi_cell_id from indf group by cell_id, Centi_cell_id, Scientific_name")
-      cts=sqldf("select cell_id, Centi_cell_id, count(*) from sps group by cell_id, Centi_cell_id")
-    }
+    sps <- sqldf("select Scientific_name, cust_cell_id from indf group by cust_cell_id, Scientific_name")
+    cts <- sqldf("select cust_cell_id, count(*) from sps group by cust_cell_id")
   }
   if (ptype=="records"){
-    if (!centigrid){
-      cts=sqldf("select cell_id, count(*) from indf group by cell_id")
-    } else {
-      cts=sqldf("select cell_id, Centi_cell_id, count(*) from indf group by cell_id, Centi_cell_id")
-    }
+    cts <- sqldf("select cust_cell_id, count(*) from indf group by cust_cell_id")
   }  
   if (ptype=="presence"){
-    if (!centigrid){
-      cts1=sqldf("select cell_id, count(*) as ct1 from indf group by cell_id")
-      cts=sqldf("select cell_id, 1 as ct from cts1 where ct1 <> 0")
-    } else {
-      cts1=sqldf("select cell_id, Centi_cell_id, count(*) as ct1 from indf group by cell_id, Centi_cell_id")
-      cts=sqldf("select cell_id, Centi_cell_id, 1 as ct from cts1 where ct1 <> 0")
-    }
+    cts1 <- sqldf("select cust_cell_id, count(*) as ct1 from indf group by cust_cell_id")
+    cts <- sqldf("select cust_cell_id, 1 as ct from cts1 where ct1 <> 0")
   }
   if (ptype=="complete"){
-    if (!centigrid){
-      cts=sqldf("select Cell_id,(c ) as ct from indf")
-    } else {
-      cts=sqldf("select Cell_id,Centi_cell_id, (c) as ct from indf")
-    }
+    cts <- sqldf("select Cell_id,(c) as ct from comp")
+    names(cts) <- c("cust_cell_id","ct")
   }  
-  if (!is.na(bbox[1])){
-    clist=as.data.frame(cellid_bbox(bbox=bbox))
-    cts1=sqldf("select * from cts where cell_id in (select * from clist)")
-    cts = cts1[2:dim(cts1)[1],]
-  }
-  lat=long=group=NULL
-  if (!centigrid){
-    Lat= -90 + (cts$Cell_id %/% 360) 
-    Long= -180 + (cts$Cell_id %% 360)
-    cts=cbind(cts,Lat,Long)
-    names(cts)=c("Cell_id","ct", "Lat", "Long"  )
-  } else {
-    Lat= -90 + (cts$Cell_id %/% 360) +  (cts$Centi_cell_id %/% 10) * 0.1 
-    Long= -180 + (cts$Cell_id %% 360) + (cts$Centi_cell_id %% 10) * 0.1
-    cts=cbind(cts,Lat,Long)
-    names(cts)=c("Cell_id", "Centicell","ct", "Lat", "Long"  )
-  }
+  lat <- long <- group <- NULL
+  lat_cell_no <- (max(indf$Latitude) - min(indf$Latitude)) %/% gridscale
+  Lat <- min(indf$Latitude) + (cts$cust_cell_id  %/% lat_cell_no) * gridscale
+  Long <- min(indf$Longitude) + (cts$cust_cell_id %% lat_cell_no) * gridscale
+  cts <- cbind(cts,Lat,Long)
+  names(cts) <- c("Cell_id","ct", "Lat", "Long"  )  
   if (ptype=="presence"){
-    mybreaks=seq(0:1)
-    myleg=seq(0:1)
+    mybreaks <- seq(0:1)
+    myleg <- seq(0:1)
   } else{
-    mybreaks=seq(0:(ceiling(log10(max(cts$ct)))))
-    myleg=10^mybreaks
+    mybreaks <- seq(0:(ceiling(log10(max(cts$ct)))))
+    myleg <- 10^mybreaks
   }
   middf <- data.frame(
     lat = cts$Lat,
@@ -130,9 +101,9 @@ mapgrid <- function(indf = NA, ptype="records",title = "", bbox = NA,
       long = 0,
       count = legscale
     )
-    middf=rbind(middf,legent)
+    middf <- rbind(middf,legent)
   }
-  legname=paste(ptype,"\n    ",max(middf$count))
+  legname <- paste(ptype,"\n    ",max(middf$count))
   mapp <- map_data(map=mapdatabase, region=region)
   if(!is.na(shp)){
     mapp <- rgdal::readOGR(shp)
@@ -179,7 +150,7 @@ blanktheme <- function(){
         panel.grid.major=element_blank(),
         panel.grid.minor=element_blank(),
         plot.background=element_blank(),
-        plot.margin = rep(unit(0,"null"),4))
+        plot.margin=rep(unit(0,"null"),4))
 }
 
 cellid_bbox <- function(bbox=c(-90,90,-180,180)){
@@ -187,7 +158,7 @@ cellid_bbox <- function(bbox=c(-90,90,-180,180)){
   for (Longitude in bbox[1]:bbox[2]){
     for (Latitude in bbox[3]:bbox[4]){
       Cell_id <- (((Latitude %/% 1) + 90) * 360) + ((Longitude %/% 1) + 180)
-      retvect=rbind(retvect,Cell_id)
+      retvect <- rbind(retvect,Cell_id)
     }
   }
   return(as.vector(retvect))

@@ -13,14 +13,12 @@ bdcomplete(indf, recs = 50, gridscale = 1)
 calculations. Default is 50. If there are too few records, the function 
 throws an error.}
 
-\item{gridscale}{plot the map grids at specific degree scale. Default is 1. 
-Currently valid values are 1 and 0.1.}
+\item{gridscale}{plot the map grids at specific degree scale. Default is 1.}
 }
 \value{
 data.frame with the columns \itemize{ \item{"Cell_id"}{ id of the cell}
  \item{"nrec"}{ Number of records in the cell} \item{"Sobs"}{ Number of Observed species} 
  \item{"Sest"}{ Estimated number of species} \item{"c"}{ Completeness ratio the cell}
- \item {"Centi_cell_id"}{ Cell ids for 0.1 degree cells} 
  
  Plots a graph of Number of species vs completeness }
 }

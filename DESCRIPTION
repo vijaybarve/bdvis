@@ -1,10 +1,13 @@
 Package: bdvis
 Type: Package
 Title: Biodiversity Data Visualizations
-Version: 0.2.22
-Date: 2018-09-26
-Author: Vijay Barve <vijay.barve@gmail.com>, Javier Otegui
-    <javier.otegui@gmail.com>
+Version: 0.2.23
+Date: 2018-09-27
+Authors@R: c(
+  person("Vijay","Barve", ,"vijay.barve@gmail.com",role=c("aut","cre"),
+    comment = c(ORCID = "")),
+  person("Javier", "Otegui", ,"javier.otegui@gmail.com",role=c("aut"),
+    comment = c(ORCID = "0000-0002-8997-3559")))
 Maintainer: Vijay Barve <vijay.barve@gmail.com>
 Description: Provides a set of functions to create basic visualizations to quickly
     preview different aspects of biodiversity information such as inventory 
@@ -26,4 +29,5 @@ Imports:
     rgdal
 Suggests:
     rinat
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1
+BugReports: https://github.com/vijaybarve/bdvis/issues

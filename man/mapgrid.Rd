@@ -4,13 +4,15 @@
 \alias{mapgrid}
 \title{Maps the data points on the map in grid format}
 \usage{
-mapgrid(indf = NA, ptype = "records", title = "", bbox = NA,
-  legscale = 0, collow = "blue", colhigh = "red",
+mapgrid(indf = NA, comp = NA, ptype = "records", title = "",
+  bbox = NA, legscale = 0, collow = "blue", colhigh = "red",
   mapdatabase = "world", region = ".", shp = NA, gridscale = 1,
   customize = NULL)
 }
 \arguments{
 \item{indf}{input data frame containing biodiversity data set}
+
+\item{comp}{Completeness matrix generate by function \code{\link{bdcomplete}}}
 
 \item{ptype}{Type of map on the grid. Accepted values are "presence" for 
 presence/absence maps, "records" for record-density map, "species" for 
@@ -35,7 +37,8 @@ world map}
 
 \item{shp}{path to shapefile to load as basemap (default NA)}
 
-\item{gridscale}{plot the map grids at 0.1 degree scale. Default is FALSE.}
+\item{gridscale}{plot the map grids at scale specified. Scale needs to 
+specified in decimal degrees. Default is 1 degree which is approximately 100km.}
 
 \item{customize}{additional customization string to customize the map output 
 using ggplot2 parameters}
