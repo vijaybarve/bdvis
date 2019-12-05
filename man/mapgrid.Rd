@@ -4,7 +4,7 @@
 \alias{mapgrid}
 \title{Maps the data points on the map in grid format}
 \usage{
-mapgrid(indf = NA, comp = NA, ptype = "records", title = "",
+mapgrid(indf = NA, comp = NULL, ptype = "records", title = "",
   bbox = NA, legscale = 0, collow = "blue", colhigh = "red",
   mapdatabase = "world", region = ".", shp = NA, gridscale = 1,
   customize = NULL)

@@ -1,11 +1,11 @@
 Package: bdvis
 Type: Package
 Title: Biodiversity Data Visualizations
-Version: 0.2.23
-Date: 2018-09-27
+Version: 0.2.24
+Date: 2019-12-05
 Authors@R: c(
   person("Vijay","Barve", ,"vijay.barve@gmail.com",role=c("aut","cre"),
-    comment = c(ORCID = "")),
+    comment = c(ORCID = "0000-0002-4852-2567")),
   person("Javier", "Otegui", ,"javier.otegui@gmail.com",role=c("aut"),
     comment = c(ORCID = "0000-0002-8997-3559")))
 Maintainer: Vijay Barve <vijay.barve@gmail.com>

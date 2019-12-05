@@ -169,7 +169,7 @@ bd_get_source <- function(source) {
     rinat=list(
       Latitude="Latitude",
       Longitude="Longitude",
-      Date_collected="Observed.on",
+      Date_collected="date.observed",
       Scientific_name="Scientific.name"
     )
   )
