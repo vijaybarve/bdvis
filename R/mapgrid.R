@@ -112,7 +112,7 @@ mapgrid <- function(indf = NA, comp = NULL, ptype="records",title = "", bbox = N
   if (ptype=="presence"){ 
     ggplot(mapp, aes(long, lat)) + # make the plot
       ggtitle(title) +
-      geom_raster(data=middf, aes(long, lat, fill=(count)),hjust = 1, vjust = 1) +  
+      geom_tile(data=middf, aes(long, lat, fill=(count))) +  
       coord_fixed(ratio = 1) +
       scale_fill_gradient2(low = "white", mid=colhigh, high = colhigh, name=ptype, space="Lab") +
       labs(x="", y="") +
@@ -124,7 +124,7 @@ mapgrid <- function(indf = NA, comp = NULL, ptype="records",title = "", bbox = N
   } else {
     ggplot(mapp, aes(long, lat)) + # make the plot
       ggtitle(title) +
-      geom_raster(data=middf, aes(long, lat, fill=log10(count)),alpha=1,hjust = 1, vjust = 1) +  
+      geom_tile(data=middf, aes(long, lat, fill=log10(count)),alpha=1) +  
       coord_fixed(ratio = 1) +
       scale_fill_gradient2(low = "white", mid=collow, high = colhigh, name=legname, alpha(.3),
                            breaks = mybreaks, labels = myleg, space="Lab") +
