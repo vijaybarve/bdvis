@@ -1,5 +1,8 @@
 #'Get higher taxonomy data
 #'
+#'This function is slated to deprecate in next version. Please use function
+#' taxotools::list_higher_taxo instead.
+#'
 #'Retrieve higher taxonomy information (like Family and Order) for each record 
 #'from the "Encyclopedia of Life" web API.
 #'
@@ -29,6 +32,7 @@
 #'@family Data preparation functions
 #'@export
 gettaxo <- function(indf,genus=FALSE,verbose=FALSE,progress=TRUE){
+  .Deprecated("taxotools::list_higher_taxo")
   names(indf)[names(indf)=="Order_"]<-"Order"
   indfu <- sqldf("select Scientific_name from indf group by Scientific_name order by Scientific_name")
   if(file.exists("taxo.db")){

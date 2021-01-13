@@ -25,10 +25,13 @@ indf with added / updated columns \itemize{ \item{"Kingdom"}{Kingdom
  file
 }
 \description{
-Retrieve higher taxonomy information (like Family and Order) for each record 
-from the "Encyclopedia of Life" web API.
+This function is slated to deprecate in next version. Please use function
+taxotools::list_higher_taxo instead.
 }
 \details{
+Retrieve higher taxonomy information (like Family and Order) for each record 
+from the "Encyclopedia of Life" web API.
+
 This function makes use of certain functions in the \code{\link{taxize}}
 package. It scans and retrieves the taxonomic hierarchy for each scientific
 name (or just genus name) in the data set. When new data are retrieved, they
