@@ -4,8 +4,14 @@
 \alias{format_bdvis}
 \title{Prepare data frame for flagging functions}
 \usage{
-format_bdvis(indf, source = NULL, config = NULL, quiet = FALSE,
-  gettaxo = F, ...)
+format_bdvis(
+  indf,
+  source = NULL,
+  config = NULL,
+  quiet = FALSE,
+  gettaxo = F,
+  ...
+)
 }
 \arguments{
 \item{indf}{Required. The data.frame on which to operate.}
@@ -75,25 +81,26 @@ if (requireNamespace("rinat", quietly=TRUE)) {
  d <- format_bdvis(d, source="rinat")
 
  # Using a configuration object, matches 'rinat' schema
- conf <- list(Latitude="latitude",
-              Longitude="longitude",
-              Date_collected="Observed.on",
-              Scientific_name="Scientific.name")
+ conf <- list(Latitude <- "latitude",
+              Longitude <- "longitude",
+              Date_collected <- "Observed.on",
+              Scientific_name <- "Scientific.name")
  d <- format_bdvis(d, config=conf)
 
  # Passing individual parameters, all optional
  d <- format_bdvis(d,
-                Latitude="lat",
-                Longitude="lng",
-                Date_collected="ObservedOn",
-                Scientific_name="sciname")
+                Latitude <- "lat",
+                Longitude <- "lng",
+                Date_collected <- "ObservedOn",
+                Scientific_name <- "sciname")
 }
 }
 
 }
 \seealso{
-Other Data preparation functions: \code{\link{bdsummary}},
-  \code{\link{fixstr}}, \code{\link{getcellid}},
-  \code{\link{gettaxo}}
+Other Data preparation functions: 
+\code{\link{bdsummary}()},
+\code{\link{getcellid}()},
+\code{\link{gettaxo}()}
 }
 \concept{Data preparation functions}

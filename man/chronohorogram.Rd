@@ -4,8 +4,14 @@
 \alias{chronohorogram}
 \title{Draws a chronohorogram of records}
 \usage{
-chronohorogram(indf = NA, title = "Chronohorogram", startyear = 1980,
-  endyear = NA, colors = c("red", "blue"), ptsize = 1)
+chronohorogram(
+  indf = NA,
+  title = "Chronohorogram",
+  startyear = 1980,
+  endyear = NA,
+  colors = c("red", "blue"),
+  ptsize = 1
+)
 }
 \arguments{
 \item{indf}{input data frame containing biodiversity data set}
@@ -38,7 +44,8 @@ Arino, A. H., & Otegui, J. (2008). Sampling biodiversity sampling.
  http://www.tdwg.org/fileadmin/2008conference/documents/Proceedings2008.pdf#page=77
 }
 \seealso{
-Other Temporal visualizations: \code{\link{bdcalendarheat}},
-  \code{\link{tempolar}}
+Other Temporal visualizations: 
+\code{\link{bdcalendarheat}()},
+\code{\link{tempolar}()}
 }
 \concept{Temporal visualizations}

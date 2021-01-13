@@ -3,7 +3,6 @@
 \docType{package}
 \name{bdvis}
 \alias{bdvis}
-\alias{bdvis-package}
 \title{bdvis: Biodiversity Data Visualizations}
 \description{
 Biodiversity data visualizations using R would be helpful to understand 
@@ -14,7 +13,6 @@ and temporal coverage, gaps and biases in data.
 
 \itemize{  
 \item \link{bdsummary}
-\item \link{fixstr} Deprecated 
 \item \link{format_bdvis}
 \item \link{getcellid}
 \item \link{gettaxo}

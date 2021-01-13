@@ -40,8 +40,9 @@ inat <- gettaxo(inat)
 }
 }
 \seealso{
-Other Data preparation functions: \code{\link{bdsummary}},
-  \code{\link{fixstr}}, \code{\link{format_bdvis}},
-  \code{\link{getcellid}}
+Other Data preparation functions: 
+\code{\link{bdsummary}()},
+\code{\link{format_bdvis}()},
+\code{\link{getcellid}()}
 }
 \concept{Data preparation functions}

@@ -60,18 +60,18 @@
 #'  d <- format_bdvis(d, source="rinat")
 #'
 #'  # Using a configuration object, matches 'rinat' schema
-#'  conf <- list(Latitude="latitude",
-#'               Longitude="longitude",
-#'               Date_collected="Observed.on",
-#'               Scientific_name="Scientific.name")
+#'  conf <- list(Latitude <- "latitude",
+#'               Longitude <- "longitude",
+#'               Date_collected <- "Observed.on",
+#'               Scientific_name <- "Scientific.name")
 #'  d <- format_bdvis(d, config=conf)
 #'
 #'  # Passing individual parameters, all optional
 #'  d <- format_bdvis(d,
-#'                 Latitude="lat",
-#'                 Longitude="lng",
-#'                 Date_collected="ObservedOn",
-#'                 Scientific_name="sciname")
+#'                 Latitude <- "lat",
+#'                 Longitude <- "lng",
+#'                 Date_collected <- "ObservedOn",
+#'                 Scientific_name <- "sciname")
 #' }
 #'}
 #'
@@ -85,15 +85,15 @@ format_bdvis <- function(indf, source=NULL, config=NULL, quiet=FALSE, gettaxo=F,
   if (!(is.null(source))) {
     match.arg(source, sources_list)
     if (!(quiet)) message(c("Mapping according to ", source, " format"))
-    new_fields = bd_get_source(source)
+    new_fields <- bd_get_source(source)
     # Mapping via 'config'
   } else if (!(is.null(config))) {
     if (!(quiet)) message("Mapping according to config object")
-    new_fields = bd_parse_config(config)
+    new_fields <- bd_parse_config(config)
     # Mapping via individual parameters
   } else {
     if (!(quiet)) message("Mapping via individual parameters")
-    new_fields = bd_parse_args(list(...))
+    new_fields <- bd_parse_args(list(...))
   }
   # Apply the transformation
   if (!(is.null(new_fields$Latitude)) && new_fields$Latitude != "Latitude") {
@@ -136,11 +136,11 @@ format_bdvis <- function(indf, source=NULL, config=NULL, quiet=FALSE, gettaxo=F,
       if (!(quiet)) message(c("Changed \"",new_fields$Scientific_name,"\" to \"Scientific_name\""))
     }
   }
-  indf$Latitude=as.numeric(indf$Latitude)
-  indf$Longitude=as.numeric(indf$Longitude)
-  indf=getcellid(indf)
+  indf$Latitude <- as.numeric(indf$Latitude)
+  indf$Longitude <- as.numeric(indf$Longitude)
+  indf <- getcellid(indf)
   if(gettaxo){
-    indf=gettaxo(indf)
+    indf <- gettaxo(indf)
   }
   
   indf
@@ -154,23 +154,23 @@ sources_list <- c(
 
 bd_get_source <- function(source) {
   bd_sources <- list(
-    rgbif=list(
-      Latitude="decimalLatitude",
-      Longitude="decimalLongitude",
-      Date_collected="eventDate",
-      Scientific_name="name"
+    rgbif = list(
+      Latitude = "decimalLatitude",
+      Longitude = "decimalLongitude",
+      Date_collected = "eventDate",
+      Scientific_name = "name"
     ),
-    rvertnet=list(
-      Latitude="decimallatitude",
-      Longitude="decimallongitude",
-      Date_collected="eventdate",
-      Scientific_name="scientificname"
+    rvertnet = list(
+      Latitude = "decimallatitude",
+      Longitude = "decimallongitude",
+      Date_collected = "eventdate",
+      Scientific_name = "scientificname"
     ),
-    rinat=list(
-      Latitude="Latitude",
-      Longitude="Longitude",
-      Date_collected="date.observed",
-      Scientific_name="Scientific.name"
+    rinat = list(
+      Latitude = "latitude",
+      Longitude = "longitude",
+      Date_collected = "observed_on",
+      Scientific_name = "taxon.name"
     )
   )
   return(bd_sources[[source]])
@@ -185,26 +185,26 @@ bd_parse_config <- function(config){
 }
 
 bd_parse_args <- function(args) {
-  bd_args = list()
+  bd_args <- list()
   if ("Latitude" %in% names(args)) {
-    bd_args$Latitude=args$Latitude
+    bd_args$Latitude <- args$Latitude
   } else {
-    bd_args$Latitude=NULL
+    bd_args$Latitude <- NULL
   }
   if ("Longitude" %in% names(args)) {
-    bd_args$Longitude=args$Longitude
+    bd_args$Longitude <- args$Longitude
   } else {
-    bd_args$Longitude=NULL
+    bd_args$Longitude <- NULL
   }
   if ("Date_collected" %in% names(args)) {
-    bd_args$Date_collected=args$Date_collected
+    bd_args$Date_collected <- args$Date_collected
   } else {
-    bd_args$Date_collected=NULL
+    bd_args$Date_collected <- NULL
   }
   if ("Scientific_name" %in% names(args)) {
-    bd_args$Scientific_name=args$Scientific_name
+    bd_args$Scientific_name <- args$Scientific_name
   } else {
-    bd_args$Scientific_name=NULL
+    bd_args$Scientific_name <- NULL
   }
   return(bd_args)
 }

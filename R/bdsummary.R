@@ -26,8 +26,9 @@ bdsummary <- function(indf){
     cat("No data in dataset \n")
     return()
   }
-  cellcover=sqldf("select count(*) from (select * from indf group by cell_id)")
-  names(indf)=gsub("\\.","_",names(indf))
+  cellcover <- length(unique(indf$Cell_id))
+  # cellcover=sqldf("select count(*) from (select * from indf group by cell_id)")
+  names(indf) <- gsub("\\.","_",names(indf))
   cat(paste("\n Total no of records =",dim(indf)[1],"\n"))
   cat(paste("\n Temporal coverage... \n"))
   if("Date_collected" %in% colnames(indf)){
@@ -43,10 +44,10 @@ bdsummary <- function(indf){
   cat(paste(" Bounding box of records ",min(indf$Latitude,na.rm=T),",",min(indf$Longitude,na.rm=T),
             " - ",max(indf$Latitude,na.rm=T),",",max(indf$Longitude,na.rm=T),"\n"))
   if (!("cell_id" %in% colnames(indf))){
-    indf=getcellid(indf)
+    indf <- getcellid(indf)
   }
   cat(paste(" Degree celles covered : ",cellcover,"\n"))
-  latrng=ceiling(max(indf$Latitude,na.rm=T))-ceiling(min(indf$Latitude,na.rm=T))
-  longrng=ceiling(max(indf$Longitude,na.rm=T))-ceiling(min(indf$Longitude,na.rm=T))
+  latrng <- ceiling(max(indf$Latitude,na.rm=T))-ceiling(min(indf$Latitude,na.rm=T))
+  longrng <- ceiling(max(indf$Longitude,na.rm=T))-ceiling(min(indf$Longitude,na.rm=T))
   cat(paste(" % degree cells covered : ",(cellcover/(latrng * longrng))*100,"\n"))
 }

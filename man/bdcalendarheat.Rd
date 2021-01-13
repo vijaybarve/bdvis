@@ -27,7 +27,8 @@ bdcalendarheat(inat)
 }
 }
 \seealso{
-Other Temporal visualizations: \code{\link{chronohorogram}},
-  \code{\link{tempolar}}
+Other Temporal visualizations: 
+\code{\link{chronohorogram}()},
+\code{\link{tempolar}()}
 }
 \concept{Temporal visualizations}

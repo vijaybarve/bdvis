@@ -4,10 +4,21 @@
 \alias{mapgrid}
 \title{Maps the data points on the map in grid format}
 \usage{
-mapgrid(indf = NA, comp = NULL, ptype = "records", title = "",
-  bbox = NA, legscale = 0, collow = "blue", colhigh = "red",
-  mapdatabase = "world", region = ".", shp = NA, gridscale = 1,
-  customize = NULL)
+mapgrid(
+  indf = NA,
+  comp = NULL,
+  ptype = "records",
+  title = "",
+  bbox = NA,
+  legscale = 0,
+  collow = "blue",
+  colhigh = "red",
+  mapdatabase = "world",
+  region = ".",
+  shp = NA,
+  gridscale = 1,
+  customize = NULL
+)
 }
 \arguments{
 \item{indf}{input data frame containing biodiversity data set}
@@ -68,6 +79,7 @@ mapgrid(inat,ptype="records", region="India")
 }
 }
 \seealso{
-Other Spatial visualizations: \code{\link{bdwebmap}}
+Other Spatial visualizations: 
+\code{\link{bdwebmap}()}
 }
 \concept{Spatial visualizations}

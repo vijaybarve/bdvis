@@ -4,8 +4,14 @@
 \alias{tempolar}
 \title{Polar plot of temporal data}
 \usage{
-tempolar(indf = NA, timescale = NA, title = NA, color = NA,
-  plottype = NA, avg = FALSE)
+tempolar(
+  indf = NA,
+  timescale = NA,
+  title = NA,
+  color = NA,
+  plottype = NA,
+  avg = FALSE
+)
 }
 \arguments{
 \item{indf}{input data frame containing biodiversity data set}
@@ -49,7 +55,8 @@ Otegui, J., Arino, A. H., Encinas, M. A., & Pando, F. (2013).
   doi:10.1371/journal.pone.0055144
 }
 \seealso{
-Other Temporal visualizations: \code{\link{bdcalendarheat}},
-  \code{\link{chronohorogram}}
+Other Temporal visualizations: 
+\code{\link{bdcalendarheat}()},
+\code{\link{chronohorogram}()}
 }
 \concept{Temporal visualizations}

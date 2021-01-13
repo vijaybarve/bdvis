@@ -9,7 +9,7 @@ getcellid(indf, gridscale = 0)
 \arguments{
 \item{indf}{input data frame containing biodiversity data set}
 
-\item{gridscale}{generate custome grid scale column for mapping. Default is 0.}
+\item{gridscale}{generate custom grid scale column for mapping. Default is 0.}
 }
 \description{
 Calculate and assign a GBIF-style degree cell id and centi-degree (0.1 
@@ -24,8 +24,9 @@ getcellid(inat)
 }
 }
 \seealso{
-Other Data preparation functions: \code{\link{bdsummary}},
-  \code{\link{fixstr}}, \code{\link{format_bdvis}},
-  \code{\link{gettaxo}}
+Other Data preparation functions: 
+\code{\link{bdsummary}()},
+\code{\link{format_bdvis}()},
+\code{\link{gettaxo}()}
 }
 \concept{Data preparation functions}

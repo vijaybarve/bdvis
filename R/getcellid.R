@@ -7,7 +7,7 @@
 #'\code{\link{mapgrid}}
 #'
 #'@param indf input data frame containing biodiversity data set
-#'@param gridscale generate custome grid scale column for mapping. Default is 0.
+#'@param gridscale generate custom grid scale column for mapping. Default is 0.
 #'@export
 #'@family Data preparation functions
 #'@examples \dontrun{
@@ -16,7 +16,8 @@
 getcellid <- function (indf,gridscale=0){
   indf$Latitude <- as.numeric(indf$Latitude)
   indf$Longitude <- as.numeric(indf$Longitude)
-  indf$Cell_id <- (((indf$Latitude %/% 1) + 90) * 360) + ((indf$Longitude %/% 1) + 180)
+  indf$Cell_id <- (((indf$Latitude %/% 1) + 90) * 360) 
+  + ((indf$Longitude %/% 1) + 180)
   indf$Centi_cell_id <- ((((indf$Latitude %% 1) * 10) %/% 1 ) * 10) 
   + (((indf$Longitude %% 1) * 10) %/% 1)
   if(gridscale!=0){

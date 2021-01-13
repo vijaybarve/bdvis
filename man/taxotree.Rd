@@ -4,8 +4,14 @@
 \alias{taxotree}
 \title{Treemap based on taxonomic hierarchy of records}
 \usage{
-taxotree(indf, n = 30, title = NA, legend = NA, sum1 = "Family",
-  sum2 = "Genus")
+taxotree(
+  indf,
+  n = 30,
+  title = NA,
+  legend = NA,
+  sum1 = "Family",
+  sum2 = "Genus"
+)
 }
 \arguments{
 \item{indf}{input data frame containing biodiversity data set}

@@ -31,8 +31,9 @@ bdsummary(inat)
 }
 }
 \seealso{
-Other Data preparation functions: \code{\link{fixstr}},
-  \code{\link{format_bdvis}}, \code{\link{getcellid}},
-  \code{\link{gettaxo}}
+Other Data preparation functions: 
+\code{\link{format_bdvis}()},
+\code{\link{getcellid}()},
+\code{\link{gettaxo}()}
 }
 \concept{Data preparation functions}
