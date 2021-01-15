@@ -1,3 +1,10 @@
+bdvis 0.2.28
+===============
+* Custom gridscales in functions mapgrid & bdcomplete
+* Changed geom_raster() to geom_tile() and removed the arguments hjust and 
+    vjust in function mapgrid
+* Fixed the bug introduced due to rinat new format 
+
 bdvis 0.2.23
 ===============
 * function mapgrid can load a shapefile as basemap
