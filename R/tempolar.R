@@ -85,7 +85,8 @@ tempolar <- function(indf=NA, timescale=NA, title=NA, color=NA, plottype=NA,avg=
                   clockwise=T, start=1.62,
                   radial.lim = c(0,max(daytab$dct)),
                   main=title2,boxed.radial=FALSE,
-                  show.grid.labels=3,rp.type=plottype2)
+                  show.grid.labels=3,rp.type=plottype2,
+                  label.pos=seq(0,11*pi/6,length.out=12))
     } else {
       alldays=sqldf("select dayofYear, Year_, count(*) as ct from indf group by dayofYear,monthofYear,Year_")
       daymean=sqldf("select dayofyear,avg(ct) as avgct,stdev(ct) as sdct from alldays group by dayofyear")
@@ -97,7 +98,8 @@ tempolar <- function(indf=NA, timescale=NA, title=NA, color=NA, plottype=NA,avg=
                   clockwise=T, start=1.62,
                   radial.lim = c(0,max(daymean$avgct)),
                   main=title2,boxed.radial=FALSE,
-                  show.grid.labels=3,rp.type=plottype2)
+                  show.grid.labels=3,rp.type=plottype2,
+                  label.pos=seq(0,11*pi/6,length.out=12))
     }
   }
   if(timescale2=="w"){
@@ -113,7 +115,8 @@ tempolar <- function(indf=NA, timescale=NA, title=NA, color=NA, plottype=NA,avg=
                   line.col=color2,start=1.62, labels=month.abb,
                   radial.lim = c(0,max(weektab$wct)),
                   clockwise=TRUE,main=title2,boxed.radial=FALSE,
-                  show.grid.labels=3,rp.type=plottype2,lwd=4)
+                  show.grid.labels=3,rp.type=plottype2,lwd=4,
+                  label.pos=seq(0,11*pi/6,length.out=12))
     } else {
       allweeks=sqldf("select weekofYear, Year_, count(*) as ct from indf group by weekofYear,Year_")
       weekmean=sqldf("select weekofyear,avg(ct) as avgct,stdev(ct) as sdct from allweeks group by weekofyear")
@@ -127,7 +130,8 @@ tempolar <- function(indf=NA, timescale=NA, title=NA, color=NA, plottype=NA,avg=
                   line.col=color2,start=1.62, labels=month.abb,
                   radial.lim = c(0,max(weekmean$avgct)),
                   clockwise=TRUE,main=title2,boxed.radial=FALSE,
-                  show.grid.labels=3,rp.type=plottype2,lwd=4)
+                  show.grid.labels=3,rp.type=plottype2,lwd=4,
+                  label.pos=seq(0,11*pi/6,length.out=12))
     }
   }
   if(timescale2=="m"){
@@ -139,7 +143,8 @@ tempolar <- function(indf=NA, timescale=NA, title=NA, color=NA, plottype=NA,avg=
                   line.col=color2,start=1.62, labels=month.abb,
                   radial.lim = c(0,max(monthtab$mct)),
                   clockwise=TRUE,main=title2,boxed.radial=FALSE,
-                  show.grid.labels=3,rp.type=plottype2,lwd=4)  
+                  show.grid.labels=3,rp.type=plottype2,lwd=4,
+                  label.pos=seq(0,11*pi/6,length.out=12))  
     } else {
       allmonths=sqldf("select monthofYear, Year_, count(*) as ct from indf group by monthofYear,Year_")
       monthmean=sqldf("select monthofyear,avg(ct) as avgct,stdev(ct) as sdct from allmonths group by monthofyear")
@@ -149,7 +154,8 @@ tempolar <- function(indf=NA, timescale=NA, title=NA, color=NA, plottype=NA,avg=
                   line.col=color2,start=1.62, labels=month.abb,
                   radial.lim = c(0,max(monthmean$avgct)),
                   clockwise=TRUE,main=title2,boxed.radial=FALSE,
-                  show.grid.labels=3,rp.type=plottype2,lwd=4)  
+                  show.grid.labels=3,rp.type=plottype2,lwd=4,
+                  label.pos=seq(0,11*pi/6,length.out=12))  
     }
   }
 }

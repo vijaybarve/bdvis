@@ -34,6 +34,8 @@ install.packages("rinat")
 require(rinat)  # Data download might take some time
 inat <- get_inat_obs_project("reptileindia") 
 inat <- format_bdvis(inat,source='rinat')
+inat <- inat[,c("id","Date_collected", "Latitude", "Longitude", 
+                "Scientific_name", "Cell_id", "Centi_cell_id")]
 ```
 
 #### bdsummary

@@ -56,5 +56,6 @@ chronohorogram <- function (indf = NA, title = "Chronohorogram", startyear = 198
               point.symbols = 20, grid.bg = "black", 
               radial.lim = c(startyear, endyear),  cex=ptsize, 
               show.radial.grid = T, show.grid.labels = F, show.grid = T, 
-              main = title)
+              main = title,
+              label.pos=seq(0,11*pi/6,length.out=12))
 }
