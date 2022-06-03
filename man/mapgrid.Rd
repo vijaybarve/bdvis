@@ -78,8 +78,4 @@ See parameter descriptions for ways of customizing the map.
 mapgrid(inat,ptype="records", region="India")
 }
 }
-\seealso{
-Other Spatial visualizations: 
-\code{\link{bdwebmap}()}
-}
 \concept{Spatial visualizations}

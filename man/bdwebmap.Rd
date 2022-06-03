@@ -2,30 +2,10 @@
 % Please edit documentation in R/bdwebmap.R
 \name{bdwebmap}
 \alias{bdwebmap}
-\title{Interactive web page based map of records}
+\title{(Deprecated) Interactive web page based map of records}
 \usage{
-bdwebmap(indf)
-}
-\arguments{
-\item{indf}{input data frame containing biodiversity data set}
+bdwebmap()
 }
 \description{
-Generates an interactive web map and opens it in a new browser window.
+(Deprecated) Interactive web page based map of records
 }
-\details{
-In order to avoid cluttered maps and to improve function performance, 
-certain limits are imposed on the number of species and records that can be 
-visualized in a single map. Currently, maps won't work with datasets 
-containing more than 30 different species and/or 1000 records. For those 
-cases, we recommend subsetting the dataset and making more than one map.
-}
-\examples{
-\dontrun{
- bdwebmap(inat)
-}
-}
-\seealso{
-Other Spatial visualizations: 
-\code{\link{mapgrid}()}
-}
-\concept{Spatial visualizations}
