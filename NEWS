@@ -1,3 +1,7 @@
+bdvis 0.2.30
+===============
+* Function bdwebmap Deprecated due to leafletR package unavaialble 
+
 bdvis 0.2.28
 ===============
 * Custom gridscales in functions mapgrid & bdcomplete
