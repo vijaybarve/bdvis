@@ -37,7 +37,7 @@ calendarHeat <- function(dates,
                          color="r2g", 
                          varname="Values",
                          date.form = "%Y-%m-%d", ...) {
-  if (class(dates) == "character" | class(dates) == "factor" ) {
+  if (inherits(dates, "character") | inherits(dates,"factor")) {
     dates <- strptime(dates, date.form)
   }
   caldat <- data.frame(value = values, dates = dates)

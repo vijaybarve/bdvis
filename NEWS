@@ -1,6 +1,8 @@
-bdvis 0.2.30
+bdvis 0.2.31
 ===============
-* Function bdwebmap Deprecated due to leafletR package unavaialble 
+* Function bdwebmap Deprecated due to leafletR package unavailable 
+* Bug fixes in tempolar, chronohorogram
+* Cran note about use of 'class' comparison with string
 
 bdvis 0.2.28
 ===============
@@ -18,7 +20,7 @@ bdvis 0.2.23
 bdvis 0.2.17
 ===============
 * function distrigraph has parameter cumulative for 'efforts' option
-* function distrigraph has 'effortspecis' option in paramater ptype
+* function distrigraph has 'effortspecis' option in parameter ptype
 
 
 bdvis 0.2.15
@@ -42,7 +44,7 @@ bdvis 0.2.9
 bdvis 0.2.0
 ===============
 
-* function bdcomplete bug fixes and visualizatio added in function mapgrid
+* function bdcomplete bug fixes and visualization added in function mapgrid
 * improvements to function mapgrid in legend and color control
 * significant improvement in documentation
 * released to CRAN
