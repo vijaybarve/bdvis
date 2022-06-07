@@ -22,7 +22,7 @@
 #'bdsummary(inat)
 #'}
 bdsummary <- function(indf){
-  if(is.null(indf) || is.na(indf) || dim(indf)[1]==0){
+  if(is.emptydf(indf)){
     cat("No data in dataset \n")
     return()
   }

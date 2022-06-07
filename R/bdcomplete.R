@@ -24,8 +24,9 @@
 #'  throws an error.
 #' @param gridscale plot the map grids at specific degree scale. Default is 1. 
 #'@return data.frame with the columns \itemize{ \item{"Cell_id"}{ id of the cell}
-#'  \item{"nrec"}{ Number of records in the cell} \item{"Sobs"}{ Number of Observed species} 
-#'  \item{"Sest"}{ Estimated number of species} \item{"c"}{ Completeness ratio the cell}
+#'  \item{"nrec"}{ Number of records in the cell} \item{"Sobs"}{ Number of 
+#'  Observed species} \item{"Sest"}{ Estimated number of species} 
+#'  \item{"c"}{ Completeness ratio the cell}
 #'  
 #'  Plots a graph of Number of species vs completeness }
 #'@examples \dontrun{
@@ -42,10 +43,10 @@ bdcomplete <- function(indf,recs=50,gridscale=1){
   dat2 <- na.omit(dat2)
   dat3 <- na.omit(dat3)
   retmat <- NULL
-  if(dim(dat3)[1]<1){
+  if(nrow(dat3)<1){
     stop("Too few data records to compute completeness")
   }
-  for (i in 1:dim(dat3)[1]){
+  for(i in 1:nrow(dat3)){
     cust_cell_id <- dat3$cust_cell_id[i]
     nrec <- dat3$cell_ct[i]
     cset <- dat1[which(dat1$cust_cell_id==dat3$cust_cell_id[i]),]

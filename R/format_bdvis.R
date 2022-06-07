@@ -210,7 +210,7 @@ bd_parse_args <- function(args) {
 }
 
 bd_check_df <- function(indf) {
-  if(is.na(indf) || (is.data.frame(indf) && nrow(indf) == 0)) stop("Input data frame missing or empty")
+  if(is.emptydf(indf)) stop("Input data frame missing or empty")
   if(!(is.data.frame(indf))) stop("Provided argument is not a data.frame")
   return(invisible())
 }

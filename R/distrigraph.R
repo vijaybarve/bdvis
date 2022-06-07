@@ -57,7 +57,7 @@ distrigraph <- function(indf,ptype=NA,cumulative=F,...){
              }else{
                mat1 <- as.data.frame(cbind(mat$Year, cumsum(mat$Species)))
                names(mat1)<-c("Year","Species")
-               for (i in 1:dim(mat1)[1]){
+               for (i in 1:nrow(mat1)){
                  mat1$Species[i] <- length(unique(matsp$Scientific_name[which(matsp$Year_<mat$Year[i])]))
                }
                plot(mat1,main="Accumulation of species over time",...)

@@ -78,7 +78,7 @@ tempolar <- function(indf=NA, timescale=NA, title=NA, color=NA, plottype=NA,avg=
   if(timescale2=="d"){
     daytab=sqldf("select dayofYear, count(*) as dct from indf group by dayofYear")
     if(avg==F){
-      if(is.na(daytab[1,1])){daytab=daytab[2:dim(daytab)[1],]}
+      if(is.na(daytab[1,1])){daytab=daytab[2:nrow(daytab),]}
       radial.plot(daytab$dct,
                   ((((daytab$dayofYear-1)*360)/366)*(3.14/180)),
                   line.col=color2, labels=month.abb,
@@ -91,7 +91,7 @@ tempolar <- function(indf=NA, timescale=NA, title=NA, color=NA, plottype=NA,avg=
       alldays=sqldf("select dayofYear, Year_, count(*) as ct from indf group by dayofYear,monthofYear,Year_")
       daymean=sqldf("select dayofyear,avg(ct) as avgct,stdev(ct) as sdct from alldays group by dayofyear")
       
-      if(is.na(daymean[1,1])){daymean=daymean[2:dim(daymean)[1],]}
+      if(is.na(daymean[1,1])){daymean=daymean[2:nrow(daymean),]}
       radial.plot(daymean$avgct,
                   ((((daymean$dayofYear-1)*360)/366)*(3.14/180)),
                   line.col=color2, labels=month.abb,
@@ -105,8 +105,8 @@ tempolar <- function(indf=NA, timescale=NA, title=NA, color=NA, plottype=NA,avg=
   if(timescale2=="w"){
     weektab=sqldf("select weekofYear, count(*) as wct from indf group by weekofYear")
     if(avg==F){
-      if(is.na(weektab[1,1])){weektab=weektab[2:dim(weektab)[1],]}
-      if(dim(weektab)[1]==54){
+      if(is.na(weektab[1,1])){weektab=weektab[2:nrow(weektab),]}
+      if(nrow(weektab)==54){
         weektab[1,2]=weektab[1,2]+weektab[54,2]
         weektab=weektab[1:53,]
       }
@@ -120,8 +120,8 @@ tempolar <- function(indf=NA, timescale=NA, title=NA, color=NA, plottype=NA,avg=
     } else {
       allweeks=sqldf("select weekofYear, Year_, count(*) as ct from indf group by weekofYear,Year_")
       weekmean=sqldf("select weekofyear,avg(ct) as avgct,stdev(ct) as sdct from allweeks group by weekofyear")
-      if(is.na(weekmean[1,1])){weekmean=weekmean[2:dim(weekmean)[1],]}
-      if(dim(weekmean)[1]==54){
+      if(is.na(weekmean[1,1])){weekmean=weekmean[2:nrow(weekmean),]}
+      if(nrow(weekmean)==54){
         weekmean[1,2]=weekmean[1,2]+weekmean[54,2]
         weekmean=weekmean[1:53,]
       }
@@ -137,7 +137,7 @@ tempolar <- function(indf=NA, timescale=NA, title=NA, color=NA, plottype=NA,avg=
   if(timescale2=="m"){
     monthtab=sqldf("select monthofYear, count(*) as mct from indf group by monthofYear")
     if(avg==F){
-      if(is.na(monthtab[1,1])){monthtab=monthtab[2:dim(monthtab)[1],]}
+      if(is.na(monthtab[1,1])){monthtab=monthtab[2:nrow(monthtab),]}
       radial.plot(monthtab$mct,
                   ((((monthtab$monthofYear-1)*360)/12)*(3.14/180)),
                   line.col=color2,start=1.62, labels=month.abb,
@@ -148,7 +148,7 @@ tempolar <- function(indf=NA, timescale=NA, title=NA, color=NA, plottype=NA,avg=
     } else {
       allmonths=sqldf("select monthofYear, Year_, count(*) as ct from indf group by monthofYear,Year_")
       monthmean=sqldf("select monthofyear,avg(ct) as avgct,stdev(ct) as sdct from allmonths group by monthofyear")
-      if(is.na(monthmean[1,1])){monthmean=monthmean[2:dim(monthmean)[1],]}
+      if(is.na(monthmean[1,1])){monthmean=monthmean[2:nrow(monthmean),]}
       radial.plot(monthmean$avgct,
                   ((((monthmean$monthofYear-1)*360)/12)*(3.14/180)),
                   line.col=color2,start=1.62, labels=month.abb,

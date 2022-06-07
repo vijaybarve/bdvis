@@ -36,10 +36,10 @@ chronohorogram <- function (indf = NA, title = "Chronohorogram", startyear = 198
   }
   dat1 = sqldf("select Date_collected, count(*) as ct from indf group by Date_collected")
   if (is.na(dat1$Date_collected[1])) {
-    dat1 = dat1[2:dim(dat1)[1], ]
+    dat1 = dat1[2:nrow(dat1), ]
   }
   if (as.character(dat1$Date_collected[1]) == "") {
-    dat1 = dat1[2:dim(dat1)[1], ]
+    dat1 = dat1[2:nrow(dat1), ]
   }
   d = as.numeric(strftime(as.Date(dat1$Date_collected, na.rm = T), 
                           format = "%j"))
