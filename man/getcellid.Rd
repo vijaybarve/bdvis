@@ -11,6 +11,9 @@ getcellid(indf, gridscale = 0)
 
 \item{gridscale}{generate custom grid scale column for mapping. Default is 0.}
 }
+\value{
+data frame with two columns for cell_id added
+}
 \description{
 Calculate and assign a GBIF-style degree cell id and centi-degree (0.1 
 degrees, dividing a 1 degree cell into 100 centi-degree cells) cell id to each

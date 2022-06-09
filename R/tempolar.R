@@ -24,6 +24,9 @@
 #'   and s (symbols). Default is p (polygon).
 #' @param avg If TRUE plots a graph of the average records rather than total 
 #'   numbers. Default is FALSE.
+#'   
+#' @return No return value, called for plotting the graph
+#'    
 #' @references Otegui, J., Arino, A. H., Encinas, M. A., & Pando, F. (2013). 
 #'   Assessing the Primary Data Hosted by the Spanish Node of the Global 
 #'   Biodiversity Information Facility (GBIF). PLoS ONE, 8(1), e55144. 

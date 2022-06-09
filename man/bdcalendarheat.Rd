@@ -11,6 +11,9 @@ bdcalendarheat(indf = NA, title = NA)
 
 \item{title}{title custom title for the plot}
 }
+\value{
+No return value, called for plotting the heatmap plot
+}
 \description{
 Produces a heat map {\url{https://en.wikipedia.org/wiki/Heat_map}}
 representing the distribution of records in time.

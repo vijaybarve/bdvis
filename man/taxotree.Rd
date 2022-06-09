@@ -29,15 +29,18 @@ cell sizes}
 \item{sum2}{Taxonomic level whose density will be represented with a color 
 gradient}
 }
+\value{
+No return value, called for plotting the graph
+}
 \description{
-Draws a treemap (\url{https://en.wikipedia.org/wiki/Treemapping}) based on the
-taxonomic information of the records.
+Draws a treemap (\url{https://en.wikipedia.org/wiki/Treemapping}) based on 
+the taxonomic information of the records.
 }
 \details{
 This function builds a treemap of the taxonomic information present in the 
 data set. It represents this information at two levels (with the arguments 
-sum1 and sum2). The first level (sum1) will be represented with cell sizes and
-is a reflection of the number of records in that group. If, for example, 
+sum1 and sum2). The first level (sum1) will be represented with cell sizes 
+and is a reflection of the number of records in that group. If, for example, 
 "Family" is selected as value for sum1, the size of the cells in the treemap 
 will be directly proportional to the number of records for that taxonomic 
 family. The second level (sum2) will be represented by color and is a 
@@ -47,13 +50,13 @@ the number of different genera for that particular cell.
 }
 \examples{
 \dontrun{
-taxotree(inat)
+ taxotree(inat)
 }
 }
 \references{
 Otegui, J., Arino, A. H., Encinas, M. A., & Pando, F. (2013). 
- Assessing the Primary Data Hosted by the Spanish Node of the Global 
- Biodiversity Information Facility (GBIF). PLoS ONE, 8(1), e55144. 
- doi:10.1371/journal.pone.0055144
+  Assessing the Primary Data Hosted by the Spanish Node of the Global 
+  Biodiversity Information Facility (GBIF). PLoS ONE, 8(1), e55144. 
+  doi:10.1371/journal.pone.0055144
 }
 \concept{Taxonomic visualizations}

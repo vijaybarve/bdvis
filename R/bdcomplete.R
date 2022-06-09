@@ -22,7 +22,8 @@
 #'@param recs minimum number of records per grid cell required to make the 
 #'  calculations. Default is 50. If there are too few records, the function 
 #'  throws an error.
-#' @param gridscale plot the map grids at specific degree scale. Default is 1. 
+#'@param gridscale plot the map grids at specific degree scale. Default is 1. 
+#'
 #'@return data.frame with the columns \itemize{ \item{"Cell_id"}{ id of the cell}
 #'  \item{"nrec"}{ Number of records in the cell} \item{"Sobs"}{ Number of 
 #'  Observed species} \item{"Sest"}{ Estimated number of species} 

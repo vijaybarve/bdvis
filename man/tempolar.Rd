@@ -31,6 +31,9 @@ and s (symbols). Default is p (polygon).}
 \item{avg}{If TRUE plots a graph of the average records rather than total 
 numbers. Default is FALSE.}
 }
+\value{
+No return value, called for plotting the graph
+}
 \description{
 Representation in polar axis of the distribution of dates in the provided 
 data set.

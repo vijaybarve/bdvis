@@ -9,7 +9,7 @@ format_bdvis(
   source = NULL,
   config = NULL,
   quiet = FALSE,
-  gettaxo = F,
+  gettaxo = FALSE,
   ...
 )
 }
@@ -35,16 +35,17 @@ taxanony. Defaults to FALSE.}
 
 \item{...}{Optional. If none of the previous is present, the four key
 arguments (\code{Latitude}, \code{Longitude},
-\code{Date_collected}, \code{Scientific_name}) can be put here. See examples.}
+\code{Date_collected}, \code{Scientific_name}) can be put here. See 
+examples.}
 }
 \value{
-The provided data frame, with field names changed to suite the functioning
-of further visulization functions.
+The provided data frame, with field names changed to suite the 
+functioning of further visualization functions.
 }
 \description{
 \code{format_bdvis} renames certain fields in the data frame to make sure the 
-other package functions knows how to use them. This step is highly recommended 
-for the proper working of the functions.
+other package functions knows how to use them. This step is highly 
+recommended for the proper working of the functions.
 }
 \details{
 When invoked, there are three ways of indicating the function how to
@@ -70,7 +71,8 @@ put \code{NA} in that element; otherwise, the function will throw an error.
 See the examples section.
 
 If none of the two is provided, the function expects the user to provide the
-mapping by passing the individual column names associated with the right term.
+mapping by passing the individual column names associated with the right 
+term.
 See the examples section.
 }
 \examples{

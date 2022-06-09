@@ -1,8 +1,8 @@
 #' Prepare data frame for flagging functions
 #'
 #' \code{format_bdvis} renames certain fields in the data frame to make sure the 
-#' other package functions knows how to use them. This step is highly recommended 
-#' for the proper working of the functions.
+#' other package functions knows how to use them. This step is highly 
+#' recommended for the proper working of the functions.
 #'
 #' When invoked, there are three ways of indicating the function how to
 #' transform the data.frame: using the \code{source} parameter, providing a
@@ -27,7 +27,8 @@
 #' See the examples section.
 #'
 #' If none of the two is provided, the function expects the user to provide the
-#' mapping by passing the individual column names associated with the right term.
+#' mapping by passing the individual column names associated with the right 
+#' term.
 #' See the examples section.
 #'
 #' @param indf Required. The data.frame on which to operate.
@@ -46,10 +47,11 @@
 #'   taxanony. Defaults to FALSE.
 #' @param ... Optional. If none of the previous is present, the four key
 #'   arguments (\code{Latitude}, \code{Longitude},
-#'   \code{Date_collected}, \code{Scientific_name}) can be put here. See examples.
+#'   \code{Date_collected}, \code{Scientific_name}) can be put here. See 
+#'   examples.
 #'
-#' @return The provided data frame, with field names changed to suite the functioning
-#' of further visulization functions.
+#' @return The provided data frame, with field names changed to suite the 
+#' functioning of further visualization functions.
 #'
 #'@family Data preparation functions
 #'
@@ -76,7 +78,8 @@
 #'}
 #'
 #' @export
-format_bdvis <- function(indf, source=NULL, config=NULL, quiet=FALSE, gettaxo=F, ...) {
+format_bdvis <- function(indf, source=NULL, config=NULL, quiet=FALSE, 
+                         gettaxo=FALSE, ...) {
   
   # Parse input object type
   bd_check_df(indf)

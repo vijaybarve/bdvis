@@ -6,6 +6,9 @@
 \usage{
 bdwebmap()
 }
+\value{
+No return value. NULL
+}
 \description{
 (Deprecated) Interactive web page based map of records
 }

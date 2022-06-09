@@ -8,6 +8,9 @@
 #'
 #'@param indf input data frame containing biodiversity data set
 #'@param gridscale generate custom grid scale column for mapping. Default is 0.
+#'
+#'@return data frame with two columns for cell_id added
+#' 
 #'@export
 #'@family Data preparation functions
 #'@examples \dontrun{

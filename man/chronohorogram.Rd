@@ -28,6 +28,9 @@ character vector. Default is blue (less) - red (more) gradient
 
 \item{ptsize}{point size adjustment factor. Default is 1}
 }
+\value{
+No return value, called for plotting the graph
+}
 \description{
 Draws a detailed temporal representation (also known as chronohorogram) of the
 dates in the provided data set. For more information on the chronohorogram, 

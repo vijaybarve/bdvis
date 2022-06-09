@@ -41,6 +41,9 @@
 #'   specified in decimal degrees. Default is 1 degree which is approximately 100km.
 #' @param customize additional customization string to customize the map output 
 #'   using ggplot2 parameters
+#'   
+#' @return No return value, called for plotting the graph
+#' 
 #' @examples \dontrun{
 #' mapgrid(inat,ptype="records", region="India")
 #' }

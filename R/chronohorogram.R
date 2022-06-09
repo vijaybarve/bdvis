@@ -15,6 +15,9 @@
 #'  character vector. Default is blue (less) - red (more) gradient
 #'  \code{c("red", "blue")}
 #'@param ptsize point size adjustment factor. Default is 1
+#'
+#' @return No return value, called for plotting the graph
+#'
 #'@references Arino, A. H., & Otegui, J. (2008). Sampling biodiversity sampling.
 #'  In Proceedings of TDWG (pp. 77-78). Retrieved from 
 #'  http://www.tdwg.org/fileadmin/2008conference/documents/Proceedings2008.pdf#page=77

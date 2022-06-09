@@ -54,6 +54,9 @@ specified in decimal degrees. Default is 1 degree which is approximately 100km.}
 \item{customize}{additional customization string to customize the map output 
 using ggplot2 parameters}
 }
+\value{
+No return value, called for plotting the graph
+}
 \description{
 Customizable grid-based spatial representation of the coordinates of the 
 records in the data set.

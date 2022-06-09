@@ -9,6 +9,9 @@ bdsummary(indf)
 \arguments{
 \item{indf}{input data frame containing biodiversity data set}
 }
+\value{
+No return value, just displays the summary in console
+}
 \description{
 Calculates some general indicators of the volume, spatial, temporal and
 taxonomic aspects of the provided data set.
@@ -25,9 +28,11 @@ To update spatial grid data to dataset, please use \link{format_bdvis} or
 }
 \examples{
 \dontrun{
-require(rinat)
-inat<-get_inat_obs_project("reptileindia") 
-bdsummary(inat)
+ if (requireNamespace("rinat", quietly=TRUE)) {
+  inat <- get_inat_obs_project("reptileindia") 
+  inat <- format_bdvis(inat, source="rinat")
+  bdsummary(inat)
+ }
 }
 }
 \seealso{

@@ -15,6 +15,9 @@
 #'   "efforts" and "effortspecies" (year)
 #' @param cumulative with ptype as efforts, plot a cumulative records graph
 #' @param ... any additional parameters for the \code{\link{plot}} function.
+#' 
+#' @return No return value, called for plotting the graphs
+#' 
 #' @examples \dontrun{
 #'  distrigraph(inat,ptype="cell",col="tomato")
 #'  distrigraph(inat,ptype="species",ylab="Species")
@@ -22,20 +25,23 @@
 #'  distrigraph(inat,ptype="efforts",col="red",type="s")
 #' }
 #' @export
-distrigraph <- function(indf,ptype=NA,cumulative=F,...){
+distrigraph <- function(indf,ptype=NA,cumulative=FALSE,...){
   custgraph='col="red"'
   if(!is.na(ptype)){
     switch(ptype,
            cell={
              mat=sqldf("select Cell_id, count(*) as Records from indf group by Cell_id")
-             hist(mat$Records,main="Distribution of Records per cell",xlab="Records",...)
+             hist(mat$Records,main="Distribution of Records per cell",
+                  xlab="Records",...)
            },
            species={
              mat=sqldf("select Scientific_name, count(*) as Records from indf group by Scientific_name")
-             hist(mat$Records,main="Distribution of Records per Species",xlab="Records",...)
+             hist(mat$Records,main="Distribution of Records per Species",
+                  xlab="Records",...)
            },
            efforts={
-             Year_ = as.numeric(strftime(as.Date(indf$Date_collected,na.rm=T), format = "%Y"))
+             Year_ = as.numeric(strftime(as.Date(indf$Date_collected,na.rm=T), 
+                                         format = "%Y"))
              indf=cbind(indf,Year_)
              mat=sqldf("select Year_, count(*) as Records from indf group by Year_ order by Year_")
              if(!cumulative){
@@ -47,7 +53,8 @@ distrigraph <- function(indf,ptype=NA,cumulative=F,...){
              }
            },
            effortspecies={
-             Year_ = as.numeric(strftime(as.Date(indf$Date_collected,na.rm=T), format = "%Y"))
+             Year_ = as.numeric(strftime(as.Date(indf$Date_collected,na.rm=T), 
+                                         format = "%Y"))
              indf=cbind(indf,Year_)
              matsp <- sqldf("select Scientific_name, Year_ from indf group by Scientific_name, Year_")
              mat <- sqldf("select Year_, count(*) as Records from matsp group by Year_ order by Year_")

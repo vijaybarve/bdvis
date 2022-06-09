@@ -4,7 +4,7 @@
 \alias{distrigraph}
 \title{Distribution graphs}
 \usage{
-distrigraph(indf, ptype = NA, cumulative = F, ...)
+distrigraph(indf, ptype = NA, cumulative = FALSE, ...)
 }
 \arguments{
 \item{indf}{input data frame containing biodiversity data set}
@@ -15,6 +15,9 @@ distrigraph(indf, ptype = NA, cumulative = F, ...)
 \item{cumulative}{with ptype as efforts, plot a cumulative records graph}
 
 \item{...}{any additional parameters for the \code{\link{plot}} function.}
+}
+\value{
+No return value, called for plotting the graphs
 }
 \description{
 Build plots displaying distribution of biodiversity records among 
