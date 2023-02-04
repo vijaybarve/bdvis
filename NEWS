@@ -1,7 +1,13 @@
-bdvis 0.2.34
+bdvis 0.2.35
+===============
+* Bug fixes in mapgrid
+* Funcation format_bdvis now handled bdsns
+
+
+bdvis 0.2.33
 ===============
 * Function bdwebmap Deprecated due to leafletR package unavailable 
-* Bug fixes in tempolar, chronohorogram, mapgrid
+* Bug fixes in tempolar, chronohorogram
 * Cran note about use of 'class' comparison with string
 * Helper fxn is.emptydf 
 * Cleaned up code for dim statements

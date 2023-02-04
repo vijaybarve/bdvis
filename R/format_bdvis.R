@@ -13,7 +13,9 @@
 #'
 #' \code{source} refers to the package that was used to retrieve the data.
 #' Currently, three values are supported for this argument: "\code{rgbif}",
-#' "\code{rvertnet}" and "\code{rinat}", but many more are on their way.
+#' "\code{rvertnet}", "\code{besns}" and "\code{rinat}", but many more are on
+#' their way. A caution with "\code{besns}" data is he scientific name has to 
+#' be in the field "\code{searchText}". 
 #'
 #' \code{config} asks for a configuration object holding the mapping of the
 #' field names. This option is basically a shortcut for those users with
@@ -21,9 +23,7 @@
 #' avoid having to type them each time. In practice, this object is a named list
 #' with the following four fields: \code{Latitude}, \code{Longitude}, 
 #' \code{Date_collected} and \code{Scientific_name}. Each element must have a 
-#' string indicating the name of the column in the data.frame holding the values 
-#' for that element. If the data.frame doesn't have one or more of these fields, 
-#' put \code{NA} in that element; otherwise, the function will throw an error. 
+#' string indicating the name of the column in the data.frame holding the values #' for that element. If the data.frame doesn't have one or more of these fields, #' put \code{NA} in that element; otherwise, the function will throw an error. 
 #' See the examples section.
 #'
 #' If none of the two is provided, the function expects the user to provide the
@@ -33,9 +33,9 @@
 #'
 #' @param indf Required. The data.frame on which to operate.
 #' @param source Optional. Indicates the package that was used to retrieve the
-#'   data. Currently accepted values are "rvertnet", "rgbif" or "rinat". Either
-#'   \code{source}, \code{config} or individual parameters must be present (see
-#'   details).
+#'   data. Currently accepted values are "rvertnet", "rgbif", "bdsns" or 
+#'   "rinat". Either \code{source}, \code{config} or individual parameters must
+#'   be present (see details).
 #' @param config Optional. Configuration object indicating mapping of field
 #'   names from the data.frame to the DarwinCore standard. Useful when importing
 #'   data multiple times from a source not available via the \code{source}
@@ -80,10 +80,8 @@
 #' @export
 format_bdvis <- function(indf, source=NULL, config=NULL, quiet=FALSE, 
                          gettaxo=FALSE, ...) {
-  
   # Parse input object type
   bd_check_df(indf)
-  
   # Mapping via 'source'
   if (!(is.null(source))) {
     match.arg(source, sources_list)
@@ -106,37 +104,45 @@ format_bdvis <- function(indf, source=NULL, config=NULL, quiet=FALSE,
         if (!(quiet)) message("Changed \"Latitude\" to \"Latitude::original\"")
       }
       names(indf)[names(indf)==new_fields$Latitude] <- "Latitude"
-      if (!(quiet)) message(c("Changed \"",new_fields$Latitude,"\" to \"Latitude\""))
+      if (!(quiet)) message(c("Changed \"",new_fields$Latitude,
+                              "\" to \"Latitude\""))
     }
   }
   if (!(is.null(new_fields$Longitude)) && new_fields$Longitude != "Longitude") {
     if (new_fields$Longitude %in% names(indf)) {
       if ("Longitude" %in% names(indf)) {
         names(indf)[names(indf)=="Longitude"] <- "Longitude::original"
-        if (!(quiet)) message("Changed \"Longitude\" to \"Longitude::original\"")
+        if (!(quiet)) 
+          message("Changed \"Longitude\" to \"Longitude::original\"")
       }
       names(indf)[names(indf)==new_fields$Longitude] <- "Longitude"
-      if (!(quiet)) message(c("Changed \"",new_fields$Longitude,"\" to \"Longitude\""))
+      if (!(quiet)) message(c("Changed \"",new_fields$Longitude,
+                              "\" to \"Longitude\""))
     }
   }
-  if (!(is.null(new_fields$Date_collected)) && new_fields$Date_collected != "Date_collected") {
+  if (!(is.null(new_fields$Date_collected)) && 
+      new_fields$Date_collected != "Date_collected") {
     if (new_fields$Date_collected %in% names(indf)) {
       if ("Date_collected" %in% names(indf)) {
         names(indf)[names(indf)=="Date_collected"] <- "Date_collected::original"
-        if (!(quiet)) message("Changed \"Date_collected\" to \"Date_collected::original\"")
+        if (!(quiet)) 
+          message("Changed \"Date_collected\" to \"Date_collected::original\"")
       }
       names(indf)[names(indf)==new_fields$Date_collected] <- "Date_collected"
-      if (!(quiet)) message(c("Changed \"",new_fields$Date_collected,"\" to \"Date_collected\""))
+      if (!(quiet)) message(c("Changed \"",new_fields$Date_collected,
+                              "\" to \"Date_collected\""))
     }
   }
-  if (!(is.null(new_fields$Scientific_name)) && new_fields$Scientific_name != "Scientific_name") {
+  if (!(is.null(new_fields$Scientific_name)) && 
+      new_fields$Scientific_name != "Scientific_name") {
     if (new_fields$Scientific_name %in% names(indf)) {
       if ("Scientific_name" %in% names(indf)) {
         names(indf)[names(indf)=="Scientific_name"] <- "Scientific_name::original"
         if (!(quiet)) message("Changed \"Scientific_name\" to \"Scientific_name::original\"")
       }
       names(indf)[names(indf)==new_fields$Scientific_name] <- "Scientific_name"
-      if (!(quiet)) message(c("Changed \"",new_fields$Scientific_name,"\" to \"Scientific_name\""))
+      if (!(quiet)) message(c("Changed \"",new_fields$Scientific_name,
+                              "\" to \"Scientific_name\""))
     }
   }
   indf$Latitude <- as.numeric(indf$Latitude)
@@ -152,6 +158,7 @@ format_bdvis <- function(indf, source=NULL, config=NULL, quiet=FALSE,
 sources_list <- c(
   "rgbif",
   "rvertnet",
+  "bdsns",
   "rinat"
 )
 
@@ -174,16 +181,26 @@ bd_get_source <- function(source) {
       Longitude = "longitude",
       Date_collected = "observed_on",
       Scientific_name = "taxon.name"
+    ),
+    bdsns = list(
+      Latitude = "latitude",
+      Longitude = "longitude",
+      Date_collected = "datetaken",
+      Scientific_name = "searchText"
     )
   )
   return(bd_sources[[source]])
 }
 
 bd_parse_config <- function(config){
-  if (!("Latitude" %in% names(config))) stop("\"Latitude\" missing from configuration object")
-  if (!("Longitude" %in% names(config))) stop("\"Longitude\" missing from configuration object")
-  if (!("Date_collected" %in% names(config))) stop("\"Date_collected\" missing from configuration object")
-  if (!("Scientific_name" %in% names(config))) stop("\"Scientific_name\" missing from configuration object")
+  if (!("Latitude" %in% names(config))) 
+    stop("\"Latitude\" missing from configuration object")
+  if (!("Longitude" %in% names(config))) 
+    stop("\"Longitude\" missing from configuration object")
+  if (!("Date_collected" %in% names(config))) 
+    stop("\"Date_collected\" missing from configuration object")
+  if (!("Scientific_name" %in% names(config))) 
+    stop("\"Scientific_name\" missing from configuration object")
   return(config)
 }
 

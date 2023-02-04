@@ -17,9 +17,9 @@ format_bdvis(
 \item{indf}{Required. The data.frame on which to operate.}
 
 \item{source}{Optional. Indicates the package that was used to retrieve the
-data. Currently accepted values are "rvertnet", "rgbif" or "rinat". Either
-\code{source}, \code{config} or individual parameters must be present (see
-details).}
+data. Currently accepted values are "rvertnet", "rgbif", "bdsns" or 
+"rinat". Either \code{source}, \code{config} or individual parameters must
+be present (see details).}
 
 \item{config}{Optional. Configuration object indicating mapping of field
 names from the data.frame to the DarwinCore standard. Useful when importing
@@ -57,7 +57,9 @@ mapping arguments.
 
 \code{source} refers to the package that was used to retrieve the data.
 Currently, three values are supported for this argument: "\code{rgbif}",
-"\code{rvertnet}" and "\code{rinat}", but many more are on their way.
+"\code{rvertnet}", "\code{besns}" and "\code{rinat}", but many more are on
+their way. A caution with "\code{besns}" data is he scientific name has to 
+be in the field "\code{searchText}". 
 
 \code{config} asks for a configuration object holding the mapping of the
 field names. This option is basically a shortcut for those users with
@@ -65,9 +67,7 @@ custom-formatted data.frames who will use the same mapping many times, to
 avoid having to type them each time. In practice, this object is a named list
 with the following four fields: \code{Latitude}, \code{Longitude}, 
 \code{Date_collected} and \code{Scientific_name}. Each element must have a 
-string indicating the name of the column in the data.frame holding the values 
-for that element. If the data.frame doesn't have one or more of these fields, 
-put \code{NA} in that element; otherwise, the function will throw an error. 
+string indicating the name of the column in the data.frame holding the values #' for that element. If the data.frame doesn't have one or more of these fields, #' put \code{NA} in that element; otherwise, the function will throw an error. 
 See the examples section.
 
 If none of the two is provided, the function expects the user to provide the
