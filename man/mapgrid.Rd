@@ -5,7 +5,7 @@
 \title{Maps the data points on the map in grid format}
 \usage{
 mapgrid(
-  indf = NA,
+  indf = NULL,
   comp = NULL,
   ptype = "records",
   title = "",

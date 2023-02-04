@@ -49,16 +49,22 @@
 #' }
 #' @family Spatial visualizations
 #' @export
-mapgrid <- function(indf = NA, comp = NULL, ptype="records",title = "", bbox = NA, 
-                    legscale=0, collow="blue",colhigh="red", 
+mapgrid <- function(indf = NULL, comp = NULL, ptype="records",title = "", 
+                    bbox = NA, legscale=0, collow="blue",colhigh="red", 
                     mapdatabase = "world", region = ".", 
                     shp = NA, gridscale = 1,
                     customize = NULL)
 {
+  if(is.null(indf)){
+    stop("Please provide data to plot map")
+  }
   names(indf) <- gsub("\\.","_",names(indf))
   if(ptype!="complete"){
     indf <- indf[which(!is.na(indf$Latitude)),]
     indf <- indf[which(!is.na(indf$Longitude)),]
+    if(nrow(indf)==0){
+      stop("Nothing to plot")
+    }
     indf <- getcellid(indf,gridscale)
   } else {
     if(is.null(comp)){
