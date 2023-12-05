@@ -13,8 +13,8 @@ mapgrid(
   legscale = 0,
   collow = "blue",
   colhigh = "red",
-  mapdatabase = "world",
-  region = ".",
+  mapdatabase = NULL,
+  region = NULL,
   shp = NA,
   gridscale = 1,
   customize = NULL
@@ -40,11 +40,9 @@ data}
 
 \item{colhigh}{Color for higher range in the color ramp of the grid}
 
-\item{mapdatabase}{database to be used. By default, the world database is 
-used}
+\item{mapdatabase}{Parameter  is deprecated}
 
-\item{region}{Specific region(s) to map, like countries. Default is the whole
-world map}
+\item{region}{Parameter is deprecated. Please use shape files.}
 
 \item{shp}{path to shapefile to load as basemap (default NA)}
 

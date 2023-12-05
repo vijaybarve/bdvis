@@ -20,7 +20,7 @@
 #' @import sqldf
 #' @import maps
 #' @import ggplot2
-#' @importFrom rgdal readOGR
+#' @import sf
 #' @param indf input data frame containing biodiversity data set
 #' @param comp Completeness matrix generate by function \code{\link{bdcomplete}}
 #' @param ptype Type of map on the grid. Accepted values are "presence" for 
@@ -32,10 +32,8 @@
 #'   data
 #' @param collow Color for lower range in the color ramp of the grid
 #' @param colhigh Color for higher range in the color ramp of the grid
-#' @param mapdatabase database to be used. By default, the world database is 
-#'   used
-#' @param region Specific region(s) to map, like countries. Default is the whole
-#'   world map
+#' @param mapdatabase Parameter  is deprecated
+#' @param region Parameter is deprecated. Please use shape files.
 #' @param shp path to shapefile to load as basemap (default NA)
 #' @param gridscale plot the map grids at scale specified. Scale needs to 
 #'   specified in decimal degrees. Default is 1 degree which is approximately 100km.
@@ -50,14 +48,21 @@
 #' @family Spatial visualizations
 #' @export
 mapgrid <- function(indf = NULL, comp = NULL, ptype="records",title = "", 
-                    bbox = NA, legscale=0, collow="blue",colhigh="red", 
-                    mapdatabase = "world", region = ".", 
-                    shp = NA, gridscale = 1,
-                    customize = NULL)
+                     bbox = NA, legscale=0, collow="blue",colhigh="red", 
+                     mapdatabase = NULL, region = NULL, 
+                     shp = NA, gridscale = 1,
+                     customize = NULL)
 {
   if(is.null(indf)){
     stop("Please provide data to plot map")
   }
+  if(!is.null(mapdatabase)){
+    stop("Parameter mapdatabase is deprecated.")
+  }
+  if(!is.null(region)){
+    stop("Parameter region is deprecated. Please use shape files")
+  }
+  
   names(indf) <- gsub("\\.","_",names(indf))
   if(ptype!="complete"){
     indf <- indf[which(!is.na(indf$Latitude)),]
@@ -113,32 +118,28 @@ mapgrid <- function(indf = NULL, comp = NULL, ptype="records",title = "",
     middf <- rbind(middf,legent)
   }
   legname <- paste(ptype,"\n    ",max(middf$count))
-  mapp <- map_data(map=mapdatabase, region=region)
+  mapp <- sf::st_as_sf(map('world', plot = FALSE, fill = TRUE))
   if(!is.na(shp)){
-    mapp <- rgdal::readOGR(shp)
+    mapp <- sf::st_read(shp, quiet = TRUE)
   }
   message(paste("Rendering map...plotting ", nrow(cts), " tiles", sep=""))
   if (ptype=="presence"){ 
-    ggplot(mapp, aes(long, lat)) + # make the plot
+    ggplot(mapp) + # make the plot
       ggtitle(title) +
       geom_tile(data=middf, aes(long, lat, fill=(count))) +  
-      coord_fixed(ratio = 1) +
       scale_fill_gradient2(low = "white", mid=colhigh, high = colhigh, name=ptype, space="Lab") +
       labs(x="", y="") +
-      geom_polygon(aes(group=group), fill=NA, color="gray80", size=0.8) +
       theme_bw(base_size=14) + 
       theme(legend.position = c(.1, .25), legend.key = element_blank()) +
       blanktheme() +
       customize
   } else {
-    ggplot(mapp, aes(long, lat)) + # make the plot
-      ggtitle(title) +
+    ggplot(mapp) + # make the plot
+      geom_sf() +
       geom_tile(data=middf, aes(long, lat, fill=log10(count)),alpha=1) +  
-      coord_fixed(ratio = 1) +
       scale_fill_gradient2(low = "white", mid=collow, high = colhigh, name=legname, alpha(.3),
                            breaks = mybreaks, labels = myleg, space="Lab") +
       labs(x="", y="") +
-      geom_polygon(aes(group=group), fill=NA, color="gray80", size=0.8) +
       theme_bw(base_size=14) + 
       theme(legend.position = c(.1, .25), legend.key = element_blank()) +
       blanktheme() +

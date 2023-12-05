@@ -1,8 +1,8 @@
 Package: bdvis
 Type: Package
 Title: Biodiversity Data Visualizations
-Version: 0.2.35
-Date: 2023-02-04
+Version: 0.2.36
+Date: 2023-12-04
 Authors@R: c(
   person("Vijay","Barve", ,"vijay.barve@gmail.com",role=c("aut","cre"),
     comment = c(ORCID = "0000-0002-4852-2567")),
@@ -25,7 +25,7 @@ Imports:
     ggplot2,
     lattice,
     chron,
-    rgdal
+    sf
 Suggests:
     rinat
 RoxygenNote: 7.2.3
