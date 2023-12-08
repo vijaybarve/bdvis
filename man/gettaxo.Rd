@@ -17,11 +17,13 @@ taxonomy is sought}
 \item{progress}{If TRUE prints progress bar and messages on the consol.}
 }
 \value{
-indf with added / updated columns \itemize{ \item{"Kingdom"}{Kingdom 
- of the Scientific name} \item{"Phylum"}{Phylum of the Scientific name} 
- \item{"Order_"}{Order of the Scientific name} \item{"Family"}{Family of the 
- Scientific name} \item{"Genus"}{Genus of the Scientific name} } and also 
- saves a local copy of taxanomy downloaded for future use in taxo.db sqlite 
+indf with added / updated columns \itemize{ 
+ \item "Kingdom" - Kingdom of the Scientific name 
+ \item "Phylum" - Phylum of the Scientific name 
+ \item "Order_" - Order of the Scientific name 
+ \item "Family" - Family of the Scientific name 
+ \item "Genus" - Genus of the Scientific name } and also 
+ saves a local copy of taxonomy downloaded for future use in taxo.db sqlite 
  file
 }
 \description{

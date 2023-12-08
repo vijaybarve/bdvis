@@ -46,8 +46,8 @@ bdsummary(inat)
 #### mapgrid
 
 ```r 
-mapgrid(inat,ptype="records",bbox=c(60,100,5,40),region=c("India")) 
-mapgrid(inat,ptype="records",bbox=c(60,100,5,40),region=c("India"),gridscale=0.1) 
+mapgrid(inat,ptype="records",bbox=c(60,100,5,40)) 
+mapgrid(inat,ptype="records",bbox=c(60,100,5,40),gridscale=0.1) 
 ```
 
 #### tempolar 
@@ -74,7 +74,7 @@ chronohorogram(inat)
 
 ```r 
 comp=bdcomplete(inat,recs=5)
-mapgrid(comp,ptype="complete",bbox=c(60,100,5,40),region=c("India"))
+mapgrid(comp,ptype="complete",bbox=c(60,100,5,40))
 ```
 
 #### distrigraph

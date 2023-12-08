@@ -1,9 +1,10 @@
-bdvis 0.2.36
+bdvis 0.2.37
 ===============
 * Bug fixes in mapgrid
 * Funcation format_bdvis now handled bdsns
 * Package rgeos dependency removed
 * Finction mapgrid parameters mapadatabase and region deprecated
+* Fixed documentaion
 
 
 bdvis 0.2.33
