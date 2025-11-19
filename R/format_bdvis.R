@@ -43,8 +43,6 @@
 #'   be present (see details).
 #' @param quiet Optional. Don't show any logging message at all. Defaults to
 #'   FALSE.
-#' @param gettaxo optional. Call function \link{gettaxo} to build higher level 
-#'   taxanony. Defaults to FALSE.
 #' @param ... Optional. If none of the previous is present, the four key
 #'   arguments (\code{Latitude}, \code{Longitude},
 #'   \code{Date_collected}, \code{Scientific_name}) can be put here. See 
@@ -79,7 +77,7 @@
 #'
 #' @export
 format_bdvis <- function(indf, source=NULL, config=NULL, quiet=FALSE, 
-                         gettaxo=FALSE, ...) {
+                         ...) {
   # Parse input object type
   bd_check_df(indf)
   # Mapping via 'source'
@@ -148,10 +146,7 @@ format_bdvis <- function(indf, source=NULL, config=NULL, quiet=FALSE,
   indf$Latitude <- as.numeric(indf$Latitude)
   indf$Longitude <- as.numeric(indf$Longitude)
   indf <- getcellid(indf)
-  if(gettaxo){
-    indf <- gettaxo(indf)
-  }
-  
+
   indf
 }
 

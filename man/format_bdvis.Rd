@@ -4,14 +4,7 @@
 \alias{format_bdvis}
 \title{Prepare data frame for flagging functions}
 \usage{
-format_bdvis(
-  indf,
-  source = NULL,
-  config = NULL,
-  quiet = FALSE,
-  gettaxo = FALSE,
-  ...
-)
+format_bdvis(indf, source = NULL, config = NULL, quiet = FALSE, ...)
 }
 \arguments{
 \item{indf}{Required. The data.frame on which to operate.}
@@ -29,9 +22,6 @@ be present (see details).}
 
 \item{quiet}{Optional. Don't show any logging message at all. Defaults to
 FALSE.}
-
-\item{gettaxo}{optional. Call function \link{gettaxo} to build higher level 
-taxanony. Defaults to FALSE.}
 
 \item{...}{Optional. If none of the previous is present, the four key
 arguments (\code{Latitude}, \code{Longitude},
@@ -102,7 +92,6 @@ if (requireNamespace("rinat", quietly=TRUE)) {
 \seealso{
 Other Data preparation functions: 
 \code{\link{bdsummary}()},
-\code{\link{getcellid}()},
-\code{\link{gettaxo}()}
+\code{\link{getcellid}()}
 }
 \concept{Data preparation functions}

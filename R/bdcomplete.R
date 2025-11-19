@@ -24,14 +24,13 @@
 #'  throws an error.
 #'@param gridscale plot the map grids at specific degree scale. Default is 1. 
 #'
-#'@return data.frame with the columns \itemize{ \item{"Cell_id"}{ id of the cell}
-#'  \item{"nrec"}{ Number of records in the cell} \item{"Sobs"}{ Number of 
-#'  Observed species} \item{"Sest"}{ Estimated number of species} 
-#'  \item{"c"}{ Completeness ratio the cell}
-#'  
+#'@return data.frame with the columns \itemize{ \item "Cell_id": id of the cell
+#'  \item"nrec": Number of records in the cell \item "Sobs": Number of 
+#'  Observed species \item "Sest": Estimated number of species 
+#'  \item "c": Completeness ratio the cell
 #'  Plots a graph of Number of species vs completeness }
 #'@examples \dontrun{
-#'bdcomplete(inat)
+#'bdcomplete(inat) 
 #'}
 #'@seealso \code{\link{getcellid}}
 #'@export

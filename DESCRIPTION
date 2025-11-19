@@ -1,8 +1,8 @@
 Package: bdvis
 Type: Package
 Title: Biodiversity Data Visualizations
-Version: 0.2.35
-Date: 2023-02-04
+Version: 0.2.38
+Date: 2025-11-18
 Authors@R: c(
   person("Vijay","Barve", ,"vijay.barve@gmail.com",role=c("aut","cre"),
     comment = c(ORCID = "0000-0002-4852-2567")),
@@ -19,14 +19,12 @@ Imports:
     maps,
     plotrix,
     sqldf,
-    plyr,
-    taxize,
     treemap,
     ggplot2,
     lattice,
     chron,
-    rgdal
+    sf
 Suggests:
     rinat
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.3
 BugReports: https://github.com/vijaybarve/bdvis/issues

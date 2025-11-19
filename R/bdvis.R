@@ -9,7 +9,6 @@
 #'\item \link{bdsummary}
 #'\item \link{format_bdvis}
 #'\item \link{getcellid}
-#'\item \link{gettaxo}
 #'}
 #' 
 #'@section Spatial visualizations:
@@ -40,7 +39,5 @@
 #'https://cran.r-project.org/web/packages/bdvis/index.html
 #'}
 #'
-#' @docType package
-#' @name bdvis
-NULL
+"_PACKAGE"
 #> NULL

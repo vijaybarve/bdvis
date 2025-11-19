@@ -20,7 +20,7 @@
 #' @import sqldf
 #' @import maps
 #' @import ggplot2
-#' @importFrom rgdal readOGR
+#' @importFrom sf read_sf
 #' @param indf input data frame containing biodiversity data set
 #' @param comp Completeness matrix generate by function \code{\link{bdcomplete}}
 #' @param ptype Type of map on the grid. Accepted values are "presence" for 
@@ -86,7 +86,7 @@ mapgrid <- function(indf = NULL, comp = NULL, ptype="records",title = "",
     cts <- sqldf("select Cell_id,(c) as ct from comp")
     names(cts) <- c("cust_cell_id","ct")
   }  
-  lat <- long <- group <- NULL
+  lat <- long <- group <- count_ <- NULL
   lat_cell_no <- (max(indf$Latitude) - min(indf$Latitude)) %/% gridscale
   Lat <- min(indf$Latitude) + (cts$cust_cell_id  %/% lat_cell_no) * gridscale
   Long <- min(indf$Longitude) + (cts$cust_cell_id %% lat_cell_no) * gridscale
@@ -102,26 +102,26 @@ mapgrid <- function(indf = NULL, comp = NULL, ptype="records",title = "",
   middf <- data.frame(
     lat = cts$Lat,
     long = cts$Long,
-    count = cts$ct
+    count_ = cts$ct
   )
   if(legscale>0){
     legent=c(
       lat = 0,
       long = 0,
-      count = legscale
+      count_ = legscale
     )
     middf <- rbind(middf,legent)
   }
-  legname <- paste(ptype,"\n    ",max(middf$count))
+  legname <- paste(ptype,"\n    ",max(middf$count_))
   mapp <- map_data(map=mapdatabase, region=region)
   if(!is.na(shp)){
-    mapp <- rgdal::readOGR(shp)
+    mapp <- sf::read_sf(shp)
   }
   message(paste("Rendering map...plotting ", nrow(cts), " tiles", sep=""))
   if (ptype=="presence"){ 
     ggplot(mapp, aes(long, lat)) + # make the plot
       ggtitle(title) +
-      geom_tile(data=middf, aes(long, lat, fill=(count))) +  
+      geom_tile(data=middf, aes(long, lat, fill=(count_))) +  
       coord_fixed(ratio = 1) +
       scale_fill_gradient2(low = "white", mid=colhigh, high = colhigh, name=ptype, space="Lab") +
       labs(x="", y="") +
@@ -133,7 +133,7 @@ mapgrid <- function(indf = NULL, comp = NULL, ptype="records",title = "",
   } else {
     ggplot(mapp, aes(long, lat)) + # make the plot
       ggtitle(title) +
-      geom_tile(data=middf, aes(long, lat, fill=log10(count)),alpha=1) +  
+      geom_tile(data=middf, aes(long, lat, fill=log10(count_)),alpha=1) +  
       coord_fixed(ratio = 1) +
       scale_fill_gradient2(low = "white", mid=collow, high = colhigh, name=legname, alpha(.3),
                            breaks = mybreaks, labels = myleg, space="Lab") +

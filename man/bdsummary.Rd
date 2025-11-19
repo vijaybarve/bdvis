@@ -38,7 +38,6 @@ To update spatial grid data to dataset, please use \link{format_bdvis} or
 \seealso{
 Other Data preparation functions: 
 \code{\link{format_bdvis}()},
-\code{\link{getcellid}()},
-\code{\link{gettaxo}()}
+\code{\link{getcellid}()}
 }
 \concept{Data preparation functions}

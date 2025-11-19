@@ -1,7 +1,9 @@
-bdvis 0.2.35
+bdvis 0.2.38
 ===============
 * Bug fixes in mapgrid
 * Funcation format_bdvis now handled bdsns
+* Documentation formating in bdcomplete
+* Removed dependency of rgdal, taxize and plyr
 
 
 bdvis 0.2.33
