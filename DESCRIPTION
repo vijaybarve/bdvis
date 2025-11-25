@@ -1,18 +1,15 @@
 Package: bdvis
 Type: Package
 Title: Biodiversity Data Visualizations
-Version: 0.2.38
-Date: 2025-11-18
+Version: 0.2.39
+Date: 2025-11-25
 Authors@R: c(
   person("Vijay","Barve", ,"vijay.barve@gmail.com",role=c("aut","cre"),
     comment = c(ORCID = "0000-0002-4852-2567")),
   person("Javier", "Otegui", ,"javier.otegui@gmail.com",role=c("aut"),
     comment = c(ORCID = "0000-0002-8997-3559")))
 Maintainer: Vijay Barve <vijay.barve@gmail.com>
-Description: Provides a set of functions to create basic visualizations to quickly
-    preview different aspects of biodiversity information such as inventory 
-    completeness, extent of coverage (taxonomic, temporal and geographic), gaps
-    and biases. Barve & Otegui (2016) <DOI:10.1093/bioinformatics/btw333>.
+Description: Bbasic visualizations to quickly preview different aspects of biodiversity information such as inventory completeness, extent of coverage (taxonomic, temporal and geographic), gaps and biases. Barve & Otegui (2016) <DOI:10.1093/bioinformatics/btw333>.
 License: GPL-3
 Encoding: UTF-8
 Imports:

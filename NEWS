@@ -1,9 +1,11 @@
-bdvis 0.2.38
+bdvis 0.2.39
 ===============
 * Bug fixes in mapgrid
 * Funcation format_bdvis now handled bdsns
 * Documentation formating in bdcomplete
 * Removed dependency of rgdal, taxize and plyr
+* CRAN suggested edits to the description
+* Function taxotree, cat() replced with stop() 
 
 
 bdvis 0.2.33
